@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		80C73FDE259F475E00EE8631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C73FDD259F475E00EE8631 /* AppDelegate.swift */; };
-		80C73FE2259F475E00EE8631 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C73FE1259F475E00EE8631 /* ViewController.swift */; };
 		80C73FE5259F475E00EE8631 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C73FE3259F475E00EE8631 /* Main.storyboard */; };
 		80C73FE7259F475F00EE8631 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80C73FE6259F475F00EE8631 /* Assets.xcassets */; };
 		80C73FEA259F475F00EE8631 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C73FE8259F475F00EE8631 /* LaunchScreen.storyboard */; };
 		80C73FF5259F475F00EE8631 /* ChatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C73FF4259F475F00EE8631 /* ChatAppTests.swift */; };
 		80C74000259F475F00EE8631 /* ChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C73FFF259F475F00EE8631 /* ChatAppUITests.swift */; };
+		80C74010259F656E00EE8631 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7400E259F656E00EE8631 /* LoginViewController.swift */; };
+		80C74011259F656E00EE8631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C7400F259F656E00EE8631 /* LoginViewController.xib */; };
+		80C74014259F669500EE8631 /* CustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C74013259F669500EE8631 /* CustomTextFieldView.xib */; };
+		80C74017259F6AC400EE8631 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C74016259F6AC400EE8631 /* CustomTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		80C73FDA259F475D00EE8631 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C73FDD259F475E00EE8631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80C73FE1259F475E00EE8631 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		80C73FE4259F475E00EE8631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		80C73FE6259F475F00EE8631 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80C73FE9259F475F00EE8631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		80C73FFB259F475F00EE8631 /* ChatAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C73FFF259F475F00EE8631 /* ChatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppUITests.swift; sourceTree = "<group>"; };
 		80C74001259F475F00EE8631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80C7400E259F656E00EE8631 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		80C7400F259F656E00EE8631 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		80C74013259F669500EE8631 /* CustomTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTextFieldView.xib; sourceTree = "<group>"; };
+		80C74016259F6AC400EE8631 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,9 @@
 		80C73FDC259F475D00EE8631 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				80C74012259F666800EE8631 /* Views */,
+				80C7400D259F652F00EE8631 /* Controllers */,
 				80C73FDD259F475E00EE8631 /* AppDelegate.swift */,
-				80C73FE1259F475E00EE8631 /* ViewController.swift */,
 				80C73FE3259F475E00EE8631 /* Main.storyboard */,
 				80C73FE6259F475F00EE8631 /* Assets.xcassets */,
 				80C73FE8259F475F00EE8631 /* LaunchScreen.storyboard */,
@@ -123,6 +130,32 @@
 				80C74001259F475F00EE8631 /* Info.plist */,
 			);
 			path = ChatAppUITests;
+			sourceTree = "<group>";
+		};
+		80C7400D259F652F00EE8631 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80C7400E259F656E00EE8631 /* LoginViewController.swift */,
+				80C7400F259F656E00EE8631 /* LoginViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		80C74012259F666800EE8631 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80C74015259F6AA300EE8631 /* TextField */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80C74015259F6AA300EE8631 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				80C74013259F669500EE8631 /* CustomTextFieldView.xib */,
+				80C74016259F6AC400EE8631 /* CustomTextFieldView.swift */,
+			);
+			path = TextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +262,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C74014259F669500EE8631 /* CustomTextFieldView.xib in Resources */,
+				80C74011259F656E00EE8631 /* LoginViewController.xib in Resources */,
 				80C73FEA259F475F00EE8631 /* LaunchScreen.storyboard in Resources */,
 				80C73FE7259F475F00EE8631 /* Assets.xcassets in Resources */,
 				80C73FE5259F475E00EE8631 /* Main.storyboard in Resources */,
@@ -256,8 +291,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C73FE2259F475E00EE8631 /* ViewController.swift in Sources */,
+				80C74010259F656E00EE8631 /* LoginViewController.swift in Sources */,
 				80C73FDE259F475E00EE8631 /* AppDelegate.swift in Sources */,
+				80C74017259F6AC400EE8631 /* CustomTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
