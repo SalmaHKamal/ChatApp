@@ -16,7 +16,9 @@
 		80C74010259F656E00EE8631 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7400E259F656E00EE8631 /* LoginViewController.swift */; };
 		80C74011259F656E00EE8631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C7400F259F656E00EE8631 /* LoginViewController.xib */; };
 		80C74014259F669500EE8631 /* CustomTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C74013259F669500EE8631 /* CustomTextFieldView.xib */; };
-		80C74017259F6AC400EE8631 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C74016259F6AC400EE8631 /* CustomTextFieldView.swift */; };
+		80C74019259F992900EE8631 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C74018259F992900EE8631 /* CustomTextFieldView.swift */; };
+		80C7401D25A114F000EE8631 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7401C25A114F000EE8631 /* UIFont.swift */; };
+		80C7402025A1180A00EE8631 /* LiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7401F25A1180A00EE8631 /* LiveButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,9 @@
 		80C7400E259F656E00EE8631 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80C7400F259F656E00EE8631 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		80C74013259F669500EE8631 /* CustomTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTextFieldView.xib; sourceTree = "<group>"; };
-		80C74016259F6AC400EE8631 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		80C74018259F992900EE8631 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		80C7401C25A114F000EE8631 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		80C7401F25A1180A00EE8631 /* LiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 		80C73FDC259F475D00EE8631 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				80C7401B25A114D600EE8631 /* Extensions */,
+				80C7401A25A114A200EE8631 /* Utilities */,
 				80C74012259F666800EE8631 /* Views */,
 				80C7400D259F652F00EE8631 /* Controllers */,
 				80C73FDD259F475E00EE8631 /* AppDelegate.swift */,
@@ -144,18 +150,42 @@
 		80C74012259F666800EE8631 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				80C74015259F6AA300EE8631 /* TextField */,
+				80C7401E25A117E500EE8631 /* LiveButton */,
+				80C74015259F6AA300EE8631 /* TextFieldView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		80C74015259F6AA300EE8631 /* TextField */ = {
+		80C74015259F6AA300EE8631 /* TextFieldView */ = {
 			isa = PBXGroup;
 			children = (
 				80C74013259F669500EE8631 /* CustomTextFieldView.xib */,
-				80C74016259F6AC400EE8631 /* CustomTextFieldView.swift */,
+				80C74018259F992900EE8631 /* CustomTextFieldView.swift */,
 			);
-			path = TextField;
+			path = TextFieldView;
+			sourceTree = "<group>";
+		};
+		80C7401A25A114A200EE8631 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		80C7401B25A114D600EE8631 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80C7401C25A114F000EE8631 /* UIFont.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80C7401E25A117E500EE8631 /* LiveButton */ = {
+			isa = PBXGroup;
+			children = (
+				80C7401F25A1180A00EE8631 /* LiveButton.swift */,
+			);
+			path = LiveButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,9 +321,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C7401D25A114F000EE8631 /* UIFont.swift in Sources */,
 				80C74010259F656E00EE8631 /* LoginViewController.swift in Sources */,
 				80C73FDE259F475E00EE8631 /* AppDelegate.swift in Sources */,
-				80C74017259F6AC400EE8631 /* CustomTextFieldView.swift in Sources */,
+				80C7402025A1180A00EE8631 /* LiveButton.swift in Sources */,
+				80C74019259F992900EE8631 /* CustomTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
