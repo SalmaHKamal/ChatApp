@@ -81,6 +81,9 @@
                                     <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="loginBtnPressed:" destination="-1" eventType="touchUpInside" id="PtO-hp-8Fw"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfg-4G-sj5">
                             <rect key="frame" x="110.5" y="171.5" width="161" height="40"/>
@@ -90,6 +93,9 @@
                             <state key="normal" title="Forgot your password ?">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="forgetPasswordPressed:" destination="-1" eventType="touchUpInside" id="Y0J-Ms-7TZ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,16 +182,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="fb"/>
+                                    <connections>
+                                        <action selector="loginFBPressed:" destination="-1" eventType="touchUpInside" id="LCx-h2-UTX"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ba-VL-fSP">
                                     <rect key="frame" x="56" y="0.0" width="48" height="48"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="google"/>
+                                    <connections>
+                                        <action selector="loginGooglePressed:" destination="-1" eventType="touchUpInside" id="7IJ-GW-ukE"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mY-qc-Ugb">
                                     <rect key="frame" x="112" y="0.0" width="48" height="48"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="twitter"/>
+                                    <connections>
+                                        <action selector="loginTwitterPressed:" destination="-1" eventType="touchUpInside" id="TO7-jn-saz"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -229,6 +244,9 @@
                                     <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="registerBtnPressed:" destination="-1" eventType="touchUpInside" id="fNg-qb-auc"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

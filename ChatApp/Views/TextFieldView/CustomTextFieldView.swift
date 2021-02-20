@@ -10,7 +10,7 @@ import UIKit
 
 class CustomTextFieldView: UIView {
 
-	@IBOutlet private weak var textField: UITextField!
+	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var imageView: UIImageView!
 	
 	
@@ -20,6 +20,7 @@ class CustomTextFieldView: UIView {
 			NSAttributedString.Key.foregroundColor: UIColor.white,
 			NSAttributedString.Key.font: UIFont.TrebuchetMS(fontSize: 15)
 		])
+		textField.textColor = .white
 	}
 	
 	static func create() -> CustomTextFieldView? {
