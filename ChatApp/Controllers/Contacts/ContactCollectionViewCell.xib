@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCollectionViewCell" id="gTV-IL-0wX" customClass="ContactCollectionViewCell" customModule="ChatApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="182" height="194"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="182" height="194"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulV-9K-P1X">
+                        <rect key="frame" x="8" y="8" width="166" height="178"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BOd-7C-B2z" customClass="LiveImageView" customModule="ChatApp" customModuleProvider="target">
+                                <rect key="frame" x="33" y="17.5" width="100" height="97"/>
+                                <color key="tintColor" red="0.1176470588" green="0.44705882349999998" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="33x-HC-MjE"/>
+                                    <constraint firstAttribute="width" secondItem="BOd-7C-B2z" secondAttribute="height" id="Dko-wN-Oog"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OK8-3U-Ult">
+                                <rect key="frame" x="8" y="132" width="150" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="OK8-3U-Ult" secondAttribute="bottom" constant="16" id="9Qs-VG-xDw"/>
+                            <constraint firstItem="OK8-3U-Ult" firstAttribute="leading" secondItem="ulV-9K-P1X" secondAttribute="leading" constant="8" id="Dnz-4o-hWb"/>
+                            <constraint firstItem="BOd-7C-B2z" firstAttribute="centerX" secondItem="ulV-9K-P1X" secondAttribute="centerX" id="HZY-Uv-H7l"/>
+                            <constraint firstItem="OK8-3U-Ult" firstAttribute="centerX" secondItem="BOd-7C-B2z" secondAttribute="centerX" id="be7-Nc-ztl"/>
+                            <constraint firstItem="OK8-3U-Ult" firstAttribute="top" secondItem="BOd-7C-B2z" secondAttribute="bottom" constant="16" id="na9-T3-OcM"/>
+                            <constraint firstAttribute="trailing" secondItem="OK8-3U-Ult" secondAttribute="trailing" constant="8" id="pIU-6L-WSa"/>
+                            <constraint firstItem="BOd-7C-B2z" firstAttribute="top" secondItem="ulV-9K-P1X" secondAttribute="top" constant="16" id="wPd-uW-N09"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ulV-9K-P1X" secondAttribute="trailing" constant="8" id="Aua-um-QE3"/>
+                <constraint firstItem="ulV-9K-P1X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="MkR-01-U8r"/>
+                <constraint firstAttribute="bottom" secondItem="ulV-9K-P1X" secondAttribute="bottom" constant="8" id="kKk-7k-a2f"/>
+                <constraint firstItem="ulV-9K-P1X" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="ypQ-VS-Ne3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="182" height="194"/>
+            <connections>
+                <outlet property="contactImageView" destination="BOd-7C-B2z" id="vNt-OX-5bc"/>
+                <outlet property="nameLabel" destination="OK8-3U-Ult" id="vq5-Ag-lB5"/>
+            </connections>
+            <point key="canvasLocation" x="8.6956521739130448" y="69.642857142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
+    </resources>
+</document>
