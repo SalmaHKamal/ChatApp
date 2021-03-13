@@ -22,11 +22,16 @@ class ChatViewController: UIViewController {
 			sendMessageBtn.rx.tap.subscribe({ [weak self] _ in
 				let messageContent: String = self?.messageTextView.text ?? ""
 				self?.viewModel?.saveMessage(content: messageContent)
-				
+				self?.messageTextView.text = ""
 				}).disposed(by: disposeBag)
 		}
 	}
 	@IBOutlet weak var messageTextView: UITextView!
+	@IBOutlet weak var receiverName: UILabel! {
+		didSet {
+			receiverName.text = viewModel?.receiverModel?.displayName
+		}
+	}
 	
 	// MARK: - Variables
 	var viewModel: ChatViewModelProtocol?

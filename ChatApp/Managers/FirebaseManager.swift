@@ -20,7 +20,6 @@ struct FirebaseManager {
 		case users
 		case chat
 		case messages
-		case threads
 	}
 	
 	// MARK: - Login
@@ -247,7 +246,7 @@ extension FirebaseManager {
 	
 	private func loadMessages(docRef: DocumentReference, completion: @escaping ChatCompletion) {
 		docRef.collection(FirestoreCollections.messages.rawValue)
-			.order(by: "created", descending: false)
+			.order(by: "id", descending: false)
 			.addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
 				if error != nil {
 					completion(nil, docRef)
@@ -283,54 +282,36 @@ extension FirebaseManager {
 				
 				chatQuerySnap?.documents.forEach({ (doc) in
 					if let users: [String] = doc["users"] as? [String] {
-						var messagesArray: [MessageModel]?
-						var userModelGlobal: UserModel?
+						
+						
 						let IDs = users.filter({ $0 != currentUserID })
 						
 						if IDs.count == 1,
 							let userID = IDs.first {
 							
 							self.loadMessages(docRef: doc.reference) { (messages, _) in
-								if let messages = messages {
-									messagesArray = messages
+								let messagesArray = messages
+								
+								self.getUserInfo(for: userID) { (userModel) in
+									let userModelGlobal = userModel
+									
+									if userModelGlobal != nil, messagesArray != nil {
+										result.updateValue((userModelGlobal! , messagesArray!), forKey: userID)
+									}
+									
+									completion(result)
 								}
-							}
-							
-							self.getUserModelWith(userID) { (userModel) in
-								userModelGlobal = userModel
-							}
-							
-							if userModelGlobal != nil, messagesArray != nil {
-								result.updateValue((userModelGlobal! , messagesArray!), forKey: userID)
+								
+								
 							}
 						}
 					}
 					
+					
+					
 				})
 				
-				completion(result)
 		}
-	}
-	
-	private func getUserModelWith(_ uid: String, completion: @escaping (_ userModel: UserModel?) -> Void)  {
-		
-		firestore.collection(FirestoreCollections.users.rawValue)
-			.document(uid)
-			.getDocument(completion: { (doc, error) in
-				if let _ = error {
-					completion(nil)
-					return
-				}
-				
-				
-				guard let dic = doc?.data(),
-				let userModel = UserModel(dictionary: dic) else {
-					completion(nil)
-					return
-				}
-				
-				completion(userModel)
-			})
 	}
 	
 	func saveMessage(_ message: MessageModel, with docRef: DocumentReference?) {
@@ -338,7 +319,7 @@ extension FirebaseManager {
 			return
 		}
 		
-		docRef?.collection(FirestoreCollections.threads.rawValue).addDocument(data: messageDictionry, completion: nil)
+		docRef?.collection(FirestoreCollections.messages.rawValue).addDocument(data: messageDictionry, completion: nil)
 	}
 	
 	func getSenderInfo(_ receiverModel: UserModel, completion: @escaping ((name: String, id: String)?) -> Void){

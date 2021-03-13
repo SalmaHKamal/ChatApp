@@ -66,6 +66,15 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		return cell
 	}
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let receiver = viewModel?.receivers[indexPath.row] else {
+			return
+		}
+		let chatViewModel = ChatViewModel(receiverModel: receiver)
+		let chatViewController = ChatViewController(with: chatViewModel)
+		self.present(chatViewController, animated: true, completion: nil)
+	}
+	
 	
 }
 

@@ -22,7 +22,7 @@ struct MessageModel: Codable {
 			return
 		}
 		
-		guard let uid: String = dictionary["uid"] as? String,
+		guard let uid: String = dictionary["id"] as? String,
 			let content: String = dictionary["content"] as? String,
 			let created: String = dictionary["created"] as? String,
 			let senderID: String = dictionary["senderID"] as? String,
