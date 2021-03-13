@@ -32,6 +32,13 @@ class ChatViewController: UIViewController {
 			receiverName.text = viewModel?.receiverModel?.displayName
 		}
 	}
+	@IBOutlet weak var chatTableView: UITableView! {
+		didSet {
+			chatTableView.delegate = self
+			chatTableView.dataSource = self
+			chatTableView.register(UINib(nibName: ChatMessageTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: ChatMessageTableViewCell.nibName)
+		}
+	}
 	
 	// MARK: - Variables
 	var viewModel: ChatViewModelProtocol?
@@ -55,6 +62,23 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: ChatViewControllerProtocol {
 	func reloadTableView() {
+		chatTableView.reloadData()
+	}
+}
+
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return viewModel?.chatMessageCellModels.count ?? 0
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatMessageTableViewCell.nibName, for: indexPath) as? ChatMessageTableViewCell else {
+			return UITableViewCell()
+		}
+		if let model = viewModel?.chatMessageCellModels[indexPath.row] {
+			cell.setupView(with: model)
+		}
 		
+		return cell
 	}
 }

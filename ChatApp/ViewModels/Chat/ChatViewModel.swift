@@ -13,9 +13,17 @@ protocol ChatViewModelProtocol {
 	var viewController: ChatViewControllerProtocol? { get set }
 	var receiverModel: UserModel? { get }
 	var messages: [MessageModel]? { get }
+	var chatMessageCellModels: [ChatMessageCellModel] { get }
 	
 	func loadChat()
 	func saveMessage(content: String)
+	func createCellModels(from messages: [MessageModel])
+	
+}
+
+struct ChatMessageCellModel {
+	var profileImageUrl: URL?
+	var messageContent: String?
 }
 
 class ChatViewModel: ChatViewModelProtocol {
@@ -23,11 +31,15 @@ class ChatViewModel: ChatViewModelProtocol {
 	var receiverModel: UserModel?
 	var messages: [MessageModel]? {
 		didSet {
-			viewController?.reloadTableView()
+			guard let messages = messages else {
+				return
+			}
+			createCellModels(from: messages)
 		}
 	}
 	var docRef: DocumentReference?
 	let chatManager: ChatManager = ChatManager()
+	var chatMessageCellModels: [ChatMessageCellModel] = []
 	
 	init(receiverModel: UserModel) {
 		self.receiverModel = receiverModel
@@ -40,6 +52,19 @@ class ChatViewModel: ChatViewModelProtocol {
 		chatManager.loadChat(with: model) { [weak self] messages, docRef in
 			self?.messages = messages
 			self?.docRef = docRef
+		}
+	}
+	
+	func createCellModels(from messages: [MessageModel]) {
+		messages.forEach { (message) in
+			guard let senderID: String = message.senderID else {
+				return
+			}
+			chatManager.getUserInfo(uid: senderID, completion: { [weak self] user in
+				self?.chatMessageCellModels.append(ChatMessageCellModel(profileImageUrl: user?.photoUrl,
+																  messageContent: message.content))
+				self?.viewController?.reloadTableView()
+			})
 		}
 	}
 	

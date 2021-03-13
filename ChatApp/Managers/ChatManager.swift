@@ -30,4 +30,8 @@ struct ChatManager {
 	func getSenderInfo(receiverModel: UserModel, completion: @escaping ((name: String, id: String)?) -> Void) {
 		FirebaseManager().getSenderInfo(receiverModel, completion: completion)
 	}
+	
+	func getUserInfo(uid: String, completion: @escaping (_ user: UserModel?) -> Void) {
+		FirebaseManager().getUserInfo(for: uid, completion: completion)
+	}
 }
