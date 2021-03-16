@@ -7,64 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2ADFF497-EA81-4337-9C4E-C875FA047905"
+            uuid = "4289FE44-90A1-4536-95B8-C06DF46D41FC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatApp/ViewModels/Chat/ChatViewModel.swift"
+            filePath = "ChatApp/ViewModels/Chat History/ChatHistoryViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "createCellModels(from:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2ADFF497-EA81-4337-9C4E-C875FA047905 - cbeb2535221c4200"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.ChatViewModel.createCellModels(from: Swift.Array&lt;ChatApp.MessageModel&gt;) -&gt; ()"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/salmahassan/Study/ChatApp/ChatApp/ViewModels/Chat/ChatViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "43">
-               </Location>
-               <Location
-                  uuid = "2ADFF497-EA81-4337-9C4E-C875FA047905 - bd720dd8918a6ffc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (ChatApp.MessageModel) -&gt; () in ChatApp.ChatViewModel.createCellModels(from: Swift.Array&lt;ChatApp.MessageModel&gt;) -&gt; ()"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/salmahassan/Study/ChatApp/ChatApp/ViewModels/Chat/ChatViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "105">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B37B11C2-AAF0-4013-8569-793BB01782ED"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatApp/ViewModels/Chat/ChatViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "createCellModels(from:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "fetchData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
