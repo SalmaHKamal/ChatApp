@@ -68,7 +68,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0c9-n2-OqM">
-                                <rect key="frame" x="92" y="12" width="238.5" height="52"/>
+                                <rect key="frame" x="92" y="12" width="238.5" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-gT-NAj">
                                         <rect key="frame" x="0.0" y="0.0" width="43.5" height="20"/>
@@ -77,7 +77,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyl-0H-dTY" userLabel="message">
-                                        <rect key="frame" x="0.0" y="24" width="36.5" height="28"/>
+                                        <rect key="frame" x="0.0" y="24" width="36.5" height="40"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nuk-iF-kNy">
-                                <rect key="frame" x="330.5" y="12" width="82.5" height="52"/>
+                                <rect key="frame" x="330.5" y="12" width="82.5" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHQ-9z-gKX">
                                         <rect key="frame" x="25" y="0.0" width="32" height="20.5"/>
@@ -94,7 +94,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGC-NH-d7I" customClass="LiveView" customModule="ChatApp" customModuleProvider="target">
-                                        <rect key="frame" x="34" y="38" width="14" height="14"/>
+                                        <rect key="frame" x="34" y="50" width="14" height="14"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYR-Pm-9DV" customClass="LiveView" customModule="ChatApp" customModuleProvider="target">
                                                 <rect key="frame" x="2" y="2" width="10" height="10"/>
@@ -136,8 +136,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Nuk-iF-kNy" firstAttribute="top" secondItem="mWf-K6-2NK" secondAttribute="top" constant="4" id="8RI-ne-mU0"/>
-                            <constraint firstItem="Nuk-iF-kNy" firstAttribute="bottom" secondItem="mWf-K6-2NK" secondAttribute="bottom" constant="-4" id="Xf5-5j-171"/>
-                            <constraint firstItem="0c9-n2-OqM" firstAttribute="bottom" secondItem="mWf-K6-2NK" secondAttribute="bottom" constant="-4" id="cCJ-AE-FU9"/>
+                            <constraint firstItem="Nuk-iF-kNy" firstAttribute="bottom" secondItem="mWf-K6-2NK" secondAttribute="bottom" priority="999" constant="-4" id="Xf5-5j-171"/>
+                            <constraint firstItem="0c9-n2-OqM" firstAttribute="bottom" secondItem="mWf-K6-2NK" secondAttribute="bottom" priority="999" constant="-4" id="cCJ-AE-FU9"/>
                             <constraint firstItem="0c9-n2-OqM" firstAttribute="top" secondItem="mWf-K6-2NK" secondAttribute="top" constant="4" id="r8v-f3-IAa"/>
                             <constraint firstItem="Nuk-iF-kNy" firstAttribute="width" secondItem="ioj-wt-BKD" secondAttribute="width" multiplier="1:5" id="vI1-PI-Df3"/>
                         </constraints>
@@ -153,6 +153,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lastMessageLabel" destination="yyl-0H-dTY" id="7i0-15-Kxl"/>
+                <outlet property="messageReadIndicatorView" destination="gYR-Pm-9DV" id="rO8-1M-xIC"/>
                 <outlet property="receiverNameLabel" destination="S0L-gT-NAj" id="Y1E-mP-tsI"/>
                 <outlet property="receiverProfileImageView" destination="mWf-K6-2NK" id="zho-6X-1uc"/>
             </connections>

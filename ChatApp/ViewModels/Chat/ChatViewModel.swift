@@ -88,7 +88,7 @@ class ChatViewModel: ChatViewModelProtocol {
 			var model: MessageModel = MessageModel()
 			model.id = "0"
 			model.content = content
-			model.created = "Today"
+			model.created = TimeInterval()
 			model.senderName = result?.0
 			model.senderID = result?.1
 			

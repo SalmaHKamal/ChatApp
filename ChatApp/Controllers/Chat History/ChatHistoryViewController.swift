@@ -67,6 +67,21 @@ extension ChatHistoryViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		// update cell read state
+		updateTableViewCell(at: indexPath)
+		// navigate to chat
+		navigateToChatVC(selectedIndex: indexPath)
+	}
+	
+	private func updateTableViewCell(at indexPath: IndexPath) {
+		viewModel?.updateMessageIsReadState(at: indexPath.row)
+		guard let selectedCell = tableView.cellForRow(at: indexPath) as? ChatHistoryTableViewCell else {
+			return
+		}
+		selectedCell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
+	}
+	
+	private func navigateToChatVC(selectedIndex indexPath: IndexPath) {
 		guard let receiver = viewModel?.receivers[indexPath.row] else {
 			return
 		}
@@ -74,7 +89,6 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		let chatViewController = ChatViewController(with: chatViewModel)
 		self.present(chatViewController, animated: true, completion: nil)
 	}
-	
 	
 }
 

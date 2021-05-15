@@ -55,6 +55,10 @@ class HomeViewController: UIViewController {
 		setupViewController(for: .groupChat)
 	}
 	
+	@IBAction func userProfileDidPressed(_ sender: Any) {
+		print("salma")
+	}
+	
 	// MARK: - helper methods
 	private func setupView() {
 		setupViewController(for: .chat)

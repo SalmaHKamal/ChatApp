@@ -57,7 +57,7 @@ extension FirebaseManager {
 	
 	private func loadMessages(docRef: DocumentReference, completion: @escaping ChatCompletion) {
 		docRef.collection(FirestoreCollections.messages.rawValue)
-			.order(by: "id", descending: false)
+			.order(by: "created", descending: false)
 			.addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
 				if error != nil {
 					completion(nil, docRef)

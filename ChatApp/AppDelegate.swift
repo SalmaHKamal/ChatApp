@@ -26,12 +26,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	// MARK: - Helper Methods
 	private func launchFirstScreen() {
-		let viewController = HomeViewController(with: HomeViewModel())
-		let navigationController = UINavigationController(rootViewController: viewController)
+		
+		let navigationController = UINavigationController(rootViewController: firstScreen)
 		navigationController.navigationBar.isHidden = true
 		window = UIWindow()
 		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()
+	}
+	
+	var firstScreen: UIViewController {
+		if Auth.auth().currentUser?.uid != nil {
+			return HomeViewController(with: HomeViewModel())
+		} else {
+			return LoginViewController()
+		}
 	}
 }
 

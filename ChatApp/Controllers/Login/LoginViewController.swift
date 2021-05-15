@@ -61,6 +61,7 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 			} else {
 				self?.hideLoadingIndicator()
 				self?.pushToHomeViewController()
+				self?.persistInUserDefaults(model: authResult.user)
 			}
 		})
 	}
@@ -87,5 +88,14 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	private func pushToHomeViewController() {
 		let vc = HomeViewController()
 		self.navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	private func persistInUserDefaults(model: UserModel?) {
+		guard let model = model else { return }
+		do {
+			try UserDefaultsManager().set(currentUser: model)
+		} catch {
+			print("couldn't save user model into userDefaults")
+		}
 	}
 }

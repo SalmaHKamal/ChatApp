@@ -14,6 +14,7 @@ protocol ChatHistoryViewModelProtocol {
 	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? { get }
 	var receivers: [UserModel] { get }
+	func updateMessageIsReadState(at index: Int)
 }
 
 class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
@@ -70,5 +71,9 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		}
 		
 		viewControllerState = .finished
+	}
+	
+	func updateMessageIsReadState(at index: Int) {
+		chatHistoryCellModels?[index].lastMessage.isRead = true
 	}
 }

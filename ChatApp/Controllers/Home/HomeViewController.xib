@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -53,7 +55,7 @@
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edT-tz-XRu" customClass="LiveView" customModule="ChatApp" customModuleProvider="target">
                                                     <rect key="frame" x="54" y="19" width="10" height="10"/>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="edT-tz-XRu" secondAttribute="height" id="JzL-gS-RGe"/>
                                                         <constraint firstAttribute="height" constant="10" id="dob-cs-vm6"/>
@@ -70,13 +72,23 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUj-an-2SN">
+                                                    <rect key="frame" x="24" y="-8" width="46" height="46"/>
+                                                    <connections>
+                                                        <action selector="userProfileDidPressed:" destination="-1" eventType="touchUpInside" id="ezV-7O-x7I"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="edT-tz-XRu" firstAttribute="leading" secondItem="WFE-7y-GAm" secondAttribute="trailing" constant="-8" id="0Ce-zc-DIW"/>
                                                 <constraint firstItem="edT-tz-XRu" firstAttribute="bottom" secondItem="WFE-7y-GAm" secondAttribute="bottom" constant="-1" id="0dK-dW-k1U"/>
+                                                <constraint firstItem="uUj-an-2SN" firstAttribute="top" secondItem="WFE-7y-GAm" secondAttribute="top" constant="-8" id="DZI-Jx-2xW"/>
+                                                <constraint firstItem="uUj-an-2SN" firstAttribute="leading" secondItem="WFE-7y-GAm" secondAttribute="leading" constant="-8" id="ICS-nj-IPt"/>
+                                                <constraint firstItem="uUj-an-2SN" firstAttribute="bottom" secondItem="WFE-7y-GAm" secondAttribute="bottom" constant="8" id="eCI-Bt-x5A"/>
                                                 <constraint firstItem="WFE-7y-GAm" firstAttribute="leading" secondItem="riA-Aw-cpM" secondAttribute="leading" constant="32" id="fST-sG-fyB"/>
                                                 <constraint firstItem="WFE-7y-GAm" firstAttribute="centerY" secondItem="riA-Aw-cpM" secondAttribute="centerY" id="pfu-4h-pqM"/>
+                                                <constraint firstItem="uUj-an-2SN" firstAttribute="trailing" secondItem="WFE-7y-GAm" secondAttribute="trailing" constant="8" id="w2b-xK-NcS"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDG-rd-TmH">
@@ -127,7 +139,7 @@
                                                 </button>
                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBo-e1-8X0" userLabel="underline view">
                                                     <rect key="frame" x="24" y="47" width="46" height="3"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="3" id="TI0-8v-cAO"/>
                                                     </constraints>
@@ -159,7 +171,7 @@
                                                 </button>
                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-9b-bng" userLabel="underline view">
                                                     <rect key="frame" x="46" y="47" width="46" height="3"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="3" id="6WY-JD-tXY"/>
                                                     </constraints>
@@ -190,7 +202,7 @@
                                                 </button>
                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkG-0t-7LW" userLabel="underline view">
                                                     <rect key="frame" x="60" y="47" width="51.5" height="3"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="3" id="mU7-ap-Hcz"/>
                                                     </constraints>
@@ -221,9 +233,10 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRe-l6-Fml" userLabel="contentView">
                     <rect key="frame" x="0.0" y="134" width="414" height="762"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.11764705882352941" green="0.44705882352941173" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xrg-4f-aXu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5bD-jV-a0A"/>
@@ -234,15 +247,25 @@
                 <constraint firstItem="mRe-l6-Fml" firstAttribute="top" secondItem="xrg-4f-aXu" secondAttribute="bottom" id="xbF-My-OyB"/>
                 <constraint firstItem="xrg-4f-aXu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zOI-zj-g3a"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
+    <designables>
+        <designable name="WFE-7y-GAm">
+            <size key="intrinsicContentSize" width="20" height="20"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="message.fill" catalog="system" width="64" height="56"/>
-        <image name="person.3.fill" catalog="system" width="71" height="34"/>
-        <image name="person.circle" catalog="system" width="64" height="60"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="magnifyingglass" catalog="system" width="32" height="32"/>
+        <image name="message.fill" catalog="system" width="32" height="32"/>
+        <image name="person.3.fill" catalog="system" width="32" height="32"/>
+        <image name="person.circle" catalog="system" width="32" height="32"/>
+        <image name="person.fill" catalog="system" width="32" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

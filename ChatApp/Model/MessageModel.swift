@@ -11,9 +11,10 @@ import Foundation
 struct MessageModel: Codable {
 	var id: String?
     var content: String?
-    var created: String?
+    var created: TimeInterval?
     var senderID: String?
     var senderName: String?
+	var isRead: Bool = false
 	
 	init() {}
 	
@@ -24,9 +25,10 @@ struct MessageModel: Codable {
 		
 		guard let uid: String = dictionary["id"] as? String,
 			let content: String = dictionary["content"] as? String,
-			let created: String = dictionary["created"] as? String,
+			let created: TimeInterval = dictionary["created"] as? TimeInterval,
 			let senderID: String = dictionary["senderID"] as? String,
-			let senderName: String = dictionary["senderName"] as? String else {
+			let senderName: String = dictionary["senderName"] as? String,
+			let isRead: Bool = dictionary["isRead"] as? Bool else {
 				return
 		}
 		
@@ -35,5 +37,6 @@ struct MessageModel: Codable {
 		self.created = created
 		self.senderID = senderID
 		self.senderName = senderName
+		self.isRead = isRead
 	}
 }
