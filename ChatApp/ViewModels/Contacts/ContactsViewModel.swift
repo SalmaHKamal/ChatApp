@@ -38,10 +38,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
 			return
 		}
 		(viewController as? BaseViewController)?.coordinator?.chatRoom(receiverModel: receiverModel)
-		
-//		let chatViewModel: ChatViewModel = ChatViewModel(receiverModel: receiverModel)
-//		let chatVC = ChatViewController(with: chatViewModel)
-//		(viewController as? UIViewController)?.present(chatVC, animated: true)
 	}
 	
 }

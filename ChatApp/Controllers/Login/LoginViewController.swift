@@ -75,8 +75,6 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	
 	@IBAction func registerBtnPressed(_ sender: Any) {
 		coordinator?.signup()
-//		let vc = SignUpViewController()
-//		self.navigationController?.pushViewController(vc, animated: true)
 	}
 	
 	@IBAction func forgetPasswordPressed(_ sender: Any) {
@@ -91,17 +89,4 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	
 	@IBAction func loginTwitterPressed(_ sender: Any) {
 	}
-	
-	// MARK: - Helper Methods
-//	private func pushToHomeViewController() {
-//		coordinator?.home()
-////		let vc = HomeViewController()
-////		if let navigationController = navigationController {
-////			navigationController.pushViewController(vc, animated: true)
-////		} else {
-////			let navigationController = UINavigationController(rootViewController: vc)
-////			navigationController.pushViewController(vc, animated: true)
-////		}
-////
-//	}
 }

@@ -36,8 +36,6 @@ class HomeViewModel: HomeViewModelProtocol {
 	func showSettingsViewController() {
 		guard let userModel = userModel else { return }
 		(viewController as? BaseViewController)?.coordinator?.settings(userModel)
-//		let vc = SettingsViewController(with: SettingsViewModel(with: userModel))
-//		(viewController as? UIViewController)?.present(vc, animated: true, completion: nil)
 	}
 	
 	

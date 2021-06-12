@@ -38,8 +38,5 @@ class SettingsViewModel: SettingsViewModelProtocol {
 	
 	private func showLoginVC() {
 		viewController?.coordinator?.login()
-//		let vc = LoginViewController(with: LoginViewModel())
-//		vc.modalPresentationStyle = .fullScreen
-//		viewController?.present(vc, animated: true, completion: nil)
 	}
 }
