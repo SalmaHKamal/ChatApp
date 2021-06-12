@@ -37,10 +37,11 @@ class ContactsViewModel: ContactsViewModelProtocol {
 		guard let receiverModel: UserModel = contactsInfo?[indexPath.row] else {
 			return
 		}
+		(viewController as? BaseViewController)?.coordinator?.chatRoom(receiverModel: receiverModel)
 		
-		let chatViewModel: ChatViewModel = ChatViewModel(receiverModel: receiverModel)
-		let chatVC = ChatViewController(with: chatViewModel)
-		(viewController as? UIViewController)?.present(chatVC, animated: true)
+//		let chatViewModel: ChatViewModel = ChatViewModel(receiverModel: receiverModel)
+//		let chatVC = ChatViewController(with: chatViewModel)
+//		(viewController as? UIViewController)?.present(chatVC, animated: true)
 	}
 	
 }

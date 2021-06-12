@@ -21,13 +21,23 @@ struct UserDefaultsManager {
 		manager = defaultsManager
 	}
 	
-	func set(currentUser: UserModel) throws {
-		let model = try NSKeyedArchiver.archivedData(withRootObject: currentUser, requiringSecureCoding: false)
-		manager.setValue(model, forKey: UserDefaultsKeys.currentUser.rawValue)
-		manager.synchronize()
+	func set(currentUser: UserModel) {
+		do {
+			let model = try JSONEncoder().encode(currentUser)
+			manager.setValue(model, forKey: UserDefaultsKeys.currentUser.rawValue)
+			manager.synchronize()
+		} catch {
+			fatalError("Couldn't persist user model from user default")
+		}
 	}
 	
-	func get(with key: UserDefaultsKeys) -> Any? {
-		return manager.object(forKey: key.rawValue)
+	func get(with key: UserDefaultsKeys) -> Any?  {
+		do {
+			let data = manager.object(forKey: key.rawValue) as! Data
+			let model = try JSONDecoder().decode(UserModel.self, from: data)
+			return model
+		} catch {
+			fatalError("Couldn't get user model from user default")
+		}
 	}
 }

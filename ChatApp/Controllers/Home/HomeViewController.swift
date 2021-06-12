@@ -12,12 +12,12 @@ protocol HomeViewControllerProtocol: AnyObject {
 	func updateUserProfileImage()
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
 	// MARK: - Outlets
-	@IBOutlet weak var userProfileImage: LiveImageView!
-	@IBOutlet weak var navigationStackView: UIStackView!
-	@IBOutlet weak var contentView: UIView!
+	@IBOutlet private weak var userProfileImage: LiveImageView!
+	@IBOutlet private weak var navigationStackView: UIStackView!
+	@IBOutlet private weak var contentView: UIView!
 	
 	// MARK: - Varibales
 	enum HomeViews {
@@ -28,6 +28,10 @@ class HomeViewController: UIViewController {
 	var viewModel: HomeViewModelProtocol?
 	
 	// MARK: - LifeCycle
+	override func viewWillAppear(_ animated: Bool) {
+		coordinator?.showNavigationBar(false)
+	}
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,7 +60,7 @@ class HomeViewController: UIViewController {
 	}
 	
 	@IBAction func userProfileDidPressed(_ sender: Any) {
-		print("salma")
+		viewModel?.showSettingsViewController()
 	}
 	
 	// MARK: - helper methods
@@ -69,7 +73,7 @@ class HomeViewController: UIViewController {
 			view.removeFromSuperview()
 		}
 		
-		let vc: UIViewController!
+		let vc: BaseViewController!
 		
 		switch viewType {
 		case .chat:
@@ -80,6 +84,7 @@ class HomeViewController: UIViewController {
 			vc = ChatHistoryViewController()
 		}
 		
+		vc.coordinator = coordinator
 		moveUnderlineView(for: viewType)
 		contentView.addSubview(vc.view)
 		vc.view.frame = contentView.bounds

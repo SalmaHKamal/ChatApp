@@ -14,7 +14,7 @@ protocol ChatViewControllerProtocol: AnyObject {
 	func reloadTableView()
 }
 
-class ChatViewController: UIViewController {
+class ChatViewController: BaseViewController {
 
 	// MARK: - Outlets
 	@IBOutlet weak var sendMessageBtn: UIButton! {

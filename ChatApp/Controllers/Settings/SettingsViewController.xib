@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="ChatApp" customModuleProvider="target">
             <connections>
+                <outlet property="profileImage" destination="BHb-g6-7T7" id="tV3-OL-uON"/>
+                <outlet property="userEmail" destination="tde-ZX-BM2" id="fGd-eU-ZGi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -76,6 +78,9 @@
                                     <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="logoutDidPressed:" destination="-1" eventType="touchUpInside" id="MeS-ht-ZIQ"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

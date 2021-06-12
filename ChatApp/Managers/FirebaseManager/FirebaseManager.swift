@@ -40,6 +40,14 @@ extension FirebaseManager {
 			self.handleAuthResult(error, authResult, completion)
 		}
 	}
+	
+	func logout() {
+		do {
+			try Auth.auth().signOut()
+		} catch {
+			fatalError("Failed to signout!! ")
+		}
+	}
 }
 
 // MARK: - Registeration

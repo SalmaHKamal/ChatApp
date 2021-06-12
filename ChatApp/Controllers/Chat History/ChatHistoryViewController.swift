@@ -12,7 +12,7 @@ protocol ChatHistoryViewControllerProtocol: AnyObject {
 	func reloadTableView()
 }
 
-class ChatHistoryViewController: UIViewController {
+class ChatHistoryViewController: BaseViewController {
 
 	@IBOutlet weak var tableView: UITableView! {
 		didSet {
@@ -85,9 +85,10 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		guard let receiver = viewModel?.receivers[indexPath.row] else {
 			return
 		}
-		let chatViewModel = ChatViewModel(receiverModel: receiver)
-		let chatViewController = ChatViewController(with: chatViewModel)
-		self.present(chatViewController, animated: true, completion: nil)
+		coordinator?.chatRoom(receiverModel: receiver)
+//		let chatViewModel = ChatViewModel(receiverModel: receiver)
+//		let chatViewController = ChatViewController(with: chatViewModel)
+//		self.present(chatViewController, animated: true, completion: nil)
 	}
 	
 }

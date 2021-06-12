@@ -39,6 +39,8 @@
 		807C6A5626503C3F000EF6FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C6A5426503C3F000EF6FB /* SettingsViewController.swift */; };
 		807C6A5726503C3F000EF6FB /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 807C6A5526503C3F000EF6FB /* SettingsViewController.xib */; };
 		807C6A5D26503EB8000EF6FB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C6A5C26503EB8000EF6FB /* UserDefaultsManager.swift */; };
+		8084568A2673531600E61C37 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808456892673531600E61C37 /* Coordinator.swift */; };
+		808456922673549300E61C37 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808456912673549300E61C37 /* CoordinatorProtocol.swift */; };
 		80A24A6325D6807E005691BE /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A6225D6807E005691BE /* ContactsViewModel.swift */; };
 		80A24A6725D7B56D005691BE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A6625D7B56D005691BE /* HomeViewModel.swift */; };
 		80A24A6B25D7D054005691BE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A6925D7D054005691BE /* ChatViewController.swift */; };
@@ -63,6 +65,8 @@
 		80C74019259F992900EE8631 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C74018259F992900EE8631 /* CustomTextFieldView.swift */; };
 		80C7401D25A114F000EE8631 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7401C25A114F000EE8631 /* UIFont.swift */; };
 		80C7402025A1180A00EE8631 /* LiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7401F25A1180A00EE8631 /* LiveButton.swift */; };
+		80D7EB0826516D43008D842E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7EB0726516D43008D842E /* LoginViewModel.swift */; };
+		80D7EB0E26517462008D842E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7EB0D26517462008D842E /* SettingsViewModel.swift */; };
 		80E46C8D260D0540009DCFA2 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E46C8C260D0540009DCFA2 /* TimeIntervalExtension.swift */; };
 		C1E4ED12F4E9656E07550155 /* Pods_ChatAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E44D6E955699F5EE45E1FD /* Pods_ChatAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -119,6 +123,8 @@
 		807C6A5426503C3F000EF6FB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		807C6A5526503C3F000EF6FB /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		807C6A5C26503EB8000EF6FB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		808456892673531600E61C37 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		808456912673549300E61C37 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		80A24A6225D6807E005691BE /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		80A24A6625D7B56D005691BE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		80A24A6925D7D054005691BE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 		80C74018259F992900EE8631 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		80C7401C25A114F000EE8631 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		80C7401F25A1180A00EE8631 /* LiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveButton.swift; sourceTree = "<group>"; };
+		80D7EB0726516D43008D842E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		80D7EB0D26517462008D842E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		80E46C8C260D0540009DCFA2 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		80F7D90DAA21D61C29C62FED /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91808E819A747CAEBF92FA78 /* Pods-ChatApp-ChatAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp-ChatAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp-ChatAppUITests/Pods-ChatApp-ChatAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 		802E9BDE25BB2C1400237712 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				80845688267352F700E61C37 /* Coordinator */,
 				807C6A5B26503E9A000EF6FB /* UserDefaultsManager */,
 				80AD20D02600B67000E6936F /* ChatManager */,
 				80AD20CB2600B49B00E6936F /* FirebaseManager */,
@@ -275,6 +284,7 @@
 			children = (
 				802E9BF525BC8A1200237712 /* RegisterationProtocol.swift */,
 				80AD20D12600D2CA00E6936F /* ReuesableProtocol.swift */,
+				808456912673549300E61C37 /* CoordinatorProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -326,9 +336,19 @@
 			path = UserDefaultsManager;
 			sourceTree = "<group>";
 		};
+		80845688267352F700E61C37 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				808456892673531600E61C37 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		80A24A6125D68061005691BE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				80D7EB0C26517453008D842E /* Settings */,
+				80D7EB0626516D35008D842E /* Login */,
 				80A24A7425D7FCEF005691BE /* Chat History */,
 				80A24A6D25D7D695005691BE /* Chat */,
 				80A24A6525D7B55F005691BE /* Home */,
@@ -521,6 +541,22 @@
 				80C7401F25A1180A00EE8631 /* LiveButton.swift */,
 			);
 			path = LiveButton;
+			sourceTree = "<group>";
+		};
+		80D7EB0626516D35008D842E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				80D7EB0726516D43008D842E /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		80D7EB0C26517453008D842E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				80D7EB0D26517462008D842E /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		ED81B37BF50C434C04D80CA1 /* Frameworks */ = {
@@ -792,18 +828,22 @@
 				80A24A7125D7D7F4005691BE /* ChatManager.swift in Sources */,
 				80C74010259F656E00EE8631 /* LoginViewController.swift in Sources */,
 				802E9C0C25BECDB300237712 /* ContactCollectionViewCell.swift in Sources */,
+				80D7EB0826516D43008D842E /* LoginViewModel.swift in Sources */,
 				807C4DD725E1046600B84FBC /* EncodableEextension.swift in Sources */,
 				804DB5F925FCA73C00AB2E5B /* ChatMessageTableViewCell.swift in Sources */,
 				80AD20CD2600B4B400E6936F /* FirebaseManager+Chat.swift in Sources */,
 				802E9BF025BBF4F200237712 /* ImagePicker.swift in Sources */,
 				802E9BFF25BD92FF00237712 /* ChatHistoryTableViewCell.swift in Sources */,
+				808456922673549300E61C37 /* CoordinatorProtocol.swift in Sources */,
 				802E9BF825BC8E8600237712 /* UIApplication+Extensions.swift in Sources */,
+				80D7EB0E26517462008D842E /* SettingsViewModel.swift in Sources */,
 				80A24A7325D7DBA7005691BE /* MessageModel.swift in Sources */,
 				802E9BE025BB2C2300237712 /* FirebaseManager.swift in Sources */,
 				802E9BF325BC81E300237712 /* BaseViewController.swift in Sources */,
 				802E9C0825BECD5300237712 /* ContactsViewController.swift in Sources */,
 				80AD20CF2600B53800E6936F /* FirebaseManager+HelperMethods.swift in Sources */,
 				802E9BE525BB30FB00237712 /* LoginErrors.swift in Sources */,
+				8084568A2673531600E61C37 /* Coordinator.swift in Sources */,
 				80C73FDE259F475E00EE8631 /* AppDelegate.swift in Sources */,
 				802E9BF625BC8A1200237712 /* RegisterationProtocol.swift in Sources */,
 				802E9BDB25BB290800237712 /* UIViewController+Extensions.swift in Sources */,

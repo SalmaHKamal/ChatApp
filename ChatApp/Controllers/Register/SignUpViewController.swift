@@ -79,8 +79,9 @@ class SignUpViewController: BaseViewController, RegisterationProtocol {
 	
 	// MARK: - Actions
 	@IBAction func loginButtonPressed(_ sender: UIButton) {
-		let vc = LoginViewController()
-		self.navigationController?.pushViewController(vc, animated: true)
+		coordinator?.login()
+//		let vc = LoginViewController(with: LoginViewModel())
+//		self.navigationController?.pushViewController(vc, animated: true)
 	}
 	@IBAction func selectImageBtnPressed(_ sender: UIButton) {
 		imagePicker.present(from: sender)
@@ -98,16 +99,16 @@ class SignUpViewController: BaseViewController, RegisterationProtocol {
 				self?.showLoadingIndicator(with: error, hideAfter: 3.0)
 			} else {
 				self?.hideLoadingIndicator()
-				self?.pushLoginViewController()
+				self?.coordinator?.login()
 			}
 		}
 	}
 	
-	// MARK: - Helper Methods
-	private func pushLoginViewController() {
-		let vc = LoginViewController()
-		self.navigationController?.pushViewController(vc, animated: true)
-	}
+//	// MARK: - Helper Methods
+//	private func pushLoginViewController() {
+//		let vc = LoginViewController(with: LoginViewModel())
+//		self.navigationController?.pushViewController(vc, animated: true)
+//	}
 }
 
 extension SignUpViewController: ImagePickerDelegate {
