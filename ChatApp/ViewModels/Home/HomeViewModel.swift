@@ -23,14 +23,20 @@ class HomeViewModel: HomeViewModelProtocol {
 		}
 	}
 	weak var viewController: HomeViewControllerProtocol?
+	let userdefaultsManager = UserDefaultsManager()
 	private var userModel: UserModel? {
-		return UserDefaultsManager().get(with: .currentUser) as? UserModel
+		return userdefaultsManager.get(with: .currentUser) as? UserModel
 	}
 	
 	func fetchData() {
-		FirebaseManager().getCurrentUserProfileImage(completion: { [weak self] (imageUrl) in
-			self?.profileImageUrl = imageUrl
-		})
+		if let profileUrl = userModel?.photoUrl {
+			self.profileImageUrl = profileUrl.absoluteString
+		} else {
+			FirebaseManager().getCurrentUserProfileImage(completion: { [weak self] (imageUrl) in
+				self?.profileImageUrl = imageUrl
+				self?.userdefaultsManager.set(profileUrl: imageUrl ?? "")
+			})
+		}
 	}
 	
 	func showSettingsViewController() {

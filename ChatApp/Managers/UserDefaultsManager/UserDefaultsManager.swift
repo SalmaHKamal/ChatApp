@@ -31,6 +31,12 @@ struct UserDefaultsManager {
 		}
 	}
 	
+	func set(profileUrl: String) {
+		guard let user = get(with: .currentUser) as? UserModel else { return }
+		user.photoUrl = URL(string: profileUrl)
+		set(currentUser: user)
+	}
+	
 	func get(with key: UserDefaultsKeys) -> Any?  {
 		do {
 			let data = manager.object(forKey: key.rawValue) as! Data
