@@ -9,6 +9,10 @@
 import Foundation
 import Firebase
 
+enum ChatContentDirection {
+	case left, right
+}
+
 protocol ChatViewModelProtocol {
 	var viewController: ChatViewControllerProtocol? { get set }
 	var receiverModel: UserModel? { get }
@@ -22,8 +26,9 @@ protocol ChatViewModelProtocol {
 }
 
 struct ChatMessageCellModel {
-	var profileImageUrl: URL?
+	var user: UserModel?
 	var messageContent: String?
+	var contentDirection: ChatContentDirection = .left
 }
 
 class ChatViewModel: ChatViewModelProtocol {
@@ -40,6 +45,7 @@ class ChatViewModel: ChatViewModelProtocol {
 	var docRef: DocumentReference?
 	let chatManager: ChatManager = ChatManager()
 	var chatMessageCellModels: [ChatMessageCellModel] = []
+	let userdafaultsManager = UserDefaultsManager()
 	
 	init(receiverModel: UserModel) {
 		self.receiverModel = receiverModel
@@ -61,11 +67,18 @@ class ChatViewModel: ChatViewModelProtocol {
 				return
 			}
 			chatManager.getUserInfo(uid: senderID, completion: { [weak self] user in
-				self?.chatMessageCellModels.append(ChatMessageCellModel(profileImageUrl: user?.photoUrl,
-																  messageContent: message.content))
-				self?.viewController?.reloadTableView()
+				guard let user = user,
+					  let self = self else { return }
+				self.chatMessageCellModels.append(ChatMessageCellModel(user: user,
+																  messageContent: message.content,
+																  contentDirection: self.getContentDirection(with: message.senderID ?? "")))
+				self.viewController?.reloadTableView()
 			})
 		}
+	}
+	
+	private func getContentDirection(with userId: String) -> ChatContentDirection {
+		return (userdafaultsManager.get(with: .currentUser) as? UserModel)?.uid == userId ? .right : .left
 	}
 	
 	func saveMessage(content: String) {
