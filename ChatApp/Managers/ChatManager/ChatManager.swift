@@ -10,28 +10,29 @@ import Foundation
 import Firebase
 
 struct ChatManager {
+	let firebaseManager = FirebaseManager()
 	
 	func loadChat(with receiverModel: UserModel, completion: @escaping ChatCompletion) {
-		FirebaseManager().loadChat(for: receiverModel) { messages, docRef in
+		firebaseManager.loadChat(for: receiverModel) { messages, docRef in
 			completion(messages, docRef)
 		}
 	}
 	
 	func loadChatHistory(completion: @escaping ChatHistoryCompletion) {
-		FirebaseManager().loadChatHistoryForCurrentUser { result in
+		firebaseManager.loadChatHistoryForCurrentUser { result in
 			completion(result)
 		}
 	}
 	
 	func save(message: MessageModel, docRef: DocumentReference?) {
-		FirebaseManager().saveMessage(message, with: docRef)
+		firebaseManager.saveMessage(message, with: docRef)
 	}
 	
 	func getSenderInfo(receiverModel: UserModel, completion: @escaping ((name: String, id: String)?) -> Void) {
-		FirebaseManager().getSenderInfo(receiverModel, completion: completion)
+		firebaseManager.getSenderInfo(receiverModel, completion: completion)
 	}
 	
 	func getUserInfo(uid: String, completion: @escaping (_ user: UserModel?) -> Void) {
-		FirebaseManager().getUserInfo(for: uid, completion: completion)
+		firebaseManager.getUserInfo(for: uid, completion: completion)
 	}
 }

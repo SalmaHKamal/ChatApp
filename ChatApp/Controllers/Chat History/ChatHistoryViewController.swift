@@ -40,7 +40,27 @@ class ChatHistoryViewController: BaseViewController {
 }
 
 extension ChatHistoryViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		// update cell read state
+		updateTableViewCell(at: indexPath)
+		// navigate to chat
+		navigateToChatVC(selectedIndex: indexPath)
+	}
 	
+	private func updateTableViewCell(at indexPath: IndexPath) {
+		viewModel?.updateMessageIsReadState(at: indexPath.row)
+		guard let selectedCell = tableView.cellForRow(at: indexPath) as? ChatHistoryTableViewCell else {
+			return
+		}
+		selectedCell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
+	}
+	
+	private func navigateToChatVC(selectedIndex indexPath: IndexPath) {
+		guard let receiver = viewModel?.receivers[indexPath.row] else {
+			return
+		}
+		coordinator?.chatRoom(receiverModel: receiver)
+	}
 }
 
 
@@ -65,29 +85,6 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		cell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
 		return cell
 	}
-	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		// update cell read state
-		updateTableViewCell(at: indexPath)
-		// navigate to chat
-		navigateToChatVC(selectedIndex: indexPath)
-	}
-	
-	private func updateTableViewCell(at indexPath: IndexPath) {
-		viewModel?.updateMessageIsReadState(at: indexPath.row)
-		guard let selectedCell = tableView.cellForRow(at: indexPath) as? ChatHistoryTableViewCell else {
-			return
-		}
-		selectedCell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
-	}
-	
-	private func navigateToChatVC(selectedIndex indexPath: IndexPath) {
-		guard let receiver = viewModel?.receivers[indexPath.row] else {
-			return
-		}
-		coordinator?.chatRoom(receiverModel: receiver)
-	}
-	
 }
 
 extension ChatHistoryViewController: ChatHistoryViewControllerProtocol {
