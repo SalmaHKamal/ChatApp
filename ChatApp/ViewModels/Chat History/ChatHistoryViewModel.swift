@@ -13,18 +13,22 @@ protocol ChatHistoryViewModelProtocol {
 	var viewController: ChatHistoryViewControllerProtocol? { get set }
 	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? { get }
+	var receivers: [UserModel] { get }
+	func updateMessageIsReadState(at index: Int)
 }
 
 class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	// MARK: - Variabels
 	weak var viewController: ChatHistoryViewControllerProtocol?
-	var chatHistoryCellModels: [ChatHistoryCellModel]?
+	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? = .loading {
 		didSet {
 			viewController?.reloadTableView()
 		}
 	}
+	var receivers: [UserModel] = []
+	
 	struct ChatHistoryCellModel {
 		var receiverUid: String
 		var receiverPhotoUrl: URL
@@ -57,6 +61,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 					return
 			}
 			
+			receivers.append(receiver)
 			let model = ChatHistoryCellModel(receiverUid: id,
 											 receiverPhotoUrl: photoUrl,
 											 receiverDisplayName: name,
@@ -66,5 +71,9 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		}
 		
 		viewControllerState = .finished
+	}
+	
+	func updateMessageIsReadState(at index: Int) {
+		chatHistoryCellModels?[index].lastMessage.isRead = true
 	}
 }

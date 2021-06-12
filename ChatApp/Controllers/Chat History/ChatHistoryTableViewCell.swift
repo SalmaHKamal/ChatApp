@@ -14,6 +14,7 @@ class ChatHistoryTableViewCell: UITableViewCell {
 	@IBOutlet weak var receiverProfileImageView: LiveImageView!
 	@IBOutlet weak var receiverNameLabel: UILabel!
 	@IBOutlet weak var lastMessageLabel: UILabel!
+	@IBOutlet weak var messageReadIndicatorView: LiveView!
 	
 	// MARK: - Constants
 	static let nibName = String(describing: ChatHistoryTableViewCell.self)
@@ -21,17 +22,19 @@ class ChatHistoryTableViewCell: UITableViewCell {
 	
 	var model: ChatHistoryViewModel.ChatHistoryCellModel? {
 		didSet {
-			if model != nil {
-				setupView()
+			guard let model = model else {
+				return
 			}
+			setupView(with: model)
 		}
 	}
 	
 
-	func setupView() {
-		receiverProfileImageView.sd_setImage(with: model?.receiverPhotoUrl, placeholderImage: UIImage(named: "person.fill"))
-		lastMessageLabel.text = model?.lastMessage.content
-		receiverNameLabel.text = model?.receiverDisplayName
+	func setupView(with model: ChatHistoryViewModel.ChatHistoryCellModel) {
+		receiverProfileImageView.sd_setImage(with: model.receiverPhotoUrl, placeholderImage: UIImage(named: "person.fill"))
+		lastMessageLabel.text = model.lastMessage.content
+		receiverNameLabel.text = model.receiverDisplayName
+		messageReadIndicatorView.backgroundColor = model.lastMessage.isRead ? .clear : .darkGray
 	}
     
 }

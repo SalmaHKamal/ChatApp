@@ -12,7 +12,9 @@ enum Screens {
 	case login
 	case register
 	case home
+	case chatHistory
 	case chat
+	case chatGroup
 	case settings
 }
 
