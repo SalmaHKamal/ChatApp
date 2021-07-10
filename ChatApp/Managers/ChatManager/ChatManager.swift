@@ -18,7 +18,7 @@ struct ChatManager {
 		}
 	}
 	
-	func loadChatHistory(completion: @escaping ChatHistoryCompletion) {
+	func loadChatHistory(completion: @escaping ([(receivers: [String], lastMessage: MessageModel?)]) -> Void) {
 		firebaseManager.loadChatHistoryForCurrentUser { result in
 			completion(result)
 		}

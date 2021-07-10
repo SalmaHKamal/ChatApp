@@ -27,6 +27,7 @@ class ChatHistoryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		showLoadingIndicator(with: nil)
 		viewModel?.fetchData()
     }
 
@@ -89,6 +90,7 @@ extension ChatHistoryViewController: UITableViewDataSource {
 
 extension ChatHistoryViewController: ChatHistoryViewControllerProtocol {
 	func reloadTableView() {
+		hideLoadingIndicator()
 		tableView.reloadData()
 	}
 }

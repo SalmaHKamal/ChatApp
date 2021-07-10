@@ -31,7 +31,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	struct ChatHistoryCellModel {
 		var receiverUid: String
-		var receiverPhotoUrl: URL
+		var receiverPhotoUrl: URL?
 		var receiverDisplayName: String
 		var lastMessage: MessageModel
 	}
@@ -48,22 +48,19 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		}
 	}
 	
-	private func createCellModel(_ result: [String : (receiver: UserModel, messages: [MessageModel])]) {
+	private func createCellModel(_ result: [(receivers: [String], lastMessage: MessageModel?)]) {
 		
 		result.forEach { (dic) in
-			let receiver = dic.value.receiver
-			let messages = dic.value.messages
-			
-			guard let id = receiver.uid,
-				let photoUrl: URL = receiver.photoUrl,
-				let name: String = receiver.displayName,
-				let message: MessageModel = messages.last else {
+			guard let id = dic.receivers.first,
+				let message: MessageModel = dic.lastMessage else {
 					return
 			}
 			
-			receivers.append(receiver)
+			let name: String = "receiver.displayName"
+			
+//			receivers.append(receiver)
 			let model = ChatHistoryCellModel(receiverUid: id,
-											 receiverPhotoUrl: photoUrl,
+											 receiverPhotoUrl: nil,
 											 receiverDisplayName: name,
 											 lastMessage: message)
 			
@@ -72,6 +69,31 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		
 		viewControllerState = .finished
 	}
+	
+//	private func createCellModel(_ result: [String : (receiver: UserModel, messages: [MessageModel])]) {
+//
+//		result.forEach { (dic) in
+//			let receiver = dic.value.receiver
+//			let messages = dic.value.messages
+//
+//			guard let id = receiver.uid,
+//				let photoUrl: URL = receiver.photoUrl,
+//				let name: String = receiver.displayName,
+//				let message: MessageModel = messages.last else {
+//					return
+//			}
+//
+//			receivers.append(receiver)
+//			let model = ChatHistoryCellModel(receiverUid: id,
+//											 receiverPhotoUrl: photoUrl,
+//											 receiverDisplayName: name,
+//											 lastMessage: message)
+//
+//			chatHistoryCellModels?.append(model)
+//		}
+//
+//		viewControllerState = .finished
+//	}
 	
 	func updateMessageIsReadState(at index: Int) {
 		chatHistoryCellModels?[index].lastMessage.isRead = true
