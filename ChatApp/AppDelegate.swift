@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 		launchFirstScreen()
 		
+		// test jenkins
+		
 		return true
 	}
 
