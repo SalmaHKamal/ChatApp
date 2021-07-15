@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// test jenkins master 3
 		// test jenkins master 4
 		// test jenkins master 5
+		// test jenkins master 6
 		
 		
 		
