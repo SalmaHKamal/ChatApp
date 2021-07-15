@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		launchFirstScreen()
 		
 		// test jenkins master
+		// test jenkins master 2
 		
 		return true
 	}
