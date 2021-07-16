@@ -26,6 +26,7 @@ import hudson.model.*
 // // // }
 
 
+Jenkins.instance.queue.items.each { println(it.task.name)}
 def q = Jenkins.instance.queue
 //Find items in queue that match <project name>
 def queue = q.items.findAll { it.task.name.startsWith('Test') }
