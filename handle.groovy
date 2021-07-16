@@ -11,9 +11,7 @@ import hudson.model.*
 println("==========\n")
     println(Jenkins.instance.queue.items)
 println("==========\n")
-Jenkins.instance.queue.items.each {
-    println(it.isPending())
-}
+Jenkins.instance.getItem("Test2")  
 
 // def q = Jenkins.instance.queue
 // q.items.findAll { it.task.name.startsWith('Test') }.each { println(q)}
