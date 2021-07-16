@@ -8,6 +8,7 @@ import hudson.model.*
 // 	static void main(args) {
 
     println("Hellllooooo salma")
+    println(Jenkins.instance.slaves)
 
 def q = Jenkins.instance.queue
 q.items.findAll { it.task.name.startsWith('Test') }.each { println(q)}
