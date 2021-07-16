@@ -2,20 +2,20 @@ pipeline {
     agent any
     
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Building'
                 load 'handle.groovy'
             }
         }
         stage('Test') {
             steps {
-                echo 'Hello World'
+                echo 'Testing'
             }
         }
         stage('Release') {
             steps {
-                echo 'Hello World'
+                echo 'Releasing'
             }
         }
     }
