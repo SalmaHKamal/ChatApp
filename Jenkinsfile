@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
-                def externalMethod = load("handle.groovy")
+                load 'handle.groovy'
             }
         }
         stage('Test') {
