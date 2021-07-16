@@ -8,6 +8,14 @@ import hudson.model.*
 // 	static void main(args) {
 
     println("Hellllooooo salma")
+println("==========\n")
+    println(Jenkins.instance.queue.items)
+println("==========\n")
+Jenkins.instance.getItem("Test2")  
+println("Hi agaain4")
+println("Hi agaain5")
+println("Hi agaain6")
+println("Hi agaain8")
     Jenkins.instance.queue.items.each { println(it.task.name)}
 
 // def q = Jenkins.instance.queue
