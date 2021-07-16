@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		launchFirstScreen()
 		
 		// test jenkins
+		// test jenkins 2
 		
 		return true
 	}
