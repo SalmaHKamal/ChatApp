@@ -34,7 +34,7 @@ def queue = q.items.findAll { it.task.name.startsWith('Test') }
 def queue_list = []
 queue.each { queue_list.add(it.getId()) }
 //sort id's, remove last one - in order to keep the newest job, cancel the rest
-queue_list.sort().take(queue_list.size() - 1).each { println(it.task.name); q.doCancelItem(it) }
+queue_list.sort().take(queue_list.size() - 1).each { q.doCancelItem(it) }
 
 //piplineJob1, Test2, TestThree, Test4, TestPR
 // TestThree, Test4, TestPR, TestFirst, piplineJob1
