@@ -12,6 +12,7 @@ println("==========\n")
     println(Jenkins.instance.queue.items)
 println("==========\n")
 Jenkins.instance.getItem("Test2")  
+println("Hi agaain4")
 
 // def q = Jenkins.instance.queue
 // q.items.findAll { it.task.name.startsWith('Test') }.each { println(q)}
