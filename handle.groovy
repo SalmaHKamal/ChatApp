@@ -27,3 +27,7 @@ println("Hi agaain25")
 println("Hi agaain26")
 println("Hi agaain27")
 
+import jenkins.*
+
+println Jenkins.instance.queue
+
