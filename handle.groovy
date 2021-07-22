@@ -31,3 +31,5 @@ import jenkins.*
 
 println Jenkins.instance.queue
 
+println("Salma")
+
