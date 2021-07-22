@@ -33,3 +33,14 @@ println Jenkins.instance.queue
 
 println("Salma")
 
+Jenkins.instance.queue.items.each { println("taskName" + it.task.name + "\n") }
+def q = Jenkins.instance.queue
+println("get last build")
+//Find items in queue that match <project name>
+def queue = q.items.findAll { it.task.name.startsWith('Test') }
+//get all jobs id to list
+def queue_list = []
+queue.each { queue_list.add(it.getId()) }
+//sort id's, remove last one - in order to keep the newest job, cancel the rest
+queue_list.sort().take(queue_list.size() - 1).each { it.task.name } // q.doCancelItem(it) 
+
