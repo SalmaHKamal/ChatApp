@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Building'
                 load 'handle.groovy'
-                sh 'xcodebuild -workspace chatApp.xcworkspace'
+                sh 'xcodebuild -workspace chatApp.xcworkspace -scheme ChatApp'
             }
         }
         stage('Test') {
