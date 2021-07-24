@@ -236,6 +236,9 @@
                                         <string>Title</string>
                                         <string>Title</string>
                                     </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="vV8-vM-eQB"/>
+                                    </connections>
                                 </searchBar>
                             </subviews>
                         </stackView>

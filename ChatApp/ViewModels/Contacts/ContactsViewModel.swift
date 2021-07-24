@@ -24,7 +24,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
 		}
 	}
 	weak var viewController: ContactsViewControllerProtocol?
-	
+	var isSearching: Bool = false
 	
 	// MARK: - Methods
 	func fetchData() {
@@ -52,4 +52,10 @@ class ContactsViewModel: ContactsViewModelProtocol {
 //		(viewController as? BaseViewController)?.coordinator?.chatRoom(receiverModel: receiverModel)
 	}
 	
+}
+
+extension ContactsViewModel: SearchableDelegate {
+	func didChangeSearchText(with text: String) {
+		
+	}
 }

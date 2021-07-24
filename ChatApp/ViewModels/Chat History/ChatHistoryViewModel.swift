@@ -9,11 +9,14 @@
 import Foundation
 
 protocol ChatHistoryViewModelProtocol {
-	func fetchData()
 	var viewController: ChatHistoryViewControllerProtocol? { get set }
 	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
+	var filteredChatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? { get }
 	var receivers: [UserModel] { get }
+	var cellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
+	
+	func fetchData()
 	func updateMessageIsReadState(at index: Int)
 	func deleteChatHistory(at indexPath: IndexPath)
 }
@@ -23,6 +26,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	// MARK: - Variabels
 	weak var viewController: ChatHistoryViewControllerProtocol?
 	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
+	var filteredChatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? = .loading {
 		didSet {
 			viewController?.reloadTableView()
@@ -31,6 +35,14 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	var receivers: [UserModel] = []
 	let chatManager = ChatManager()
 	let firebaseManager = FirebaseManager()
+	var isSearching: Bool = false
+	var cellModels: [ChatHistoryCellModel]? {
+		if isSearching && filteredChatHistoryCellModels?.count ?? 0 > 0 {
+			return filteredChatHistoryCellModels
+		} else {
+			return chatHistoryCellModels
+		}
+	}
 	
 	struct ChatHistoryCellModel {
 		var receiverUid: String?
@@ -47,6 +59,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		case finished
 	}
 	
+	// MARK: - Methods
 	func fetchData() {
 		chatManager.loadChatHistory { [weak self] result in
 			self?.chatHistoryCellModels?.removeAll()
@@ -69,7 +82,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	}
 	
 	func updateMessageIsReadState(at index: Int) {
-//		chatHistoryCellModels?[index].lastMessage.isRead = true
+		chatHistoryCellModels?[index].unSeenMessageCount = 0
 	}
 	
 	func deleteChatHistory(at indexPath: IndexPath) {
@@ -79,5 +92,34 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		}
 		
 		firebaseManager.deleteChatHistory(with: chatHistoryId)
+	}
+}
+
+extension ChatHistoryViewModel: SearchableDelegate {
+	func didChangeSearchText(with text: String) {
+		if text.isEmpty {
+			filteredChatHistoryCellModels = chatHistoryCellModels
+			
+		} else {
+			filteredChatHistoryCellModels = chatHistoryCellModels?.filter({ (model) -> Bool in
+				guard let name = model.receiverDisplayName else {
+					return false
+				}
+				return name.contains(text)
+			})
+		}
+
+		viewController?.reloadTableView()
+	}
+	
+	func didBeginSearching() {
+		isSearching = true
+		viewController?.reloadTableView()
+	}
+	
+	func didCancelSearching() {
+		isSearching = false
+		filteredChatHistoryCellModels?.removeAll()
+		viewController?.reloadTableView()
 	}
 }

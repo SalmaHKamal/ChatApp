@@ -40,7 +40,7 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		case .loading:
 			return 0
 		case .finished:
-			return viewModel?.chatHistoryCellModels?.count ?? 0
+			return viewModel?.cellModels?.count ?? 0
 		default:
 			return 0
 		}
@@ -52,7 +52,7 @@ extension ChatHistoryViewController: UITableViewDataSource {
 			
 			return UITableViewCell()
 		}
-		cell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
+		cell.model = viewModel?.cellModels?[indexPath.row]
 		return cell
 	}
 }

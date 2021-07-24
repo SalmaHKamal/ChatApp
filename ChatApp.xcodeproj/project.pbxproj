@@ -14,6 +14,8 @@
 		802AD3F826ABFB2600BA221A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3F726ABFB2600BA221A /* DateExtensions.swift */; };
 		802AD45426AC24FF00BA221A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD45326AC24FF00BA221A /* StringExtensions.swift */; };
 		802AD45926AC33EA00BA221A /* ChatHistoryVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD45826AC33EA00BA221A /* ChatHistoryVC+TableView.swift */; };
+		802AD45E26AC90FB00BA221A /* HomeVC+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD45D26AC90FB00BA221A /* HomeVC+SearchBar.swift */; };
+		802AD46326AC919400BA221A /* SearchableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD46226AC919400BA221A /* SearchableDelegate.swift */; };
 		802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD425BB204200237712 /* SignUpViewController.swift */; };
 		802E9BD725BB204200237712 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802E9BD525BB204200237712 /* SignUpViewController.xib */; };
 		802E9BD925BB275800237712 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD825BB275800237712 /* Screens.swift */; };
@@ -103,6 +105,8 @@
 		802AD3F726ABFB2600BA221A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		802AD45326AC24FF00BA221A /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		802AD45826AC33EA00BA221A /* ChatHistoryVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatHistoryVC+TableView.swift"; sourceTree = "<group>"; };
+		802AD45D26AC90FB00BA221A /* HomeVC+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+SearchBar.swift"; sourceTree = "<group>"; };
+		802AD46226AC919400BA221A /* SearchableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableDelegate.swift; sourceTree = "<group>"; };
 		802E9BD425BB204200237712 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		802E9BD525BB204200237712 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		802E9BD825BB275800237712 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 			children = (
 				802E9BE725BB394100237712 /* HomeViewController.swift */,
 				802E9BE825BB394100237712 /* HomeViewController.xib */,
+				802AD45D26AC90FB00BA221A /* HomeVC+SearchBar.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				802E9BF525BC8A1200237712 /* RegisterationProtocol.swift */,
 				80AD20D12600D2CA00E6936F /* ReuesableProtocol.swift */,
 				808456912673549300E61C37 /* CoordinatorProtocol.swift */,
+				802AD46226AC919400BA221A /* SearchableDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -860,6 +866,7 @@
 				802E9BF325BC81E300237712 /* BaseViewController.swift in Sources */,
 				802E9C0825BECD5300237712 /* ContactsViewController.swift in Sources */,
 				802AD45926AC33EA00BA221A /* ChatHistoryVC+TableView.swift in Sources */,
+				802AD45E26AC90FB00BA221A /* HomeVC+SearchBar.swift in Sources */,
 				80AD20CF2600B53800E6936F /* FirebaseManager+HelperMethods.swift in Sources */,
 				802E9BE525BB30FB00237712 /* LoginErrors.swift in Sources */,
 				8084568A2673531600E61C37 /* Coordinator.swift in Sources */,
@@ -869,6 +876,7 @@
 				802E9BD925BB275800237712 /* Screens.swift in Sources */,
 				807C6A5D26503EB8000EF6FB /* UserDefaultsManager.swift in Sources */,
 				802E9BFB25BCA12D00237712 /* LiveView.swift in Sources */,
+				802AD46326AC919400BA221A /* SearchableDelegate.swift in Sources */,
 				807C6A5626503C3F000EF6FB /* SettingsViewController.swift in Sources */,
 				80C7402025A1180A00EE8631 /* LiveButton.swift in Sources */,
 				80A24A6325D6807E005691BE /* ContactsViewModel.swift in Sources */,

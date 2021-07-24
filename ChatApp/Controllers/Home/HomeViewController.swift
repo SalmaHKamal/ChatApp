@@ -31,6 +31,7 @@ class HomeViewController: BaseViewController {
 	}
 	var viewModel: HomeViewModelProtocol?
 	var isSearchSelected: Bool = false
+	weak var searchVCDelegate: SearchableDelegate?
 	
 	// MARK: - LifeCycle
 	override func viewWillAppear(_ animated: Bool) {
@@ -78,12 +79,15 @@ class HomeViewController: BaseViewController {
 			self.headerHeightConstraint.constant = self.isSearchSelected ? 140 : 90
 			if self.isSearchSelected {
 				self.headerStackView.layoutIfNeeded()
+				self.searchBar.becomeFirstResponder()
 			}
 		}
 	}
 	
 	// MARK: - helper methods
-	private func resetSearchBarIfAppearing() {
+	func resetSearchBarIfAppearing() {
+		searchBar.text = nil
+		searchBar.resignFirstResponder()
 		if isSearchSelected {
 			searchButtonPressed(self)
 		}
@@ -103,9 +107,15 @@ class HomeViewController: BaseViewController {
 		
 		switch viewType {
 		case .chat:
-			vc = ChatHistoryViewController(with: ChatHistoryViewModel())
+			let chatHistoryViewModel = ChatHistoryViewModel()
+			self.searchVCDelegate = chatHistoryViewModel
+			vc = ChatHistoryViewController(with: chatHistoryViewModel)
+			
 		case .contacts:
-			vc = ContactsViewController(with: ContactsViewModel())
+			let contactsViewModel = ContactsViewModel()
+			self.searchVCDelegate = contactsViewModel
+			vc = ContactsViewController(with: contactsViewModel)
+			
 		case .groupChat:
 			vc = ChatHistoryViewController()
 		}
