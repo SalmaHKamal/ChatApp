@@ -30,10 +30,10 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	var receivers: [UserModel] = []
 	
 	struct ChatHistoryCellModel {
-		var receiverUid: String
-		var receiverPhotoUrl: URL?
-		var receiverDisplayName: String
-		var lastMessage: String
+		var receiverUid: String?
+		var receiverPhotoUrl: String?
+		var receiverDisplayName: String?
+		var lastMessage: String?
 	}
 	
 	enum ChatHistoryViewControllerState {
@@ -49,10 +49,10 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	private func createCellModel(with result: [ChatHistoryModel]) {
 		result.forEach { (model) in
-			let cellModel = ChatHistoryCellModel(receiverUid: model.senderID ?? "Sender ID",
-												 receiverPhotoUrl: URL(string: model.senderAvatar ?? "Sender Avater"),
-												 receiverDisplayName: model.senderName ?? "Sender Name",
-												 lastMessage: model.lastMessage ?? "Last Message")
+			let cellModel = ChatHistoryCellModel(receiverUid: model.senderID,
+												 receiverPhotoUrl: model.senderAvatar,
+												 receiverDisplayName: model.senderName,
+												 lastMessage: model.lastMessage)
 			chatHistoryCellModels?.append(cellModel)
 		}
 		viewControllerState = .finished

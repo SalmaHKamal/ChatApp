@@ -73,6 +73,10 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		navigateToChatVC(selectedIndex: indexPath)
 	}
 	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 100
+	}
+	
 	private func updateTableViewCell(at indexPath: IndexPath) {
 		viewModel?.updateMessageIsReadState(at: indexPath.row)
 		guard let selectedCell = tableView.cellForRow(at: indexPath) as? ChatHistoryTableViewCell else {
