@@ -34,18 +34,18 @@ class ContactsViewModel: ContactsViewModelProtocol {
 	}
 	
 	func presentChatViewController(for indexPath: IndexPath) {
-		let dict = ["chatRoomID": "salma",
-					"date": DateFormatter().string(from: Date()),
+		let dict = ["chatRoomId": "salma",
+					"date": Date().timestamp,
 					"senderAvatar": nil,
 					"senderName": "Salma",
 					"lastMessage": "Hello Kimoo",
-					"messagesCount": 1,
+					"unSeenMessageCount": 1,
 					"type": "private",
 					"senderID": contactsInfo?[indexPath.row].uid] as [String : Any?]
-		guard let model = ChatHistoryModel(dictionary: dict) else {
-			return
-		}
-		FirebaseManager().saveChatHistory(model: model)
+//		guard let model = ChatHistoryModel(dictionary: dict) else {
+//			return
+//		}
+		FirebaseManager().saveChatHistory(dictionary: dict)
 //		guard let receiverModel: UserModel = contactsInfo?[indexPath.row] else {
 //			return
 //		}

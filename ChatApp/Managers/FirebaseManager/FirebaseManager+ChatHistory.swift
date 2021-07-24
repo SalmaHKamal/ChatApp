@@ -53,4 +53,16 @@ extension FirebaseManager {
 			}
 	}
 	
+	func saveChatHistory(dictionary: [String: Any]) {
+		firestore.collection(FirestoreCollections.chatHistory.rawValue)
+			.document()
+			.setData(dictionary) { (error) in
+				guard let error = error else {
+					print("data saved successfully".uppercased())
+					return
+				}
+				print("an error occured => ".uppercased(), error)
+			}
+	}
+	
 }

@@ -11,6 +11,7 @@
 		7895FFB10BE6913D9947BB79 /* Pods_ChatApp_ChatAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979DF8AFA572FE644E202B3 /* Pods_ChatApp_ChatAppUITests.framework */; };
 		802AD3EB26AB320200BA221A /* FirebaseManager+ChatHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */; };
 		802AD3F026AB329A00BA221A /* ChatHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */; };
+		802AD3F826ABFB2600BA221A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3F726ABFB2600BA221A /* DateExtensions.swift */; };
 		802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD425BB204200237712 /* SignUpViewController.swift */; };
 		802E9BD725BB204200237712 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802E9BD525BB204200237712 /* SignUpViewController.xib */; };
 		802E9BD925BB275800237712 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD825BB275800237712 /* Screens.swift */; };
@@ -97,6 +98,7 @@
 		2ACDD863D567040465B68C2A /* Pods-ChatAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatAppTests/Pods-ChatAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+ChatHistory.swift"; sourceTree = "<group>"; };
 		802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryModel.swift; sourceTree = "<group>"; };
+		802AD3F726ABFB2600BA221A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		802E9BD425BB204200237712 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		802E9BD525BB204200237712 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		802E9BD825BB275800237712 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				802E9BF725BC8E8600237712 /* UIApplication+Extensions.swift */,
 				807C4DD625E1046500B84FBC /* EncodableEextension.swift */,
 				80E46C8C260D0540009DCFA2 /* TimeIntervalExtension.swift */,
+				802AD3F726ABFB2600BA221A /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				80AD20D22600D2CA00E6936F /* ReuesableProtocol.swift in Sources */,
 				80A24A6F25D7D6A0005691BE /* ChatViewModel.swift in Sources */,
 				802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */,
+				802AD3F826ABFB2600BA221A /* DateExtensions.swift in Sources */,
 				80A24A7625D7FD08005691BE /* ChatHistoryViewModel.swift in Sources */,
 				80C7401D25A114F000EE8631 /* UIFont.swift in Sources */,
 				80A24A7125D7D7F4005691BE /* ChatManager.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 enum ChatType: String {
 	case privateChat = "private"
@@ -15,7 +16,7 @@ enum ChatType: String {
 
 struct ChatHistoryModel: Codable {
 	var chatRoomId: String?
-	var date: String?
+	var date: Date?
 	var senderAvatar: String?
 	var senderName: String?
 	var lastMessage: String?
@@ -31,7 +32,7 @@ struct ChatHistoryModel: Codable {
 		}
 		
 		guard let chatRoomId = dictionary["chatRoomId"] as? String,
-			  let date = dictionary["date"] as? String,
+			  let timestamp = dictionary["date"] as? Timestamp,
 			  let senderName = dictionary["senderName"] as? String,
 			  let lastMessage = dictionary["lastMessage"] as? String,
 			  let unSeenMessageCount = dictionary["unSeenMessageCount"] as? Int,
@@ -41,7 +42,7 @@ struct ChatHistoryModel: Codable {
 		}
 		
 		self.chatRoomId = chatRoomId
-		self.date = date
+		self.date = timestamp.dateValue()
 		self.senderAvatar = dictionary["senderAvatar"] as? String
 		self.senderName = senderName
 		self.lastMessage = lastMessage
