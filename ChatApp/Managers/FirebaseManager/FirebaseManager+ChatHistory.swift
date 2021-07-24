@@ -16,7 +16,6 @@ extension FirebaseManager {
 			completion([])
 			return
 		}
-		var models: [ChatHistoryModel] = []
 		firestore.collection(FirestoreCollections.chatHistory.rawValue)
 			.whereField("senderID", isNotEqualTo: currentUserID)
 			.addSnapshotListener { (snapshot, error) in
@@ -24,6 +23,7 @@ extension FirebaseManager {
 					print("No snapshot and maybe error => ".uppercased(), error as Any)
 					return
 				}
+				var models: [ChatHistoryModel] = []
 				
 				if !snapshot.isEmpty {
 					snapshot.documents.forEach { (docs) in

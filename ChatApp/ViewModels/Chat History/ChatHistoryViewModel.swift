@@ -43,6 +43,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	func fetchData() {
 		ChatManager().loadChatHistory { [weak self] result in
+			self?.chatHistoryCellModels?.removeAll()
 			self?.createCellModel(with: result)
 		}
 	}

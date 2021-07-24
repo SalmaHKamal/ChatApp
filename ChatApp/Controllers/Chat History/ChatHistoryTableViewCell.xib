@@ -181,6 +181,7 @@
                     <constraint firstItem="yyl-0H-dTY" firstAttribute="leading" secondItem="S0L-gT-NAj" secondAttribute="leading" id="avF-Su-IEE"/>
                     <constraint firstItem="DGC-NH-d7I" firstAttribute="centerX" secondItem="MHQ-9z-gKX" secondAttribute="centerX" id="e3Q-Rf-G39"/>
                     <constraint firstItem="yyl-0H-dTY" firstAttribute="top" secondItem="S0L-gT-NAj" secondAttribute="bottom" constant="8" id="iLB-wL-t55"/>
+                    <constraint firstItem="DGC-NH-d7I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yyl-0H-dTY" secondAttribute="trailing" constant="8" id="oca-yF-LK0"/>
                     <constraint firstItem="yyl-0H-dTY" firstAttribute="bottom" secondItem="mWf-K6-2NK" secondAttribute="bottom" constant="-5" id="pVd-s9-Kha"/>
                 </constraints>
             </tableViewCellContentView>

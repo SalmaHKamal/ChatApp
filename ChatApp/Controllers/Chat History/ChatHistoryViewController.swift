@@ -40,32 +40,6 @@ class ChatHistoryViewController: BaseViewController {
 }
 
 extension ChatHistoryViewController: UITableViewDelegate {
-	
-}
-
-
-extension ChatHistoryViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		switch viewModel?.viewControllerState {
-		case .loading:
-			return 0
-		case .finished:
-			return viewModel?.chatHistoryCellModels?.count ?? 0
-		default:
-			return 0
-		}
-		
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatHistoryTableViewCell.nibName, for: indexPath) as? ChatHistoryTableViewCell else {
-			
-			return UITableViewCell()
-		}
-		cell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
-		return cell
-	}
-	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		// update cell read state
 		updateTableViewCell(at: indexPath)
@@ -91,7 +65,30 @@ extension ChatHistoryViewController: UITableViewDataSource {
 		}
 		coordinator?.chatRoom(receiverModel: receiver)
 	}
+}
+
+
+extension ChatHistoryViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		switch viewModel?.viewControllerState {
+		case .loading:
+			return 0
+		case .finished:
+			return viewModel?.chatHistoryCellModels?.count ?? 0
+		default:
+			return 0
+		}
+		
+	}
 	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatHistoryTableViewCell.nibName, for: indexPath) as? ChatHistoryTableViewCell else {
+			
+			return UITableViewCell()
+		}
+		cell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
+		return cell
+	}
 }
 
 extension ChatHistoryViewController: ChatHistoryViewControllerProtocol {
