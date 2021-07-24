@@ -15,6 +15,7 @@ protocol ChatHistoryViewModelProtocol {
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? { get }
 	var receivers: [UserModel] { get }
 	func updateMessageIsReadState(at index: Int)
+	func deleteChatHistory(at indexPath: IndexPath)
 }
 
 class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
@@ -28,6 +29,8 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		}
 	}
 	var receivers: [UserModel] = []
+	let chatManager = ChatManager()
+	let firebaseManager = FirebaseManager()
 	
 	struct ChatHistoryCellModel {
 		var receiverUid: String?
@@ -36,6 +39,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		var lastMessage: String?
 		var unSeenMessageCount: Int = 0
 		var messageTime: Date?
+		var chatHistoryId: String?
 	}
 	
 	enum ChatHistoryViewControllerState {
@@ -44,7 +48,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	}
 	
 	func fetchData() {
-		ChatManager().loadChatHistory { [weak self] result in
+		chatManager.loadChatHistory { [weak self] result in
 			self?.chatHistoryCellModels?.removeAll()
 			self?.createCellModel(with: result)
 		}
@@ -57,7 +61,8 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 												 receiverDisplayName: model.senderName,
 												 lastMessage: model.lastMessage,
 												 unSeenMessageCount: model.unSeenMessageCount,
-												 messageTime: model.date)
+												 messageTime: model.date,
+												 chatHistoryId: model.chatHistoryId)
 			chatHistoryCellModels?.append(cellModel)
 		}
 		viewControllerState = .finished
@@ -65,5 +70,14 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	func updateMessageIsReadState(at index: Int) {
 //		chatHistoryCellModels?[index].lastMessage.isRead = true
+	}
+	
+	func deleteChatHistory(at indexPath: IndexPath) {
+		guard let selectedModel = chatHistoryCellModels?[indexPath.row],
+			  let chatHistoryId = selectedModel.chatHistoryId else {
+			return
+		}
+		
+		firebaseManager.deleteChatHistory(with: chatHistoryId)
 	}
 }

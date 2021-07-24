@@ -39,22 +39,17 @@ extension FirebaseManager {
 		guard let dictionary = model.dict else {
 			return
 		}
-		
-		firestore.collection(FirestoreCollections.chatHistory.rawValue)
-			.document()
-			.setData(dictionary) { (error) in
-				guard let error = error else {
-					print("data saved successfully".uppercased())
-					return
-				}
-				print("an error occured => ".uppercased(), error)
-			}
+		saveChatHistory(dictionary: dictionary)
 	}
 	
 	func saveChatHistory(dictionary: [String: Any]) {
-		firestore.collection(FirestoreCollections.chatHistory.rawValue)
+		let firestoreRef = firestore.collection(FirestoreCollections.chatHistory.rawValue)
 			.document()
-			.setData(dictionary) { (error) in
+		let chatHistoryDocumentID = firestoreRef.documentID
+		var mutableDictionary = dictionary
+		mutableDictionary.updateValue(chatHistoryDocumentID, forKey: "chatHistoryId")
+		
+		firestoreRef.setData(mutableDictionary) { (error) in
 				guard let error = error else {
 					print("data saved successfully".uppercased())
 					return
@@ -63,6 +58,18 @@ extension FirebaseManager {
 			}
 	}
 	
+	// MARK: - Delete
+	func deleteChatHistory(with id: String) {
+		firestore.collection(FirestoreCollections.chatHistory.rawValue)
+			.document(id)
+			.delete { (error) in
+				guard let error = error else {
+					print("Record deleted successfully".uppercased())
+					return
+				}
+				print("Couldn't delete chat history with id \(id) because of error \(error)".uppercased())
+			}
+	}
 	
 	// MARK: - Helper Methods
 	fileprivate func constructModels(_ snapshot: QuerySnapshot, _ models: inout [ChatHistoryModel]) {

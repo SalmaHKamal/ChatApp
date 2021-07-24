@@ -34,11 +34,11 @@ class ContactsViewModel: ContactsViewModelProtocol {
 	}
 	
 	func presentChatViewController(for indexPath: IndexPath) {
-		let dict = ["chatRoomId": "salma",
+		let dict = ["chatRoomId": "nadra",
 					"date": Date().timestamp,
 					"senderAvatar": nil,
-					"senderName": "Salma",
-					"lastMessage": "Hello Kimoo",
+					"senderName": "Nadra",
+					"lastMessage": "Ezayek ya Soso !",
 					"unSeenMessageCount": 1,
 					"type": "private",
 					"senderID": contactsInfo?[indexPath.row].uid] as [String : Any?]

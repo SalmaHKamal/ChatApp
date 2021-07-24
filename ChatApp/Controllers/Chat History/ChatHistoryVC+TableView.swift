@@ -26,8 +26,8 @@ extension ChatHistoryViewController: UITableViewDelegate {
 		let muteAction = UIContextualAction(style: .normal, title: "Mute") { (action, view, bool) in
 			// TODO: - implement mute functionality later
 		}
-		let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { _,_,_  in
-			// TODO: - implement delete functionality later
+		let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { [weak self] _,_,_  in
+			self?.viewModel?.deleteChatHistory(at: indexPath)
 		})
 		return UISwipeActionsConfiguration(actions: [muteAction, deleteAction])
 	}
