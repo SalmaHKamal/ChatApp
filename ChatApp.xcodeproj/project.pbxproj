@@ -13,6 +13,7 @@
 		802AD3F026AB329A00BA221A /* ChatHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */; };
 		802AD3F826ABFB2600BA221A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3F726ABFB2600BA221A /* DateExtensions.swift */; };
 		802AD45426AC24FF00BA221A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD45326AC24FF00BA221A /* StringExtensions.swift */; };
+		802AD45926AC33EA00BA221A /* ChatHistoryVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD45826AC33EA00BA221A /* ChatHistoryVC+TableView.swift */; };
 		802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD425BB204200237712 /* SignUpViewController.swift */; };
 		802E9BD725BB204200237712 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802E9BD525BB204200237712 /* SignUpViewController.xib */; };
 		802E9BD925BB275800237712 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD825BB275800237712 /* Screens.swift */; };
@@ -101,6 +102,7 @@
 		802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryModel.swift; sourceTree = "<group>"; };
 		802AD3F726ABFB2600BA221A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		802AD45326AC24FF00BA221A /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		802AD45826AC33EA00BA221A /* ChatHistoryVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatHistoryVC+TableView.swift"; sourceTree = "<group>"; };
 		802E9BD425BB204200237712 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		802E9BD525BB204200237712 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		802E9BD825BB275800237712 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				802E9BFE25BD92FF00237712 /* ChatHistoryTableViewCell.xib */,
 				802E9C0125BEC89900237712 /* ChatHistoryViewController.swift */,
 				802E9C0225BEC89900237712 /* ChatHistoryViewController.xib */,
+				802AD45826AC33EA00BA221A /* ChatHistoryVC+TableView.swift */,
 			);
 			path = "Chat History";
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				802E9BE025BB2C2300237712 /* FirebaseManager.swift in Sources */,
 				802E9BF325BC81E300237712 /* BaseViewController.swift in Sources */,
 				802E9C0825BECD5300237712 /* ContactsViewController.swift in Sources */,
+				802AD45926AC33EA00BA221A /* ChatHistoryVC+TableView.swift in Sources */,
 				80AD20CF2600B53800E6936F /* FirebaseManager+HelperMethods.swift in Sources */,
 				802E9BE525BB30FB00237712 /* LoginErrors.swift in Sources */,
 				8084568A2673531600E61C37 /* Coordinator.swift in Sources */,
