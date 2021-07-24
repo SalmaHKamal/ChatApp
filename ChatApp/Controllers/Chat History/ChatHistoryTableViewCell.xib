@@ -131,7 +131,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGC-NH-d7I" userLabel="message status view" customClass="LiveView" customModule="ChatApp" customModuleProvider="target">
-                        <rect key="frame" x="390.5" y="58" width="14" height="14"/>
+                        <rect key="frame" x="391" y="58" width="14" height="14"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYR-Pm-9DV" customClass="LiveView" customModule="ChatApp" customModuleProvider="target">
                                 <rect key="frame" x="2" y="2" width="10" height="10"/>
@@ -179,7 +179,7 @@
                     <constraint firstItem="MHQ-9z-gKX" firstAttribute="top" secondItem="S0L-gT-NAj" secondAttribute="top" id="Yr8-M3-Sj5"/>
                     <constraint firstAttribute="trailing" secondItem="MHQ-9z-gKX" secondAttribute="trailing" constant="16" id="ZIo-Rp-GMB"/>
                     <constraint firstItem="yyl-0H-dTY" firstAttribute="leading" secondItem="S0L-gT-NAj" secondAttribute="leading" id="avF-Su-IEE"/>
-                    <constraint firstItem="DGC-NH-d7I" firstAttribute="centerX" secondItem="MHQ-9z-gKX" secondAttribute="centerX" id="e3Q-Rf-G39"/>
+                    <constraint firstAttribute="trailing" secondItem="DGC-NH-d7I" secondAttribute="trailing" constant="24" id="dei-IB-OTY"/>
                     <constraint firstItem="yyl-0H-dTY" firstAttribute="top" secondItem="S0L-gT-NAj" secondAttribute="bottom" constant="8" id="iLB-wL-t55"/>
                     <constraint firstItem="DGC-NH-d7I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yyl-0H-dTY" secondAttribute="trailing" constant="8" id="oca-yF-LK0"/>
                     <constraint firstItem="yyl-0H-dTY" firstAttribute="bottom" secondItem="mWf-K6-2NK" secondAttribute="bottom" constant="-5" id="pVd-s9-Kha"/>
