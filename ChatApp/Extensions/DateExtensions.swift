@@ -13,5 +13,9 @@ extension Date {
 	var timestamp: Timestamp? {
 		return Timestamp(date: self)
 	}
+	
+	var timeElapsed: String? {
+		let formatter = RelativeDateTimeFormatter()
+		return formatter.localizedString(for: self, relativeTo: Date())
+	}
 }
-

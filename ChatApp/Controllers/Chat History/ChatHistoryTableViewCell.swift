@@ -17,6 +17,7 @@ class ChatHistoryTableViewCell: UITableViewCell {
 	@IBOutlet weak var messageReadIndicatorView: LiveView!
 	@IBOutlet weak var tempProfileImage: LiveView!
 	@IBOutlet weak var nameFirstLettersLabel: UILabel!
+	@IBOutlet weak var messageTimeLabel: UILabel!
 	
 	// MARK: - Constants
 	static let nibName = String(describing: ChatHistoryTableViewCell.self)
@@ -34,9 +35,17 @@ class ChatHistoryTableViewCell: UITableViewCell {
 
 	func setupView(with model: ChatHistoryViewModel.ChatHistoryCellModel) {
 		setupProfileImage(with: model)
+		setupMessageTime(with: model.messageTime)
 		lastMessageLabel.text = model.lastMessage
 		receiverNameLabel.text = model.receiverDisplayName
-		messageReadIndicatorView.backgroundColor = model.unSeenMessageCount > 0 ? .darkGray : .clear 
+		messageReadIndicatorView.backgroundColor = model.unSeenMessageCount > 0 ? .darkGray : .clear
+	}
+}
+
+// MARK: - Helper Methods
+extension ChatHistoryTableViewCell {
+	private func setupMessageTime(with date: Date?) {
+		messageTimeLabel.text = date?.timeElapsed
 	}
 	
 	private func setupProfileImage(with model: ChatHistoryViewModel.ChatHistoryCellModel) {

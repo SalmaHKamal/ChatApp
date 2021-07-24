@@ -35,6 +35,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		var receiverDisplayName: String?
 		var lastMessage: String?
 		var unSeenMessageCount: Int = 0
+		var messageTime: Date?
 	}
 	
 	enum ChatHistoryViewControllerState {
@@ -55,7 +56,8 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 												 receiverPhotoUrl: model.senderAvatar,
 												 receiverDisplayName: model.senderName,
 												 lastMessage: model.lastMessage,
-												 unSeenMessageCount: model.unSeenMessageCount)
+												 unSeenMessageCount: model.unSeenMessageCount,
+												 messageTime: model.date)
 			chatHistoryCellModels?.append(cellModel)
 		}
 		viewControllerState = .finished
