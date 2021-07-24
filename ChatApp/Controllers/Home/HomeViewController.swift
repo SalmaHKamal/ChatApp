@@ -18,6 +18,10 @@ class HomeViewController: BaseViewController {
 	@IBOutlet private weak var userProfileImage: LiveImageView!
 	@IBOutlet private weak var navigationStackView: UIStackView!
 	@IBOutlet private weak var contentView: UIView!
+	@IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var searchBar: UISearchBar!
+	@IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var headerStackView: UIStackView!
 	
 	// MARK: - Varibales
 	enum HomeViews {
@@ -26,6 +30,7 @@ class HomeViewController: BaseViewController {
 		case groupChat
 	}
 	var viewModel: HomeViewModelProtocol?
+	var isSearchSelected: Bool = false
 	
 	// MARK: - LifeCycle
 	override func viewWillAppear(_ animated: Bool) {
@@ -49,23 +54,44 @@ class HomeViewController: BaseViewController {
 	// MARK: - Actions
 	@IBAction func chatBtnPressed(_ sender: Any) {
 		setupViewController(for: .chat)
+		resetSearchBarIfAppearing()
 	}
 	
 	@IBAction func contactsBtnPressed(_ sender: Any) {
 		setupViewController(for: .contacts)
+		resetSearchBarIfAppearing()
 	}
 	
 	@IBAction func groupChatBtnPressed(_ sender: Any) {
 		setupViewController(for: .groupChat)
+		resetSearchBarIfAppearing()
 	}
 	
 	@IBAction func userProfileDidPressed(_ sender: Any) {
 		viewModel?.showSettingsViewController()
 	}
 	
+	@IBAction func searchButtonPressed(_ sender: Any) {
+		isSearchSelected.toggle()
+		UIView.animate(withDuration: 0.3) {
+			self.searchBarHeightConstraint.constant = self.isSearchSelected ? 50 : 0
+			self.headerHeightConstraint.constant = self.isSearchSelected ? 140 : 90
+			if self.isSearchSelected {
+				self.headerStackView.layoutIfNeeded()
+			}
+		}
+	}
+	
 	// MARK: - helper methods
+	private func resetSearchBarIfAppearing() {
+		if isSearchSelected {
+			searchButtonPressed(self)
+		}
+	}
+	
 	private func setupView() {
 		setupViewController(for: .chat)
+		headerStackView.setCustomSpacing(0, after: navigationStackView)
 	}
 	
 	private func setupViewController(for viewType: HomeViews) {
