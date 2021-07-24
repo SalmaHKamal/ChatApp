@@ -66,18 +66,17 @@ extension FirebaseManager {
 	
 	// MARK: - Helper Methods
 	fileprivate func constructModels(_ snapshot: QuerySnapshot, _ models: inout [ChatHistoryModel]) {
-		// sort
-		var sortedDocuments = snapshot.documents
-		sortedDocuments.sort { (doc1, doc2) -> Bool in
-			let data1 = doc1.data()
-			let data2 = doc2.data()
-			return data1["unSeenMessageCount"] as! Int > data2["unSeenMessageCount"] as! Int
-		}
 		// map
-		sortedDocuments.forEach { (docs) in
+		snapshot.documents.forEach { (docs) in
 			if let model = ChatHistoryModel(dictionary: docs.data()) {
-				models.append(model)
+				// filter only chat that I'm member on
+				if let members = model.members, members.contains(getCurrentUserID() ?? "") {
+					models.append(model)
+				}
 			}
 		}
+		
+		// sort
+		models.sort(by: { $0.unSeenMessageCount > $1.unSeenMessageCount })
 	}
 }

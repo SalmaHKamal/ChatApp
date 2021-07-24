@@ -23,6 +23,7 @@ struct ChatHistoryModel: Codable {
 	var unSeenMessageCount: Int = 0
 	var type: String = ChatType.privateChat.rawValue
 	var senderID: String?
+	var members: [String]?
 	
 	init() {}
 	
@@ -37,7 +38,8 @@ struct ChatHistoryModel: Codable {
 			  let lastMessage = dictionary["lastMessage"] as? String,
 			  let unSeenMessageCount = dictionary["unSeenMessageCount"] as? Int,
 			  let chatType = dictionary["type"] as? String,
-			  let senderID = dictionary["senderID"] as? String else {
+			  let senderID = dictionary["senderID"] as? String,
+			  let members = dictionary["members"] as? [String] else {
 			return
 		}
 		
@@ -49,5 +51,6 @@ struct ChatHistoryModel: Codable {
 		self.unSeenMessageCount = unSeenMessageCount
 		self.type = chatType
 		self.senderID = senderID
+		self.members = members
 	}
 }
