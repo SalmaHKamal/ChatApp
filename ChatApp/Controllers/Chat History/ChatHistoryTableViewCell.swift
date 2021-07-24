@@ -36,7 +36,7 @@ class ChatHistoryTableViewCell: UITableViewCell {
 		setupProfileImage(with: model)
 		lastMessageLabel.text = model.lastMessage
 		receiverNameLabel.text = model.receiverDisplayName
-		messageReadIndicatorView.backgroundColor = .clear //model.lastMessage.isRead ?  : .darkGray
+		messageReadIndicatorView.backgroundColor = model.unSeenMessageCount > 0 ? .darkGray : .clear 
 	}
 	
 	private func setupProfileImage(with model: ChatHistoryViewModel.ChatHistoryCellModel) {

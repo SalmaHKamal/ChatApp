@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import Firebase
 
 extension FirebaseManager {
 	
+	// MARK: - Load
 	func loadChatHistory(completion: @escaping ([ChatHistoryModel]) -> Void) {
 		guard let currentUser = userDefaultsManager.get(with: .currentUser) as? UserModel,
 			  let currentUserID = currentUser.uid else {
@@ -26,17 +28,13 @@ extension FirebaseManager {
 				var models: [ChatHistoryModel] = []
 				
 				if !snapshot.isEmpty {
-					snapshot.documents.forEach { (docs) in
-						if let model = ChatHistoryModel(dictionary: docs.data()) {
-							models.append(model)
-						}
-					}
+					constructModels(snapshot, &models)
 				}
 				completion(models)
 			}
 	}
 	
-	
+	// MARK: - Save
 	func saveChatHistory(model: ChatHistoryModel) {
 		guard let dictionary = model.dict else {
 			return
@@ -65,4 +63,21 @@ extension FirebaseManager {
 			}
 	}
 	
+	
+	// MARK: - Helper Methods
+	fileprivate func constructModels(_ snapshot: QuerySnapshot, _ models: inout [ChatHistoryModel]) {
+		// sort
+		var sortedDocuments = snapshot.documents
+		sortedDocuments.sort { (doc1, doc2) -> Bool in
+			let data1 = doc1.data()
+			let data2 = doc2.data()
+			return data1["unSeenMessageCount"] as! Int > data2["unSeenMessageCount"] as! Int
+		}
+		// map
+		sortedDocuments.forEach { (docs) in
+			if let model = ChatHistoryModel(dictionary: docs.data()) {
+				models.append(model)
+			}
+		}
+	}
 }
