@@ -86,9 +86,6 @@ extension ChatHistoryViewController: UITableViewDataSource {
 			return
 		}
 		coordinator?.chatRoom(receiverModel: receiver)
-//		let chatViewModel = ChatViewModel(receiverModel: receiver)
-//		let chatViewController = ChatViewController(with: chatViewModel)
-//		self.present(chatViewController, animated: true, completion: nil)
 	}
 	
 }
