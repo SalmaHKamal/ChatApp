@@ -33,7 +33,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		var receiverUid: String
 		var receiverPhotoUrl: URL?
 		var receiverDisplayName: String
-		var lastMessage: MessageModel
+		var lastMessage: String
 	}
 	
 	enum ChatHistoryViewControllerState {
@@ -41,61 +41,24 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		case finished
 	}
 	
-	
 	func fetchData() {
-		ChatManager().loadChatHistory { [weak self] (result) in
-			self?.createCellModel(result)
+		ChatManager().loadChatHistory { [weak self] result in
+			self?.createCellModel(with: result)
 		}
 	}
 	
-//	private func createCellModel(_ result: [(receivers: [String], lastMessage: MessageModel?)]) {
-//
-//		result.forEach { (dic) in
-//			guard let id = dic.receivers.first,
-//				let message: MessageModel = dic.lastMessage else {
-//					return
-//			}
-//
-//			let name: String = "receiver.displayName"
-//
-////			receivers.append(receiver)
-//			let model = ChatHistoryCellModel(receiverUid: id,
-//											 receiverPhotoUrl: nil,
-//											 receiverDisplayName: name,
-//											 lastMessage: message)
-//
-//			chatHistoryCellModels?.append(model)
-//		}
-//
-//		viewControllerState = .finished
-//	}
-	
-	private func createCellModel(_ result: [String : (receiver: UserModel, messages: [MessageModel])]) {
-
-		result.forEach { (dic) in
-			let receiver = dic.value.receiver
-			let messages = dic.value.messages
-
-			guard let id = receiver.uid,
-				let photoUrl: URL = receiver.photoUrl,
-				let name: String = receiver.displayName,
-				let message: MessageModel = messages.last else {
-					return
-			}
-
-			receivers.append(receiver)
-			let model = ChatHistoryCellModel(receiverUid: id,
-											 receiverPhotoUrl: photoUrl,
-											 receiverDisplayName: name,
-											 lastMessage: message)
-
-			chatHistoryCellModels?.append(model)
+	private func createCellModel(with result: [ChatHistoryModel]) {
+		result.forEach { (model) in
+			let cellModel = ChatHistoryCellModel(receiverUid: model.senderID ?? "Sender ID",
+												 receiverPhotoUrl: URL(string: model.senderAvatar ?? "Sender Avater"),
+												 receiverDisplayName: model.senderName ?? "Sender Name",
+												 lastMessage: model.lastMessage ?? "Last Message")
+			chatHistoryCellModels?.append(cellModel)
 		}
-
 		viewControllerState = .finished
 	}
 	
 	func updateMessageIsReadState(at index: Int) {
-		chatHistoryCellModels?[index].lastMessage.isRead = true
+//		chatHistoryCellModels?[index].lastMessage.isRead = true
 	}
 }

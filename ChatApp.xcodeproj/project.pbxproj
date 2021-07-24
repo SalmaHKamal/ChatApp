@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0BE6CCBF4FD8C528BC48EE68 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F7D90DAA21D61C29C62FED /* Pods_ChatApp.framework */; };
 		7895FFB10BE6913D9947BB79 /* Pods_ChatApp_ChatAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979DF8AFA572FE644E202B3 /* Pods_ChatApp_ChatAppUITests.framework */; };
+		802AD3EB26AB320200BA221A /* FirebaseManager+ChatHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */; };
+		802AD3F026AB329A00BA221A /* ChatHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */; };
 		802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD425BB204200237712 /* SignUpViewController.swift */; };
 		802E9BD725BB204200237712 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802E9BD525BB204200237712 /* SignUpViewController.xib */; };
 		802E9BD925BB275800237712 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BD825BB275800237712 /* Screens.swift */; };
@@ -93,6 +95,8 @@
 		12B719306D546777FAACC582 /* Pods-ChatAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppTests.release.xcconfig"; path = "Target Support Files/Pods-ChatAppTests/Pods-ChatAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		1B439A7AB0D2C3DA7F89D340 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		2ACDD863D567040465B68C2A /* Pods-ChatAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatAppTests/Pods-ChatAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+ChatHistory.swift"; sourceTree = "<group>"; };
+		802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryModel.swift; sourceTree = "<group>"; };
 		802E9BD425BB204200237712 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		802E9BD525BB204200237712 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		802E9BD825BB275800237712 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 				802E9BE225BB301F00237712 /* UserModel.swift */,
 				80A24A7225D7DBA7005691BE /* MessageModel.swift */,
 				80AD20C92600B40200E6936F /* ChatModel.swift */,
+				802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				802E9BDF25BB2C2300237712 /* FirebaseManager.swift */,
 				80AD20CC2600B4B400E6936F /* FirebaseManager+Chat.swift */,
 				80AD20CE2600B53800E6936F /* FirebaseManager+HelperMethods.swift */,
+				802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */,
 			);
 			path = FirebaseManager;
 			sourceTree = "<group>";
@@ -820,6 +826,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802AD3EB26AB320200BA221A /* FirebaseManager+ChatHistory.swift in Sources */,
 				80AD20D22600D2CA00E6936F /* ReuesableProtocol.swift in Sources */,
 				80A24A6F25D7D6A0005691BE /* ChatViewModel.swift in Sources */,
 				802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */,
@@ -853,6 +860,7 @@
 				807C6A5626503C3F000EF6FB /* SettingsViewController.swift in Sources */,
 				80C7402025A1180A00EE8631 /* LiveButton.swift in Sources */,
 				80A24A6325D6807E005691BE /* ContactsViewModel.swift in Sources */,
+				802AD3F026AB329A00BA221A /* ChatHistoryModel.swift in Sources */,
 				80A24A6B25D7D054005691BE /* ChatViewController.swift in Sources */,
 				802E9BE325BB301F00237712 /* UserModel.swift in Sources */,
 				80A24A6725D7B56D005691BE /* HomeViewModel.swift in Sources */,

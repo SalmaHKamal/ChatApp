@@ -1,0 +1,52 @@
+//
+//  ChatHistoryModel.swift
+//  ChatApp
+//
+//  Created by Salma Hassan on 23/07/2021.
+//  Copyright © 2021 salma. All rights reserved.
+//
+
+import Foundation
+
+enum ChatType: String {
+	case privateChat = "private"
+	case groupChat = "group"
+}
+
+struct ChatHistoryModel: Codable {
+	var chatRoomId: String?
+	var date: String?
+	var senderAvatar: String?
+	var senderName: String?
+	var lastMessage: String?
+	var unSeenMessageCount: Int = 0
+	var type: String = ChatType.privateChat.rawValue
+	var senderID: String?
+	
+	init() {}
+	
+	init?(dictionary: [String: Any]?) {
+		guard let dictionary = dictionary else {
+			return
+		}
+		
+		guard let chatRoomId = dictionary["chatRoomId"] as? String,
+			  let date = dictionary["date"] as? String,
+			  let senderName = dictionary["senderName"] as? String,
+			  let lastMessage = dictionary["lastMessage"] as? String,
+			  let unSeenMessageCount = dictionary["unSeenMessageCount"] as? Int,
+			  let chatType = dictionary["type"] as? String,
+			  let senderID = dictionary["senderID"] as? String else {
+			return
+		}
+		
+		self.chatRoomId = chatRoomId
+		self.date = date
+		self.senderAvatar = dictionary["senderAvatar"] as? String
+		self.senderName = senderName
+		self.lastMessage = lastMessage
+		self.unSeenMessageCount = unSeenMessageCount
+		self.type = chatType
+		self.senderID = senderID
+	}
+}

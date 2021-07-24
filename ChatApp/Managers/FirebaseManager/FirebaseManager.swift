@@ -20,7 +20,9 @@ struct FirebaseManager {
 		case users
 		case chat
 		case messages
+		case chatHistory
 	}
+	let userDefaultsManager = UserDefaultsManager()
 }
 
 // MARK: - Login

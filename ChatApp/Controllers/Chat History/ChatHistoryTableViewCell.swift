@@ -32,9 +32,9 @@ class ChatHistoryTableViewCell: UITableViewCell {
 
 	func setupView(with model: ChatHistoryViewModel.ChatHistoryCellModel) {
 		receiverProfileImageView.sd_setImage(with: model.receiverPhotoUrl, placeholderImage: UIImage(named: "person.fill"))
-		lastMessageLabel.text = model.lastMessage.content
+		lastMessageLabel.text = model.lastMessage
 		receiverNameLabel.text = model.receiverDisplayName
-		messageReadIndicatorView.backgroundColor = model.lastMessage.isRead ? .clear : .darkGray
+		messageReadIndicatorView.backgroundColor = .clear //model.lastMessage.isRead ?  : .darkGray
 	}
     
 }
