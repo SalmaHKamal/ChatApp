@@ -27,6 +27,7 @@ class ChatHistoryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		viewModel?.viewControllerParentVC = (self.parent as? BaseViewController)
 		viewModel?.fetchData()
     }
 

@@ -120,11 +120,11 @@ class HomeViewController: BaseViewController {
 			vc = ChatHistoryViewController()
 		}
 		
+		addChild(vc)
 		vc.coordinator = coordinator
 		moveUnderlineView(for: viewType)
 		contentView.addSubview(vc.view)
 		vc.view.frame = contentView.bounds
-		addChild(vc)
 	}
 	
 	private func moveUnderlineView(for viewType: HomeViews) {

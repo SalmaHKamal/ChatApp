@@ -6,7 +6,7 @@
 //  Copyright © 2021 salma. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ChatHistoryViewModelProtocol {
 	var viewController: ChatHistoryViewControllerProtocol? { get set }
@@ -15,6 +15,7 @@ protocol ChatHistoryViewModelProtocol {
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? { get }
 	var receivers: [UserModel] { get }
 	var cellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
+	var viewControllerParentVC: BaseViewController? { get set }
 	
 	func fetchData()
 	func updateMessageIsReadState(at index: Int)
@@ -43,6 +44,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 			return chatHistoryCellModels
 		}
 	}
+	var viewControllerParentVC: BaseViewController?
 	
 	struct ChatHistoryCellModel {
 		var receiverUid: String?
@@ -61,7 +63,9 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	// MARK: - Methods
 	func fetchData() {
+		showLoadingIndicator()
 		chatManager.loadChatHistory { [weak self] result in
+			self?.hideLoadingIndicator()
 			self?.chatHistoryCellModels?.removeAll()
 			self?.createCellModel(with: result)
 		}
@@ -121,5 +125,16 @@ extension ChatHistoryViewModel: SearchableDelegate {
 		isSearching = false
 		filteredChatHistoryCellModels?.removeAll()
 		viewController?.reloadTableView()
+	}
+}
+
+// MARK: - Helper Methods
+extension ChatHistoryViewModel {
+	private func showLoadingIndicator() {
+		viewControllerParentVC?.showLoadingIndicator()
+	}
+	
+	private func hideLoadingIndicator() {
+		viewControllerParentVC?.hideLoadingIndicator()
 	}
 }
