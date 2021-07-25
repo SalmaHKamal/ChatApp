@@ -32,6 +32,7 @@ class HomeViewController: BaseViewController {
 	var viewModel: HomeViewModelProtocol?
 	var isSearchSelected: Bool = false
 	weak var searchVCDelegate: SearchableDelegate?
+	var oldVC: BaseViewController?
 	
 	// MARK: - LifeCycle
 	override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +104,10 @@ class HomeViewController: BaseViewController {
 			view.removeFromSuperview()
 		}
 		
+		if oldVC != nil {
+			oldVC?.removeFromParent()
+		}
+		
 		let vc: BaseViewController!
 		
 		switch viewType {
@@ -125,6 +130,7 @@ class HomeViewController: BaseViewController {
 		moveUnderlineView(for: viewType)
 		contentView.addSubview(vc.view)
 		vc.view.frame = contentView.bounds
+		oldVC = vc
 	}
 	
 	private func moveUnderlineView(for viewType: HomeViews) {
