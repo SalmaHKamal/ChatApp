@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 git credentialsId: '796d7a10-33e2-4f00-80b9-479828042c45', url: 'https://github.com/SalmaHKamal/ChatApp.git'
-	        echo env.CHANGE_ID
+	            echo "change id => ${env.CHANGE_ID}"
+                echo "branch name => ${BRANCH_NAME}"
                 echo 'Building'
                 load 'handle.groovy'
             }
