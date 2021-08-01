@@ -33,7 +33,7 @@ println Jenkins.instance.queue
 
 println("Salma")
 
-Jenkins.instance.queue.items.each { println "taskName" + it.task.name + "\n" }
+Jenkins.instance.queue.items.each { println "taskName" + it.task.name + " and its id is " + it.getId() + "\n" }
 def q = Jenkins.instance.queue
 println("get last build")
 //Find items in queue that match <project name>
