@@ -43,7 +43,7 @@ def name_from_url(url)
     return url
 }
 
-def name = env.JOB_NAME
+def name = env.BRANCH_NAME
 def queueOne = Jenkins.instance.queue.items
 if (queueOne.any{ name_from_url(it.task.getUrl()) == name }) {
   println "Newer " + name + " job(s) in queue, aborting"
