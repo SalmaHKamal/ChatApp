@@ -39,6 +39,7 @@ def name_from_url(url)
 {
     url = url.substring(url.indexOf("/") + 1);
     url = url.substring(0, url.indexOf("/"));
+    println("url => " + url)
     return url
 }
 
