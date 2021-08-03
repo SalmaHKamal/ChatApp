@@ -34,9 +34,17 @@ println Jenkins.instance.queue
 println("Salma")
 
 println("\n ==================== A Way To Check if There is Other task for Same job ====================== \n ")
+@NonCPS
+def name_from_url(url)
+{
+    url = url.substring(url.indexOf("/") + 1);
+    url = url.substring(0, url.indexOf("/"));
+    return url
+}
+
 def name = env.JOB_NAME
 def queueOne = Jenkins.instance.queue.items
-if (queueOne.any{ it.task.name == name }) {
+if (queueOne.any{ name_from_url(it.task.getUrl()) == name }) {
   println "Newer " + name + " job(s) in queue, aborting"
   //build.doStop()
 } else {
