@@ -33,6 +33,17 @@ println Jenkins.instance.queue
 
 println("Salma")
 
+println("\n ==================== A Way To Check if There is Other task for Same job ====================== \n ")
+def name = build.properties.environment.JOB_NAME
+def queue = jenkins.model.Jenkins.getInstance().getQueue().getItems()
+if (queue.any{ it.task.getName() == name }) {
+  println "Newer " + name + " job(s) in queue, aborting"
+  //build.doStop()
+} else {
+  println "No newer " + name + " job(s) in queue, proceeding"
+}
+
+println("\n ===================================================== \n ")
 Jenkins.instance.queue.items.each { println "taskName" + it.task.name + " and its id is " + it.getId() + "\n" }
 def q = Jenkins.instance.queue
 println("get last build")
