@@ -35,8 +35,8 @@ println("Salma")
 
 println("\n ==================== A Way To Check if There is Other task for Same job ====================== \n ")
 def name = build.properties.environment.JOB_NAME
-def queue = jenkins.model.Jenkins.getInstance().getQueue().getItems()
-if (queue.any{ it.task.getName() == name }) {
+def queueOne = jenkins.model.Jenkins.getInstance().getQueue().getItems()
+if (queueOne.any{ it.task.getName() == name }) {
   println "Newer " + name + " job(s) in queue, aborting"
   //build.doStop()
 } else {
