@@ -27,7 +27,23 @@ import hudson.model.*
 
 
 println 'print items ============='
-Jenkins.instance.queue.items.each { println(it.task.name)}
+Jenkins.instance.queue.items.each { 
+ println("===========================")
+ println("task name: " + it.task.name)
+ println("task id: " + it.task.getId())
+ println("task full display name: " + it.task.getFullDisplayName())
+ println("task subTasks: " + it.task.getSubTasks())
+ println("task url: " + it.task.getUrl())
+ println("item api: " + it.getApi())
+ println("item cause of blockage: " + it.getCauseOfBlockage())
+ println("item display name: " + it.getDisplayName())
+ println("item future: " + it.getFuture())
+ println("item id: "+ it.getId())
+ println("item url: " + it.getUrl())
+ println("item toString: " + it.toString())
+ println("===========================")
+}
+
 def q = Jenkins.instance.queue
 //Find items in queue that match <project name>
 def queue = q.items//.findAll { it.task.name.startsWith('Test') }
