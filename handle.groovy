@@ -30,7 +30,7 @@ println 'print items ============='
 Jenkins.instance.queue.items.each { 
  println("===========================")
  println("task name: " + it.task.name)
- println("task id: " + it.task.getId())
+//  println("task id: " + it.task.getId())
  println("task full display name: " + it.task.getFullDisplayName())
  println("task subTasks: " + it.task.getSubTasks())
  println("task url: " + it.task.getUrl())
