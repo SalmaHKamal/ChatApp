@@ -26,6 +26,7 @@ import hudson.model.*
 // // // }
 
 println("CURRENT BUILD ==> " + currentBuild + " , number : ==> " + currentBuild.getNumber() + " AND Duration ===> " + currentBuild.getDuration() + "UPSTREAM Builds ==> " + currentBuild.getUpstreamBuilds())
+println("PR Target branch" + env.CHANGE_TARGET)
 
 currentBuild.result = 'ABORTED'
 error('Stopping early…')
