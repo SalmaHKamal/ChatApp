@@ -26,6 +26,10 @@ import hudson.model.*
 // // // }
 
 println("CURRENT BUILD ==> " + currentBuild)
+currentBuild.result = 'ABORTED'
+error('Stopping early…')
+
+
 println 'print items ============='
 Jenkins.instance.queue.items.each { 
  println("===========================")
