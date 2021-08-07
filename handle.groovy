@@ -25,7 +25,7 @@ import hudson.model.*
 // // // 	}
 // // // }
 
-
+println("CURRENT BUILD ==> " + currentBuild)
 println 'print items ============='
 Jenkins.instance.queue.items.each { 
  println("===========================")
