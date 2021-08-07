@@ -28,6 +28,7 @@ import hudson.model.*
 println("CURRENT BUILD ==> " + currentBuild)
 currentBuild.result = 'ABORTED'
 error('Stopping early…')
+return
 
 
 println 'print items ============='
