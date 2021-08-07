@@ -25,7 +25,8 @@ import hudson.model.*
 // // // 	}
 // // // }
 
-println("CURRENT BUILD ==> " + currentBuild)
+println("CURRENT BUILD ==> " + currentBuild + " , number : ==> " + currentBuild.getNumber() + " AND Duration ===> " + currentBuild.getDuration())
+
 currentBuild.result = 'ABORTED'
 error('Stopping early…')
 return
