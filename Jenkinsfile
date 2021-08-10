@@ -2,6 +2,9 @@ pipeline {
     agent any
     
     stages {
+	options {
+	   timeout(time: 2, unit: 'SECONDS') 
+	}
         stage('Build') {
             steps {
                 git credentialsId: '796d7a10-33e2-4f00-80b9-479828042c45', url: 'https://github.com/SalmaHKamal/ChatApp.git', branch: 'develop/setup-jenkins'
