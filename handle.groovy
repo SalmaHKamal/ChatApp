@@ -28,9 +28,9 @@ import hudson.model.*
 println("CURRENT BUILD ==> " + currentBuild + " , number : ==> " + currentBuild.getNumber() + " AND Duration ===> " + currentBuild.getDuration() + " UPSTREAM Builds ==> " + currentBuild.getUpstreamBuilds())
 println("PR Target branch ==> " + env.BUILD_TARGET)
 
-currentBuild.result = 'ABORTED'
-error('Stopping early…')
-return
+// currentBuild.result = 'ABORTED'
+// error('Stopping early…')
+// return
 
 
 println 'print items ============='
