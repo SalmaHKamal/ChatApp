@@ -67,8 +67,8 @@ println(sorted)
 //sort id's, remove last one - in order to keep the newest job, cancel the rest
 println 'last task =========='
 sorted.take(queue_list.size() - 1).each { 
- println(it)
- // q.doCancelItem(it) 
+//  println(it)
+ q.doCancelItem(it) 
 }
 
 //piplineJob1, Test2, TestThree, Test4, TestPR
