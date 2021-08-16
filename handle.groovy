@@ -80,22 +80,30 @@ import hudson.model.Result
 import hudson.model.Run
 import jenkins.model.CauseOfInterruption.UserInterruption
 
-Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
-println("previous build: ==> " + previousBuild)
+Run nextBuild = currentBuild.rawBuild.getNextBuild()
 
-    while (previousBuild != null) {
-        if (previousBuild.isInProgress()) {
-            def executor = previousBuild.getExecutor()
-            if (executor != null) {
-                echo ">> Aborting older build #${previousBuild.number}"
-                executor.interrupt(Result.ABORTED, new UserInterruption(
-                    "Aborted by newer build #${currentBuild.number}"
-                ))
-            }
-        }
+if (nextBuild != null) {
+    currentBuild.result = 'ABORTED'
+    error('Stopping early…')
+    return 
+}
 
-        previousBuild = previousBuild.getPreviousBuildInProgress()
-    }
+// Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
+// println("previous build: ==> " + previousBuild)
+
+//     while (previousBuild != null) {
+//         if (previousBuild.isInProgress()) {
+//             def executor = previousBuild.getExecutor()
+//             if (executor != null) {
+//                 echo ">> Aborting older build #${previousBuild.number}"
+//                 executor.interrupt(Result.ABORTED, new UserInterruption(
+//                     "Aborted by newer build #${currentBuild.number}"
+//                 ))
+//             }
+//         }
+
+//         previousBuild = previousBuild.getPreviousBuildInProgress()
+//     }
 
 
 
