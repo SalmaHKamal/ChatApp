@@ -81,9 +81,9 @@ import hudson.model.Run
 import jenkins.model.CauseOfInterruption.UserInterruption
 
 Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
+println("previous build: ==> " + previousBuild)
 
     while (previousBuild != null) {
-     println("previous build: ==> " + previousBuild)
         if (previousBuild.isInProgress()) {
             def executor = previousBuild.getExecutor()
             if (executor != null) {
