@@ -80,8 +80,7 @@ import hudson.model.Result
 import hudson.model.Run
 import jenkins.model.CauseOfInterruption.UserInterruption
 
-def abortOldBuilds() {
-    Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
+Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
 
     while (previousBuild != null) {
      println("previous build: ==> " + previousBuild)
@@ -97,7 +96,6 @@ def abortOldBuilds() {
 
         previousBuild = previousBuild.getPreviousBuildInProgress()
     }
-}
 
 
 
