@@ -82,7 +82,7 @@ import jenkins.model.CauseOfInterruption.UserInterruption
 
 Run nextBuild = currentBuild.rawBuild.getNextBuild()
 
-println("PROJECT => :" + nextBuild.project)
+// println("PROJECT => :" + nextBuild.project)
 // println("Project Runs => :" + nextBuild.project._getRuns())
 println("ALLJobs: " + Hudson.instance.getAllItems(org.jenkinsci.plugins.workflow.job.WorkflowJob)*.fullName)
 
