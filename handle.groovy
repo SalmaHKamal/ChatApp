@@ -83,6 +83,7 @@ import jenkins.model.CauseOfInterruption.UserInterruption
 Run nextBuild = currentBuild.rawBuild.getNextBuild()
 
 println("PROJECT => :" + nextBuild.project)
+println("Project Runs => :" + nextBuild.project._getRuns())
 
 if (nextBuild != null) {
     currentBuild.result = 'ABORTED'
