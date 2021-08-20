@@ -82,6 +82,8 @@ import jenkins.model.CauseOfInterruption.UserInterruption
 
 Run nextBuild = currentBuild.rawBuild.getNextBuild()
 
+println("PROJECT => :" + nextBuild.project)
+
 if (nextBuild != null) {
     currentBuild.result = 'ABORTED'
     error('Stopping early…')
