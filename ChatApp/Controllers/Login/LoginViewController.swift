@@ -36,6 +36,13 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	
 	// MARK: - Variables
 	var scrollView: UIScrollView!
+	private var viewModel: LoginViewModelProtocol?
+	
+	// MARK: - Inits
+	convenience init(with viewModel: LoginViewModelProtocol) {
+		self.init(nibName: nil, bundle: nil)
+		self.viewModel = viewModel
+	}
 
 	// MARK: - LifeCycle
     override func viewDidLoad() {
@@ -60,14 +67,16 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 				self?.showLoadingIndicator(with: error, hideAfter: 3.0)
 			} else {
 				self?.hideLoadingIndicator()
-				self?.pushToHomeViewController()
+				self?.coordinator?.home()
+				self?.viewModel?.saveInUserDefaults(model: authResult.user)
 			}
 		})
 	}
 	
 	@IBAction func registerBtnPressed(_ sender: Any) {
-		let vc = SignUpViewController()
-		self.navigationController?.pushViewController(vc, animated: true)
+		coordinator?.signup()
+//		let vc = SignUpViewController()
+//		self.navigationController?.pushViewController(vc, animated: true)
 	}
 	
 	@IBAction func forgetPasswordPressed(_ sender: Any) {
@@ -84,8 +93,15 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	}
 	
 	// MARK: - Helper Methods
-	private func pushToHomeViewController() {
-		let vc = HomeViewController()
-		self.navigationController?.pushViewController(vc, animated: true)
-	}
+//	private func pushToHomeViewController() {
+//		coordinator?.home()
+////		let vc = HomeViewController()
+////		if let navigationController = navigationController {
+////			navigationController.pushViewController(vc, animated: true)
+////		} else {
+////			let navigationController = UINavigationController(rootViewController: vc)
+////			navigationController.pushViewController(vc, animated: true)
+////		}
+////
+//	}
 }

@@ -12,8 +12,9 @@ import JGProgressHUD
 class BaseViewController: UIViewController {
 	
 	let progressHud = JGProgressHUD(style: .dark)
+	var coordinator: MainCoordinator?
     
-	func showLoadingIndicator(with text: String?, hideAfter: TimeInterval? = nil) {
+	func showLoadingIndicator(with text: String? = nil, hideAfter: TimeInterval? = nil) {
 		progressHud.textLabel.text = text
 		progressHud.show(in: self.view, animated: true)
 		if let hideAfter = hideAfter {

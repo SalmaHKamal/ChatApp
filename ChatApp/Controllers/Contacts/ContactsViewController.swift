@@ -12,7 +12,7 @@ protocol ContactsViewControllerProtocol: AnyObject {
 	func reloadCollectionView()
 }
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: BaseViewController {
 
 	// MARK: - Outlets
 	@IBOutlet weak var collectionView: UICollectionView! {

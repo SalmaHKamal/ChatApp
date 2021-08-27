@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class UserModel {
+class UserModel: Codable {
 	var uid: String?
 	var displayName: String?
 	var email: String?

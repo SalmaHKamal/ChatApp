@@ -13,6 +13,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window:UIWindow?
+	var coordinator: MainCoordinator?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
@@ -38,9 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	// MARK: - Helper Methods
 	private func launchFirstScreen() {
-		let viewController = HomeViewController(with: HomeViewModel())
-		let navigationController = UINavigationController(rootViewController: viewController)
-		navigationController.navigationBar.isHidden = true
+		let navigationController = UINavigationController()
+		
+		coordinator = MainCoordinator(navigationController)
+		coordinator?.start()
+		
 		window = UIWindow()
 		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()

@@ -14,7 +14,7 @@ protocol ChatViewControllerProtocol: AnyObject {
 	func reloadTableView()
 }
 
-class ChatViewController: UIViewController {
+class ChatViewController: BaseViewController {
 
 	// MARK: - Outlets
 	@IBOutlet weak var sendMessageBtn: UIButton! {
@@ -22,11 +22,23 @@ class ChatViewController: UIViewController {
 			sendMessageBtn.rx.tap.subscribe({ [weak self] _ in
 				let messageContent: String = self?.messageTextView.text ?? ""
 				self?.viewModel?.saveMessage(content: messageContent)
-				
+				self?.messageTextView.text = ""
 				}).disposed(by: disposeBag)
 		}
 	}
 	@IBOutlet weak var messageTextView: UITextView!
+	@IBOutlet weak var receiverName: UILabel! {
+		didSet {
+			receiverName.text = viewModel?.receiverModel?.displayName
+		}
+	}
+	@IBOutlet weak var chatTableView: UITableView! {
+		didSet {
+			chatTableView.delegate = self
+			chatTableView.dataSource = self
+			chatTableView.register(UINib(nibName: ChatMessageTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: ChatMessageTableViewCell.nibName)
+		}
+	}
 	
 	// MARK: - Variables
 	var viewModel: ChatViewModelProtocol?
@@ -50,6 +62,23 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: ChatViewControllerProtocol {
 	func reloadTableView() {
+		chatTableView.reloadData()
+	}
+}
+
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return viewModel?.chatMessageCellModels.count ?? 0
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatMessageTableViewCell.nibName, for: indexPath) as? ChatMessageTableViewCell else {
+			return UITableViewCell()
+		}
+		if let model = viewModel?.chatMessageCellModels[indexPath.row] {
+			cell.setupView(with: model)
+		}
 		
+		return cell
 	}
 }
