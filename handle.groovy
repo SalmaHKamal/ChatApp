@@ -1,4 +1,4 @@
-println("Groovy from chatHistory branch")
+println("Groovy from chatHistory+newSolution branch")
 println("Hi agaain")
 println("Hi agaain2")
 println("Hi agaain3")
@@ -33,7 +33,27 @@ println Jenkins.instance.queue
 
 println("Salma")
 
-Jenkins.instance.queue.items.each { println "taskName" + it.task.name + "\n" }
+println("\n ==================== A Way To Check if There is Other task for Same job ====================== \n ")
+@NonCPS
+def name_from_url(url)
+{
+    url = url.substring(url.indexOf("/") + 1);
+    url = url.substring(0, url.indexOf("/"));
+    println("url => " + url)
+    return url
+}
+
+def name = env.BRANCH_NAME
+def queueOne = Jenkins.instance.queue.items
+if (queueOne.any{ name_from_url(it.task.getUrl()) == name }) {
+  println "Newer " + name + " job(s) in queue, aborting"
+  //build.doStop()
+} else {
+  println "No newer " + name + " job(s) in queue, proceeding"
+}
+
+println("\n ===================================================== \n ")
+Jenkins.instance.queue.items.each { println "taskName" + it.task.name + " and its id is " + it.getId() + "\n" }
 def q = Jenkins.instance.queue
 println("get last build")
 //Find items in queue that match <project name>
