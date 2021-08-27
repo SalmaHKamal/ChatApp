@@ -11,7 +11,7 @@ import Firebase
 
 protocol ChatViewModelProtocol {
 	var viewController: ChatViewControllerProtocol? { get set }
-	var receiverModel: UserModel? { get }
+	var receiverModel: ChatRecieverData? { get }
 	var messages: [MessageModel]? { get }
 	var chatMessageCellModels: [ChatMessageCellModel] { get }
 	
@@ -28,7 +28,7 @@ struct ChatMessageCellModel {
 
 class ChatViewModel: ChatViewModelProtocol {
 	weak var viewController: ChatViewControllerProtocol?
-	var receiverModel: UserModel?
+	var receiverModel: ChatRecieverData?
 	var messages: [MessageModel]? {
 		didSet {
 			guard let messages = messages else {
@@ -41,18 +41,18 @@ class ChatViewModel: ChatViewModelProtocol {
 	let chatManager: ChatManager = ChatManager()
 	var chatMessageCellModels: [ChatMessageCellModel] = []
 	
-	init(receiverModel: UserModel) {
+	init(receiverModel: ChatRecieverData) {
 		self.receiverModel = receiverModel
 	}
 	
 	func loadChat() {
-		guard let model: UserModel = receiverModel else {
-			return
-		}
-		chatManager.loadChat(with: model) { [weak self] messages, docRef in
-			self?.messages = messages
-			self?.docRef = docRef
-		}
+//		guard let model: ChatRecieverData = receiverModel else {
+//			return
+//		}
+////		chatManager.loadChat(with: model) { [weak self] messages, docRef in
+////			self?.messages = messages
+////			self?.docRef = docRef
+////		}
 	}
 	
 	func createCellModels(from messages: [MessageModel]) {
@@ -79,20 +79,20 @@ class ChatViewModel: ChatViewModelProtocol {
 	}
 	
 	private func createMessage(with content: String, completion: @escaping (_ messageModel: MessageModel?) -> Void) {
-		guard let receiverModel = receiverModel else {
-			completion(nil)
-			return
-		}
-		
-		chatManager.getSenderInfo(receiverModel: receiverModel) { (result) in
-			var model: MessageModel = MessageModel()
-			model.id = "0"
-			model.content = content
-			model.created = TimeInterval()
-			model.senderName = result?.0
-			model.senderID = result?.1
-			
-			completion(model)
-		}
+//		guard let receiverModel = receiverModel else {
+//			completion(nil)
+//			return
+//		}
+//
+//		chatManager.getSenderInfo(receiverModel: receiverModel) { (result) in
+//			var model: MessageModel = MessageModel()
+//			model.id = "0"
+//			model.content = content
+//			model.created = TimeInterval()
+//			model.senderName = result?.0
+//			model.senderID = result?.1
+//
+//			completion(model)
+//		}
 	}
 }

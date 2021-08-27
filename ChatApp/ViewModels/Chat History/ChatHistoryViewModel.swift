@@ -10,30 +10,27 @@ import UIKit
 
 protocol ChatHistoryViewModelProtocol {
 	var viewController: ChatHistoryViewControllerProtocol? { get set }
-	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
-	var filteredChatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? { get }
-	var receivers: [UserModel] { get }
 	var cellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? { get }
 	var viewControllerParentVC: BaseViewController? { get set }
 	
 	func fetchData()
 	func updateMessageIsReadState(at index: Int)
 	func deleteChatHistory(at indexPath: IndexPath)
+	func getReceiverData(at indexPath: IndexPath) -> ChatRecieverData?
 }
 
 class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	// MARK: - Variabels
 	weak var viewController: ChatHistoryViewControllerProtocol?
-	var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
-	var filteredChatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
+	private var chatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
+	private var filteredChatHistoryCellModels: [ChatHistoryViewModel.ChatHistoryCellModel]? = [ChatHistoryCellModel]()
 	var viewControllerState: ChatHistoryViewModel.ChatHistoryViewControllerState? = .loading {
 		didSet {
 			viewController?.reloadTableView()
 		}
 	}
-	var receivers: [UserModel] = []
 	let chatManager = ChatManager()
 	let firebaseManager = FirebaseManager()
 	var isSearching: Bool = false
@@ -125,6 +122,22 @@ extension ChatHistoryViewModel: SearchableDelegate {
 		isSearching = false
 		filteredChatHistoryCellModels?.removeAll()
 		viewController?.reloadTableView()
+	}
+	
+	func getReceiverData(at indexPath: IndexPath) -> ChatRecieverData? {
+		guard let model = cellModels?[indexPath.row] else {
+			return nil
+		}
+		
+		guard let receiverId = model.receiverUid,
+			  let receiverName = model.receiverDisplayName else {
+			return nil
+		}
+		let receiverData: ChatRecieverData = (id: receiverId,
+											  name: receiverName,
+											  imageUrl: model.receiverPhotoUrl ?? "")
+		
+		return receiverData
 	}
 }
 

@@ -12,6 +12,7 @@ import Firebase
 // MARK: - Chat Collection
 typealias ChatCompletion = (_ messages: [MessageModel]?, _ docRef: DocumentReference?) -> Void
 typealias ChatHistoryCompletion = (_ messagesDic: [String: (receiver: UserModel, messages: [MessageModel])]) -> Void
+typealias ChatRecieverData = (id: String, name: String, imageUrl: String)
 
 extension FirebaseManager {
 	

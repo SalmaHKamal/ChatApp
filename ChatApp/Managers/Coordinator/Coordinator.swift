@@ -46,7 +46,7 @@ class MainCoordinator: Coordinator {
 		push(vc, isNavBarHidden: false)
 	}
 	
-	func chatRoom(receiverModel model: UserModel) {
+	func chatRoom(receiverModel model: ChatRecieverData) {
 		let vc = ChatViewController(with: ChatViewModel(receiverModel: model))
 		push(vc, isNavBarHidden: false)
 	}

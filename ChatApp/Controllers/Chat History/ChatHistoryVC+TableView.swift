@@ -64,13 +64,13 @@ extension ChatHistoryViewController {
 		guard let selectedCell = tableView.cellForRow(at: indexPath) as? ChatHistoryTableViewCell else {
 			return
 		}
-		selectedCell.model = viewModel?.chatHistoryCellModels?[indexPath.row]
+		selectedCell.model = viewModel?.cellModels?[indexPath.row]
 	}
 	
 	private func navigateToChatVC(selectedIndex indexPath: IndexPath) {
-		guard let receiver = viewModel?.receivers[indexPath.row] else {
+		guard let data = viewModel?.getReceiverData(at: indexPath) else {
 			return
 		}
-		coordinator?.chatRoom(receiverModel: receiver)
+		coordinator?.chatRoom(receiverModel: data)
 	}
 }

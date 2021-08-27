@@ -29,7 +29,7 @@ class ChatViewController: BaseViewController {
 	@IBOutlet weak var messageTextView: UITextView!
 	@IBOutlet weak var receiverName: UILabel! {
 		didSet {
-			receiverName.text = viewModel?.receiverModel?.displayName
+			receiverName.text = viewModel?.receiverModel?.name
 		}
 	}
 	@IBOutlet weak var chatTableView: UITableView! {
