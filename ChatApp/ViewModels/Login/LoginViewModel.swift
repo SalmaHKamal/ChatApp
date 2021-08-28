@@ -13,8 +13,20 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 class LoginViewModel: LoginViewModelProtocol {
+	let firebaseManager = FirebaseManager()
+	
 	func saveInUserDefaults(model: UserModel?) {
-		guard let model = model else { return }
-		UserDefaultsManager().set(currentUser: model)
+		guard let model = model,
+			  let modelID = model.uid else { return }
+		getRestOfUserData(with: modelID) { (userModel) in
+			model.displayName = userModel?.displayName
+			UserDefaultsManager().set(currentUser: model)
+		}
+	}
+	
+	private func getRestOfUserData(with userID: String, completion: @escaping (UserModel?) -> Void) {
+		firebaseManager.getUserInfo(for: userID) { (model) in
+			completion(model)
+		}
 	}
 }

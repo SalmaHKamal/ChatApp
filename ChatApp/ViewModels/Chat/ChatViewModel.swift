@@ -22,6 +22,8 @@ protocol ChatViewModelProtocol {
 }
 
 struct ChatMessageCellModel {
+	var senderName: String?
+	var senderID: String?
 	var profileImageUrl: URL?
 	var messageContent: String?
 }
@@ -44,6 +46,9 @@ class ChatViewModel: ChatViewModelProtocol {
 			viewController?.reloadTableView()
 		}
 	}
+	var currentUser: UserModel? {
+		return UserDefaultsManager().get(with: .currentUser) as? UserModel
+	}
 	
 	init(receiverModel: ChatRecieverData) {
 		self.receiverModel = receiverModel
@@ -62,7 +67,9 @@ class ChatViewModel: ChatViewModelProtocol {
 	func createCellModels(from messages: [MessageModel]) {
 		var cellModels = [ChatMessageCellModel]()
 		messages.forEach { (message) in
-			let cellModel = ChatMessageCellModel(profileImageUrl: nil,
+			let cellModel = ChatMessageCellModel(senderName: message.senderName,
+												 senderID: message.senderID,
+												 profileImageUrl: nil,
 												 messageContent: message.content)
 			cellModels.append(cellModel)
 		}
@@ -72,29 +79,19 @@ class ChatViewModel: ChatViewModelProtocol {
 	
 	func saveMessage(content: String) {
 		
-		createMessage(with: content) { [weak self] (message) in
-			guard let message: MessageModel = message else {
-				return
-			}
-			self?.chatManager.save(message: message, docRef: self?.docRef)
+		guard let currentUser = currentUser else {
+			return
 		}
-	}
-	
-	private func createMessage(with content: String, completion: @escaping (_ messageModel: MessageModel?) -> Void) {
-//		guard let receiverModel = receiverModel else {
-//			completion(nil)
-//			return
-//		}
-//
-//		chatManager.getSenderInfo(receiverModel: receiverModel) { (result) in
-//			var model: MessageModel = MessageModel()
-//			model.id = "0"
-//			model.content = content
-//			model.created = TimeInterval()
-//			model.senderName = result?.0
-//			model.senderID = result?.1
-//
-//			completion(model)
-//		}
+		
+		var model = MessageModel()
+		model.id = UUID().uuidString
+		model.content = content
+		model.created = Date()
+		model.senderName = currentUser.displayName
+		model.senderID = currentUser.uid
+		model.isRead = true
+		
+		chatManager.save(message: model,
+						 docRef: docRef)
 	}
 }

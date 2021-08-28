@@ -77,11 +77,8 @@ extension FirebaseManager {
 	}
 	
 	func saveMessage(_ message: MessageModel, with docRef: DocumentReference?) {
-		guard let messageDictionry: [String: Any] = message.dict else {
-			return
-		}
-		
-		docRef?.collection(FirestoreCollections.messages.rawValue).addDocument(data: messageDictionry, completion: nil)
+		let messageDictionary: [String: Any] = message.dictionary
+		docRef?.collection(FirestoreCollections.messages.rawValue).addDocument(data: messageDictionary, completion: nil)
 	}
 	
 }

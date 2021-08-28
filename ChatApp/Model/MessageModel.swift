@@ -17,6 +17,15 @@ struct MessageModel: Codable {
     var senderName: String?
 	var isRead: Bool = false
 	
+	var dictionary: [String: Any] {
+		return ["id": id as Any,
+				"content": content as Any,
+				"created": created?.timestamp as Any,
+				"senderID": senderID as Any,
+				"senderName": senderName as Any,
+				"isRead": isRead as Any]
+	}
+	
 	init() {}
 	
 	init?(dictionary: [String: Any]?) {
