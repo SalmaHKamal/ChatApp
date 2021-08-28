@@ -13,12 +13,7 @@ extension FirebaseManager {
 	
 	// MARK: - Load
 	func loadChatHistory(completion: @escaping ([ChatHistoryModel]) -> Void) {
-		guard let currentUserID = getCurrentUserID() else {
-			completion([])
-			return
-		}
 		firestore.collection(FirestoreCollections.chatHistory.rawValue)
-			.whereField("senderID", isNotEqualTo: currentUserID)
 			.addSnapshotListener { (snapshot, error) in
 				guard let snapshot = snapshot else {
 					print("No snapshot and maybe error => ".uppercased(), error as Any)

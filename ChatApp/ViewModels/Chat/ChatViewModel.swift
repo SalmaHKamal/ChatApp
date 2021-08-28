@@ -26,6 +26,7 @@ struct ChatMessageCellModel {
 	var senderID: String?
 	var profileImageUrl: URL?
 	var messageContent: String?
+	var isFromRightToLeft: Bool = false
 }
 
 class ChatViewModel: ChatViewModelProtocol {
@@ -70,7 +71,8 @@ class ChatViewModel: ChatViewModelProtocol {
 			let cellModel = ChatMessageCellModel(senderName: message.senderName,
 												 senderID: message.senderID,
 												 profileImageUrl: nil,
-												 messageContent: message.content)
+												 messageContent: message.content,
+												 isFromRightToLeft: message.senderID == currentUser?.uid)
 			cellModels.append(cellModel)
 		}
 		

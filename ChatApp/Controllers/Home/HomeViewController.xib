@@ -243,7 +243,7 @@
                             </subviews>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" red="0.11764705882352941" green="0.44705882352941173" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.09047514945268631" green="0.62319260835647583" blue="0.57055896520614624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="5oW-f6-cXn" firstAttribute="leading" secondItem="xrg-4f-aXu" secondAttribute="leading" id="ETF-h4-6lL"/>
                         <constraint firstAttribute="height" constant="90" id="GAw-kL-3YC"/>
@@ -261,7 +261,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.11764705882352941" green="0.44705882352941173" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.09047514945268631" green="0.62319260835647583" blue="0.57055896520614624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xrg-4f-aXu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5bD-jV-a0A"/>
                 <constraint firstItem="xrg-4f-aXu" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JnM-7X-zXj"/>

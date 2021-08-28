@@ -63,6 +63,14 @@ class ChatViewController: BaseViewController {
 extension ChatViewController: ChatViewControllerProtocol {
 	func reloadTableView() {
 		chatTableView.reloadData()
+		scrollToBottom()
+	}
+	
+	func scrollToBottom(){
+		DispatchQueue.main.async {
+			let indexPath = IndexPath(row: (self.viewModel?.chatMessageCellModels.count ?? 0) - 1, section: 0)
+			self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+		}
 	}
 }
 
