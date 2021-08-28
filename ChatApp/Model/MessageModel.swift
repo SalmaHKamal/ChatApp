@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import Firebase
 
 struct MessageModel: Codable {
 	var id: String?
     var content: String?
-    var created: TimeInterval?
+    var created: Date?
     var senderID: String?
     var senderName: String?
 	var isRead: Bool = false
@@ -24,17 +25,18 @@ struct MessageModel: Codable {
 		}
 		
 		guard let uid: String = dictionary["id"] as? String,
-			let content: String = dictionary["content"] as? String,
-			let created: TimeInterval = dictionary["created"] as? TimeInterval,
-			let senderID: String = dictionary["senderID"] as? String,
-			let senderName: String = dictionary["senderName"] as? String,
-			let isRead: Bool = dictionary["isRead"] as? Bool else {
-				return
+			  let content: String = dictionary["content"] as? String,
+			  let created: Timestamp = dictionary["created"] as? Timestamp,
+			  let senderID: String = dictionary["senderID"] as? String,
+			  let senderName: String = dictionary["senderName"] as? String,
+			  let isRead: Bool = dictionary["isRead"] as? Bool else {
+			assertionFailure("Failed to map message model")
+			return
 		}
 		
 		self.id = uid
 		self.content = content
-		self.created = created
+		self.created = created.dateValue()
 		self.senderID = senderID
 		self.senderName = senderName
 		self.isRead = isRead

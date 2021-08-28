@@ -16,12 +16,11 @@ typealias ChatRecieverData = (id: String, name: String, imageUrl: String)
 
 extension FirebaseManager {
 	
-	func loadChat(for receiverModel: UserModel, completion: @escaping ChatCompletion) {
-		guard let currentUserID = getCurrentUserID(),
-			let receiverID = receiverModel.uid else {
+	func loadChat(for receiverID: String, completion: @escaping ChatCompletion) {
+		guard let currentUserID = getCurrentUserID() else {
 				return
 		}
-		let users = [currentUserID, receiverID]
+		let usersIds = [currentUserID, receiverID]
 		
 		firestore.collection(FirestoreCollections.chat.rawValue)
 			.whereField("users", arrayContains: currentUserID)
@@ -34,7 +33,7 @@ extension FirebaseManager {
 				guard let chatQuerySnap = chatQuerySnap ,
 					chatQuerySnap.documents.count > 0 else {
 						
-						self.createChat(users, completion: completion)
+						self.createChat(usersIds, completion: completion)
 						return
 				}
 				
@@ -46,11 +45,10 @@ extension FirebaseManager {
 						}
 					}
 				}
-				
 				if let documentRef = docRef?.reference {
 					self.loadMessages(docRef: documentRef, completion: completion)
 				} else {
-					self.createChat(users, completion: completion)
+					self.createChat(usersIds, completion: completion)
 				}
 				
 		}

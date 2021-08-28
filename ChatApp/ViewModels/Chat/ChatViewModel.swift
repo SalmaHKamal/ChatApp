@@ -39,33 +39,35 @@ class ChatViewModel: ChatViewModelProtocol {
 	}
 	var docRef: DocumentReference?
 	let chatManager: ChatManager = ChatManager()
-	var chatMessageCellModels: [ChatMessageCellModel] = []
+	var chatMessageCellModels: [ChatMessageCellModel] = [] {
+		didSet {
+			viewController?.reloadTableView()
+		}
+	}
 	
 	init(receiverModel: ChatRecieverData) {
 		self.receiverModel = receiverModel
 	}
 	
 	func loadChat() {
-//		guard let model: ChatRecieverData = receiverModel else {
-//			return
-//		}
-////		chatManager.loadChat(with: model) { [weak self] messages, docRef in
-////			self?.messages = messages
-////			self?.docRef = docRef
-////		}
+		guard let model: ChatRecieverData = receiverModel else {
+			return
+		}
+		chatManager.loadChat(with: model.id) { [weak self] messages, docRef in
+			self?.messages = messages
+			self?.docRef = docRef
+		}
 	}
 	
 	func createCellModels(from messages: [MessageModel]) {
+		var cellModels = [ChatMessageCellModel]()
 		messages.forEach { (message) in
-			guard let senderID: String = message.senderID else {
-				return
-			}
-			chatManager.getUserInfo(uid: senderID, completion: { [weak self] user in
-				self?.chatMessageCellModels.append(ChatMessageCellModel(profileImageUrl: user?.photoUrl,
-																  messageContent: message.content))
-				self?.viewController?.reloadTableView()
-			})
+			let cellModel = ChatMessageCellModel(profileImageUrl: nil,
+												 messageContent: message.content)
+			cellModels.append(cellModel)
 		}
+		
+		chatMessageCellModels = cellModels
 	}
 	
 	func saveMessage(content: String) {
