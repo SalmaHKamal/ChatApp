@@ -13,8 +13,7 @@ extension FirebaseManager {
 	
 	// MARK: - Load
 	func loadChatHistory(completion: @escaping ([ChatHistoryModel]) -> Void) {
-		guard let currentUser = userDefaultsManager.get(with: .currentUser) as? UserModel,
-			  let currentUserID = currentUser.uid else {
+		guard let currentUserID = getCurrentUserID() else {
 			completion([])
 			return
 		}
