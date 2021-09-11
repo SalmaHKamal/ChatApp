@@ -25,6 +25,7 @@ struct ChatHistoryModel: Codable {
 	var senderID: String?
 	var members: [String]?
 	var chatHistoryId: String?
+	var membersNames: [String]?
 	
 	init() {}
 	
@@ -41,7 +42,8 @@ struct ChatHistoryModel: Codable {
 			  let chatType = dictionary["type"] as? String,
 			  let senderID = dictionary["senderID"] as? String,
 			  let members = dictionary["members"] as? [String],
-			  let chatHistoryId = dictionary["chatHistoryId"] as? String else {
+			  let chatHistoryId = dictionary["chatHistoryId"] as? String,
+			  let membersNames = dictionary["membersNames"] as? [String] else {
 			return
 		}
 		
@@ -55,5 +57,6 @@ struct ChatHistoryModel: Codable {
 		self.senderID = senderID
 		self.members = members
 		self.chatHistoryId = chatHistoryId
+		self.membersNames = membersNames
 	}
 }

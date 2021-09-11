@@ -51,6 +51,7 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 		var unSeenMessageCount: Int = 0
 		var messageTime: Date?
 		var chatHistoryId: String?
+		var cellDisplayName: String?
 	}
 	
 	enum ChatHistoryViewControllerState {
@@ -70,16 +71,28 @@ class ChatHistoryViewModel: ChatHistoryViewModelProtocol {
 	
 	private func createCellModel(with result: [ChatHistoryModel]) {
 		result.forEach { (model) in
+			let nameToDisplay = getNameToDisplay(from: model)
 			let cellModel = ChatHistoryCellModel(receiverUid: model.senderID,
 												 receiverPhotoUrl: model.senderAvatar,
 												 receiverDisplayName: model.senderName,
 												 lastMessage: model.lastMessage,
 												 unSeenMessageCount: model.unSeenMessageCount,
 												 messageTime: model.date,
-												 chatHistoryId: model.chatHistoryId)
+												 chatHistoryId: model.chatHistoryId,
+												 cellDisplayName: nameToDisplay)
 			chatHistoryCellModels?.append(cellModel)
 		}
 		viewControllerState = .finished
+	}
+	
+	private func getNameToDisplay(from model: ChatHistoryModel) -> String? {
+		guard let userId = firebaseManager.getCurrentUserID() else {
+			return nil
+		}
+		guard let name = model.membersNames?.filter({ !$0.contains(userId) }).first?.split(separator: "_").last else {
+			return nil
+		}
+		return String(name)
 	}
 	
 	func updateMessageIsReadState(at index: Int) {

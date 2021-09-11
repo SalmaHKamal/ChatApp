@@ -46,6 +46,10 @@ extension FirebaseManager {
 		return Auth.auth().currentUser?.uid
 	}
 	
+	internal func getCurrentUser() -> UserModel? {
+		return UserModel(from: Auth.auth().currentUser)
+	}
+	
 	// TODO: - to be removed in useless
 	func getCurrentUserProfileImage(completion: @escaping (_ profileImage: String?) -> Void) {
 		guard let uid = getCurrentUserID() else {

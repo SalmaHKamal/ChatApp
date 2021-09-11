@@ -37,7 +37,7 @@ class ChatHistoryTableViewCell: UITableViewCell {
 		setupProfileImage(with: model)
 		setupMessageTime(with: model.messageTime)
 		lastMessageLabel.text = model.lastMessage
-		receiverNameLabel.text = model.receiverDisplayName
+		receiverNameLabel.text = model.cellDisplayName
 		messageReadIndicatorView.backgroundColor = model.unSeenMessageCount > 0 ? .darkGray : .clear
 	}
 }
