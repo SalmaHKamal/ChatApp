@@ -143,7 +143,7 @@ extension ChatHistoryViewModel: SearchableDelegate {
 		}
 		
 		guard let receiverId = model.receiverUid,
-			  let receiverName = model.receiverDisplayName else {
+			  let receiverName = model.cellDisplayName else {
 			return nil
 		}
 		let receiverData: ChatRecieverData = (id: receiverId,
