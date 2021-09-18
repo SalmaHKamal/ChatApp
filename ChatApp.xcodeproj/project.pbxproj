@@ -56,6 +56,8 @@
 		80A24A7125D7D7F4005691BE /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A7025D7D7F4005691BE /* ChatManager.swift */; };
 		80A24A7325D7DBA7005691BE /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A7225D7DBA7005691BE /* MessageModel.swift */; };
 		80A24A7625D7FD08005691BE /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A7525D7FD08005691BE /* ChatHistoryViewModel.swift */; };
+		80A3767A26F5FE31002E3C1D /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3767926F5FE31002E3C1D /* SoundPlayer.swift */; };
+		80A3768326F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac in Resources */ = {isa = PBXBuildFile; fileRef = 80A3768226F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac */; };
 		80AD20CA2600B40200E6936F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD20C92600B40200E6936F /* ChatModel.swift */; };
 		80AD20CD2600B4B400E6936F /* FirebaseManager+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD20CC2600B4B400E6936F /* FirebaseManager+Chat.swift */; };
 		80AD20CF2600B53800E6936F /* FirebaseManager+HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD20CE2600B53800E6936F /* FirebaseManager+HelperMethods.swift */; };
@@ -147,6 +149,8 @@
 		80A24A7025D7D7F4005691BE /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		80A24A7225D7DBA7005691BE /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		80A24A7525D7FD08005691BE /* ChatHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewModel.swift; sourceTree = "<group>"; };
+		80A3767926F5FE31002E3C1D /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		80A3768226F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = "COMCell_Message sent (ID 1313)_BSB.aac"; sourceTree = "<group>"; };
 		80AD20C92600B40200E6936F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		80AD20CC2600B4B400E6936F /* FirebaseManager+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+Chat.swift"; sourceTree = "<group>"; };
 		80AD20CE2600B53800E6936F /* FirebaseManager+HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+HelperMethods.swift"; sourceTree = "<group>"; };
@@ -418,6 +422,14 @@
 			path = "Chat History";
 			sourceTree = "<group>";
 		};
+		80A3768126F601B1002E3C1D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				80A3768226F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		80AD20CB2600B49B00E6936F /* FirebaseManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +487,7 @@
 				80A24A6125D68061005691BE /* ViewModels */,
 				80C74012259F666800EE8631 /* Views */,
 				80C7400D259F652F00EE8631 /* Controllers */,
+				80A3768126F601B1002E3C1D /* Sounds */,
 				80C73FEB259F475F00EE8631 /* Info.plist */,
 				802E9BDC25BB29FF00237712 /* GoogleService-Info.plist */,
 			);
@@ -538,6 +551,7 @@
 			children = (
 				802E9BE425BB30FB00237712 /* LoginErrors.swift */,
 				802E9BD825BB275800237712 /* Screens.swift */,
+				80A3767926F5FE31002E3C1D /* SoundPlayer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -701,6 +715,7 @@
 			files = (
 				80C74014259F669500EE8631 /* CustomTextFieldView.xib in Resources */,
 				804DB5FA25FCA73C00AB2E5B /* ChatMessageTableViewCell.xib in Resources */,
+				80A3768326F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac in Resources */,
 				80C74011259F656E00EE8631 /* LoginViewController.xib in Resources */,
 				80C73FEA259F475F00EE8631 /* LaunchScreen.storyboard in Resources */,
 				807C6A5726503C3F000EF6FB /* SettingsViewController.xib in Resources */,
@@ -888,6 +903,7 @@
 				80E46C8D260D0540009DCFA2 /* TimeIntervalExtension.swift in Sources */,
 				802E9BED25BBF2C400237712 /* LiveImageView.swift in Sources */,
 				80C74019259F992900EE8631 /* CustomTextFieldView.swift in Sources */,
+				80A3767A26F5FE31002E3C1D /* SoundPlayer.swift in Sources */,
 				802E9C0325BEC89900237712 /* ChatHistoryViewController.swift in Sources */,
 				802E9BE925BB394100237712 /* HomeViewController.swift in Sources */,
 			);

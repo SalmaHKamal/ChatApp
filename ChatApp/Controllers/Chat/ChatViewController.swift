@@ -23,6 +23,8 @@ class ChatViewController: BaseViewController {
 				let messageContent: String = self?.messageTextView.text ?? ""
 				self?.viewModel?.saveMessage(content: messageContent)
 				self?.messageTextView.text = ""
+				self?.viewModel?.playSound()
+				
 				}).disposed(by: disposeBag)
 		}
 	}

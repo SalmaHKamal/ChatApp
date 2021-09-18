@@ -18,6 +18,7 @@ protocol ChatViewModelProtocol {
 	func loadChat()
 	func saveMessage(content: String)
 	func createCellModels(from messages: [MessageModel])
+	func playSound()
 	
 }
 
@@ -30,6 +31,8 @@ struct ChatMessageCellModel {
 }
 
 class ChatViewModel: ChatViewModelProtocol {
+	
+	// MARK: - Variables
 	weak var viewController: ChatViewControllerProtocol?
 	var receiverModel: ChatRecieverData?
 	var messages: [MessageModel]? {
@@ -50,11 +53,14 @@ class ChatViewModel: ChatViewModelProtocol {
 	var currentUser: UserModel? {
 		return UserDefaultsManager().get(with: .currentUser) as? UserModel
 	}
+	private let soundPlayer = SoundPlayer()
 	
+	// MARK: - Inits
 	init(receiverModel: ChatRecieverData) {
 		self.receiverModel = receiverModel
 	}
 	
+	// MARK: - Methods
 	func loadChat() {
 		guard let model: ChatRecieverData = receiverModel else {
 			return
@@ -95,5 +101,9 @@ class ChatViewModel: ChatViewModelProtocol {
 		
 		chatManager.save(message: model,
 						 docRef: docRef)
+	}
+	
+	func playSound() {
+		soundPlayer.play(sound: .sendMessage)
 	}
 }
