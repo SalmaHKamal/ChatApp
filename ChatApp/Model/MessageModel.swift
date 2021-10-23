@@ -9,6 +9,12 @@
 import Foundation
 import Firebase
 
+enum MessageContentType: String, Codable {
+	case text = "text"
+	case photo = "photo"
+	case video = "video"
+}
+
 struct MessageModel: Codable {
 	var id: String?
     var content: String?
@@ -16,6 +22,9 @@ struct MessageModel: Codable {
     var senderID: String?
     var senderName: String?
 	var isRead: Bool = false
+	var contentType: MessageContentType = .text
+	var photoUrl: String?
+	var chatRoomID: String?
 	
 	var dictionary: [String: Any] {
 		return ["id": id as Any,
@@ -23,7 +32,10 @@ struct MessageModel: Codable {
 				"created": created?.timestamp as Any,
 				"senderID": senderID as Any,
 				"senderName": senderName as Any,
-				"isRead": isRead as Any]
+				"isRead": isRead as Any,
+				"contentType": contentType.rawValue as Any,
+				"photoMessage": photoUrl as Any,
+				"chatRoomID": chatRoomID as Any]
 	}
 	
 	init() {}
@@ -34,14 +46,18 @@ struct MessageModel: Codable {
 		}
 		
 		guard let uid: String = dictionary["id"] as? String,
-			  let content: String = dictionary["content"] as? String,
 			  let created: Timestamp = dictionary["created"] as? Timestamp,
 			  let senderID: String = dictionary["senderID"] as? String,
 			  let senderName: String = dictionary["senderName"] as? String,
-			  let isRead: Bool = dictionary["isRead"] as? Bool else {
+			  let isRead: Bool = dictionary["isRead"] as? Bool,
+			  let chatRoomID: String = dictionary["chatRoomID"] as? String,
+			  let contentType = dictionary["contentType"] as? String else {
 			assertionFailure("Failed to map message model")
 			return
 		}
+		
+		let content: String = dictionary["content"] as? String ?? ""
+		let photoUrl = dictionary["photoMessage"] as? String ?? ""
 		
 		self.id = uid
 		self.content = content
@@ -49,5 +65,8 @@ struct MessageModel: Codable {
 		self.senderID = senderID
 		self.senderName = senderName
 		self.isRead = isRead
+		self.contentType = MessageContentType(rawValue: contentType) ?? .text
+		self.photoUrl = photoUrl
+		self.chatRoomID = chatRoomID
 	}
 }

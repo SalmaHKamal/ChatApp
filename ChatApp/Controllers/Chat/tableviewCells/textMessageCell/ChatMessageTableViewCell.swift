@@ -17,8 +17,9 @@ class ChatMessageTableViewCell: UITableViewCell {
 	static let nibName: String = String(describing: ChatMessageTableViewCell.self)
 	func setupView(with model: ChatMessageCellModel) {
 		textView.text = model.messageContent
-		userProfileImage.sd_setImage(with: model.profileImageUrl,
-									 placeholderImage: #imageLiteral(resourceName: "username"))
+		if let profileImageUrl = model.profileImageUrl {
+			userProfileImage.sd_setImage(with: profileImageUrl)
+		}
 		if model.isFromRightToLeft {
 			flipCell()
 			changeTextViewColor()

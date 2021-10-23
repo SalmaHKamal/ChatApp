@@ -34,4 +34,8 @@ struct ChatManager {
 	func getUserInfo(uid: String, completion: @escaping (_ user: UserModel?) -> Void) {
 		firebaseManager.getUserInfo(for: uid, completion: completion)
 	}
+	
+	func uploadPhoto(imageData: Data, imagePath: String, completion: @escaping (String?) -> Void) {
+		firebaseManager.uploadPhoto(imageData, imagePath: imagePath, completion: completion)
+	}
 }

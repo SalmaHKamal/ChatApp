@@ -12,6 +12,7 @@ import RxSwift
 
 protocol ChatViewControllerProtocol: AnyObject {
 	func reloadTableView()
+	func showImagePicker()
 }
 
 class ChatViewController: BaseViewController {
@@ -21,7 +22,7 @@ class ChatViewController: BaseViewController {
 		didSet {
 			sendMessageBtn.rx.tap.subscribe({ [weak self] _ in
 				let messageContent: String = self?.messageTextView.text ?? ""
-				self?.viewModel?.saveMessage(content: messageContent)
+				self?.viewModel?.saveMessage(content: messageContent, photo: nil)
 				self?.messageTextView.text = ""
 				self?.viewModel?.playSound()
 				
@@ -38,13 +39,17 @@ class ChatViewController: BaseViewController {
 		didSet {
 			chatTableView.delegate = self
 			chatTableView.dataSource = self
-			chatTableView.register(UINib(nibName: ChatMessageTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: ChatMessageTableViewCell.nibName)
+			chatTableView.register(UINib(nibName: ChatMessageTableViewCell.nibName, bundle: nil),
+								   forCellReuseIdentifier: ChatMessageTableViewCell.nibName)
+			chatTableView.register(UINib(nibName: ChatPhotoMessageTableViewCell.reuseId, bundle: nil),
+								   forCellReuseIdentifier: ChatPhotoMessageTableViewCell.reuseId)
 		}
 	}
 	
 	// MARK: - Variables
-	var viewModel: ChatViewModelProtocol?
-	let disposeBag: DisposeBag = DisposeBag()
+	private var viewModel: ChatViewModelProtocol?
+	private let disposeBag: DisposeBag = DisposeBag()
+	private var imagePicker: ImagePicker?
 	
 	// MARK: - LifeCycle
     override func viewDidLoad() {
@@ -72,6 +77,11 @@ extension ChatViewController: ChatViewControllerProtocol {
 		scrollToBottom()
 	}
 	
+	func showImagePicker() {
+		imagePicker = ImagePicker(presentationController: self, delegate: self)
+		imagePicker?.present(from: view)
+	}
+	
 	func scrollToBottom(){
 		DispatchQueue.main.async {
 			let indexPath = IndexPath(row: (self.viewModel?.chatMessageCellModels.count ?? 0) - 1, section: 0)
@@ -86,13 +96,37 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatMessageTableViewCell.nibName, for: indexPath) as? ChatMessageTableViewCell else {
+		if let model = viewModel?.chatMessageCellModels[indexPath.row] {
+			if model.messageType == .text {
+				return dequeueTextMessageCell(model, indexPath: indexPath)
+			} else {
+				return dequeuePhotoMessageCell(model, indexPath: indexPath)
+			}
+		}
+		return UITableViewCell()
+	}
+	
+	private func dequeueTextMessageCell(_ model: ChatMessageCellModel, indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = chatTableView.dequeueReusableCell(withIdentifier: ChatMessageTableViewCell.nibName,
+														   for: indexPath) as? ChatMessageTableViewCell else {
 			return UITableViewCell()
 		}
-		if let model = viewModel?.chatMessageCellModels[indexPath.row] {
-			cell.setupView(with: model)
-		}
-		
+		cell.setupView(with: model)
 		return cell
+	}
+	
+	private func dequeuePhotoMessageCell(_ model: ChatMessageCellModel, indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = chatTableView.dequeueReusableCell(withIdentifier: ChatPhotoMessageTableViewCell.reuseId,
+														   for: indexPath) as? ChatPhotoMessageTableViewCell else {
+			return UITableViewCell()
+		}
+		cell.setupView(with: model)
+		return cell
+	}
+}
+
+extension ChatViewController: ImagePickerDelegate {
+	func didSelect(image: UIImage?) {
+		viewModel?.saveMessage(content: nil, photo: image)
 	}
 }

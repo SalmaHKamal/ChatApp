@@ -16,7 +16,7 @@ protocol ChatViewModelProtocol {
 	var chatMessageCellModels: [ChatMessageCellModel] { get }
 	
 	func loadChat()
-	func saveMessage(content: String)
+	func saveMessage(content: String?, photo: UIImage?)
 	func createCellModels(from messages: [MessageModel])
 	func playSound()
 	func presentActionSheet()
@@ -28,7 +28,9 @@ struct ChatMessageCellModel {
 	var senderID: String?
 	var profileImageUrl: URL?
 	var messageContent: String?
+	var photoMessageUrl: String?
 	var isFromRightToLeft: Bool = false
+	var messageType: MessageContentType = .text
 }
 
 class ChatViewModel: ChatViewModelProtocol {
@@ -80,15 +82,17 @@ class ChatViewModel: ChatViewModelProtocol {
 												 senderID: message.senderID,
 												 profileImageUrl: nil,
 												 messageContent: message.content,
-												 isFromRightToLeft: message.senderID == currentUser?.uid)
+												 photoMessageUrl: message.photoUrl,
+												 isFromRightToLeft: message.senderID == currentUser?.uid,
+												 messageType: message.contentType)
 			cellModels.append(cellModel)
 		}
 		
 		chatMessageCellModels = cellModels
 	}
 	
-	func saveMessage(content: String) {
-		
+	fileprivate func saveRecord(content: String?,
+								imageUrl: String?) {
 		guard let currentUser = currentUser else {
 			return
 		}
@@ -100,9 +104,34 @@ class ChatViewModel: ChatViewModelProtocol {
 		model.senderName = currentUser.displayName
 		model.senderID = currentUser.uid
 		model.isRead = true
+		model.contentType = content != nil ? .text : .photo
+		model.photoUrl = imageUrl
+		model.chatRoomID = docRef?.documentID
 		
 		chatManager.save(message: model,
 						 docRef: docRef)
+	}
+	
+	func saveMessage(content: String?, photo: UIImage?) {
+		
+		guard let currentUser = currentUser else {
+			return
+		}
+		
+		if let photo = photo,
+		   let imageData = photo.jpegData(compressionQuality: 0.75),
+		   let chatRoomId = docRef?.documentID,
+		   let senderId = currentUser.uid {
+			
+			let filename: String = UUID().uuidString
+			let path = "/images/\(chatRoomId)/\(senderId)/\(filename)"
+			chatManager.uploadPhoto(imageData: imageData,
+									imagePath: path) { [weak self] (url) in
+				self?.saveRecord(content: nil, imageUrl: url)
+			}
+		} else {
+			saveRecord(content: content, imageUrl: nil)
+		}
 	}
 	
 	func playSound() {
@@ -110,10 +139,18 @@ class ChatViewModel: ChatViewModelProtocol {
 	}
 	
 	func presentActionSheet() {
-		let actionModel = ActionSheetModel(actions: [.uploadPhoto,
-													 .uploadDocument],
+		let uploadPhotoAction = ActionSheetActionModel(type: .uploadPhoto) { [weak self] _ in
+			self?.viewController?.showImagePicker()
+		}
+		let uploadDocumentAction = ActionSheetActionModel(type: .uploadDocument,
+														  completion: nil)
+		
+		let actionModel = ActionSheetModel(actions: [uploadPhotoAction,
+													 uploadDocumentAction],
 										   hasCloseAction: true)
 		actionSheet.present(with: actionModel,
 							in: viewController as! UIViewController)
 	}
+	
+	
 }

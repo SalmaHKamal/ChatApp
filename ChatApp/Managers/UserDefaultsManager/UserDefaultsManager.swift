@@ -33,7 +33,9 @@ struct UserDefaultsManager {
 	
 	func get(with key: UserDefaultsKeys) -> Any?  {
 		do {
-			let data = manager.object(forKey: key.rawValue) as! Data
+			guard let data = manager.object(forKey: key.rawValue) as? Data else {
+				return FirebaseManager().getCurrentUser()
+			}
 			let model = try JSONDecoder().decode(UserModel.self, from: data)
 			return model
 		} catch {

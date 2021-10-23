@@ -81,6 +81,25 @@ extension FirebaseManager {
 		docRef?.collection(FirestoreCollections.messages.rawValue).addDocument(data: messageDictionary, completion: nil)
 	}
 	
+	func uploadPhoto(_ imageData: Data, imagePath: String, completion: @escaping (String?) -> Void) {
+		let storageRef = storage.reference(withPath: imagePath)
+		storageRef.putData(imageData, metadata: nil) { (metaData, error) in
+			guard error == nil else {
+				completion(nil)
+				return
+			}
+			
+			storageRef.downloadURL { (url, error) in
+				guard error == nil else {
+					completion(nil)
+					return
+				}
+				completion(url?.absoluteString)
+			}
+			
+		}
+	}
+	
 }
 
 

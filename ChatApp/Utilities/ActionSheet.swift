@@ -37,16 +37,17 @@ enum ActionSheetActions {
 			return "Contacts"
 		}
 	}
-	
-	var handler: ((UIAlertAction) -> Void)? {
-		return nil
-	}
+}
+
+struct ActionSheetActionModel {
+	var type: ActionSheetActions
+	var completion: ((UIAlertAction) -> Void)?
 }
 
 struct ActionSheetModel {
 	var title: String?
 	var message: String?
-	var actions: [ActionSheetActions] = []
+	var actions: [ActionSheetActionModel] = []
 	var hasCloseAction: Bool = true
 }
 
@@ -64,9 +65,9 @@ class ActionSheet {
 		
 		if model.actions.count > 0 {
 			model.actions.forEach {
-				actionSheet.addAction(UIAlertAction(title: $0.name,
+				actionSheet.addAction(UIAlertAction(title: $0.type.name,
 													style: .default,
-													handler: $0.handler))
+													handler: $0.completion))
 			}
 		}
 		
