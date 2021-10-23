@@ -58,6 +58,7 @@
 		80A24A7625D7FD08005691BE /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A24A7525D7FD08005691BE /* ChatHistoryViewModel.swift */; };
 		80A3767A26F5FE31002E3C1D /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3767926F5FE31002E3C1D /* SoundPlayer.swift */; };
 		80A3768326F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac in Resources */ = {isa = PBXBuildFile; fileRef = 80A3768226F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac */; };
+		80A3768826F60742002E3C1D /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3768726F60742002E3C1D /* ActionSheet.swift */; };
 		80AD20CA2600B40200E6936F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD20C92600B40200E6936F /* ChatModel.swift */; };
 		80AD20CD2600B4B400E6936F /* FirebaseManager+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD20CC2600B4B400E6936F /* FirebaseManager+Chat.swift */; };
 		80AD20CF2600B53800E6936F /* FirebaseManager+HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD20CE2600B53800E6936F /* FirebaseManager+HelperMethods.swift */; };
@@ -151,6 +152,7 @@
 		80A24A7525D7FD08005691BE /* ChatHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewModel.swift; sourceTree = "<group>"; };
 		80A3767926F5FE31002E3C1D /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		80A3768226F601E0002E3C1D /* COMCell_Message sent (ID 1313)_BSB.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = "COMCell_Message sent (ID 1313)_BSB.aac"; sourceTree = "<group>"; };
+		80A3768726F60742002E3C1D /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
 		80AD20C92600B40200E6936F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		80AD20CC2600B4B400E6936F /* FirebaseManager+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+Chat.swift"; sourceTree = "<group>"; };
 		80AD20CE2600B53800E6936F /* FirebaseManager+HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+HelperMethods.swift"; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				802E9BE425BB30FB00237712 /* LoginErrors.swift */,
 				802E9BD825BB275800237712 /* Screens.swift */,
 				80A3767926F5FE31002E3C1D /* SoundPlayer.swift */,
+				80A3768726F60742002E3C1D /* ActionSheet.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				802AD3EB26AB320200BA221A /* FirebaseManager+ChatHistory.swift in Sources */,
+				80A3768826F60742002E3C1D /* ActionSheet.swift in Sources */,
 				80AD20D22600D2CA00E6936F /* ReuesableProtocol.swift in Sources */,
 				80A24A6F25D7D6A0005691BE /* ChatViewModel.swift in Sources */,
 				802E9BD625BB204200237712 /* SignUpViewController.swift in Sources */,

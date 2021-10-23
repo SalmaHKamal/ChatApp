@@ -60,6 +60,10 @@ class ChatViewController: BaseViewController {
 		self.viewModel?.viewController = self
 	}
 
+	// MARK: - Actions
+	@IBAction private func attachmentButtonDidPressed(_ sender: UIButton) {
+		viewModel?.presentActionSheet()
+	}
 }
 
 extension ChatViewController: ChatViewControllerProtocol {

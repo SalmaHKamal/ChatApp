@@ -19,6 +19,7 @@ protocol ChatViewModelProtocol {
 	func saveMessage(content: String)
 	func createCellModels(from messages: [MessageModel])
 	func playSound()
+	func presentActionSheet()
 	
 }
 
@@ -54,6 +55,7 @@ class ChatViewModel: ChatViewModelProtocol {
 		return UserDefaultsManager().get(with: .currentUser) as? UserModel
 	}
 	private let soundPlayer = SoundPlayer()
+	private let actionSheet = ActionSheet()
 	
 	// MARK: - Inits
 	init(receiverModel: ChatRecieverData) {
@@ -105,5 +107,13 @@ class ChatViewModel: ChatViewModelProtocol {
 	
 	func playSound() {
 		soundPlayer.play(sound: .sendMessage)
+	}
+	
+	func presentActionSheet() {
+		let actionModel = ActionSheetModel(actions: [.uploadPhoto,
+													 .uploadDocument],
+										   hasCloseAction: true)
+		actionSheet.present(with: actionModel,
+							in: viewController as! UIViewController)
 	}
 }
