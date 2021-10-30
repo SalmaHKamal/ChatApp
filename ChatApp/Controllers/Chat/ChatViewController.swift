@@ -13,6 +13,8 @@ import RxSwift
 protocol ChatViewControllerProtocol: AnyObject {
 	func reloadTableView()
 	func showImagePicker()
+	func showLoading()
+	func hideLoading()
 }
 
 class ChatViewController: BaseViewController {
@@ -55,8 +57,28 @@ class ChatViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		setupNavigationBar()
 		viewModel?.loadChat()
     }
+
+	private func setupNavigationBar() {
+		title = viewModel?.receiverModel?.name
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+																   NSAttributedString.Key.font: UIFont.TrebuchetMS(fontSize: 16)]
+		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.09047514945, green: 0.6231926084, blue: 0.5705589652, alpha: 1)
+		navigationController?.view.tintColor = .white
+		navigationController?.navigationBar.topItem?.title = ""
+		// right items
+//		let phoneItem = UIBarButtonItem(image: UIImage(named: "phone.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.white),
+//										style: .done,
+//										target: self,
+//										action: nil)
+//		let videoItem = UIBarButtonItem(image: UIImage(named: "video.fill")?.withTintColor(.white),
+//										style: .done,
+//										target: self,
+//										action: nil)
+//		navigationItem.rightBarButtonItems = [phoneItem]
+	}
 	
 	// MARK: - Inits
 	convenience init(with viewModel: ChatViewModelProtocol) {
@@ -87,6 +109,14 @@ extension ChatViewController: ChatViewControllerProtocol {
 			let indexPath = IndexPath(row: (self.viewModel?.chatMessageCellModels.count ?? 0) - 1, section: 0)
 			self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
 		}
+	}
+	
+	func showLoading() {
+		showLoadingIndicator()
+	}
+	
+	func hideLoading() {
+		hideLoadingIndicator()
 	}
 }
 

@@ -66,10 +66,12 @@ class ChatViewModel: ChatViewModelProtocol {
 	
 	// MARK: - Methods
 	func loadChat() {
+		viewController?.showLoading()
 		guard let model: ChatRecieverData = receiverModel else {
 			return
 		}
 		chatManager.loadChat(with: model.id) { [weak self] messages, docRef in
+			self?.viewController?.hideLoading()
 			self?.messages = messages
 			self?.docRef = docRef
 		}

@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="chatTableView" destination="MTg-Vj-t3C" id="0QZ-6m-7AE"/>
                 <outlet property="messageTextView" destination="TYj-B5-AGB" id="KqC-L3-Kv0"/>
-                <outlet property="receiverName" destination="Qwb-Rh-WDi" id="WkA-ao-P4O"/>
                 <outlet property="sendMessageBtn" destination="dK0-ru-7cE" id="55S-tJ-joc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,26 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNv-HR-RTf">
-                    <rect key="frame" x="0.0" y="44" width="414" height="80"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwb-Rh-WDi">
-                            <rect key="frame" x="50" y="29" width="348" height="22.5"/>
-                            <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="19"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.09047514945268631" green="0.62319260835647583" blue="0.57055896520614624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Qwb-Rh-WDi" secondAttribute="trailing" constant="16" id="Ft8-0J-jy2"/>
-                        <constraint firstItem="Qwb-Rh-WDi" firstAttribute="centerY" secondItem="qNv-HR-RTf" secondAttribute="centerY" id="T4M-n4-0Jc"/>
-                        <constraint firstAttribute="height" constant="80" id="sqy-QV-pSc"/>
-                        <constraint firstItem="Qwb-Rh-WDi" firstAttribute="leading" secondItem="qNv-HR-RTf" secondAttribute="leading" constant="50" id="tVB-vH-tPZ"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTg-Vj-t3C">
-                    <rect key="frame" x="0.0" y="124" width="414" height="682"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="762"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYK-vc-ZRC">
@@ -118,16 +99,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qNv-HR-RTf" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8Xx-Eo-7PG"/>
                 <constraint firstItem="LYK-vc-ZRC" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="L3b-um-Uru"/>
-                <constraint firstItem="qNv-HR-RTf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MXf-7f-WbT"/>
+                <constraint firstItem="MTg-Vj-t3C" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PLX-yr-iWb"/>
                 <constraint firstItem="MTg-Vj-t3C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SYe-IF-yDI"/>
                 <constraint firstItem="MTg-Vj-t3C" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Sol-1Y-arv"/>
                 <constraint firstItem="LYK-vc-ZRC" firstAttribute="top" secondItem="MTg-Vj-t3C" secondAttribute="bottom" id="XZW-Vh-wWq"/>
                 <constraint firstItem="LYK-vc-ZRC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Xw8-6s-vDN"/>
-                <constraint firstItem="qNv-HR-RTf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kUD-3s-UPC"/>
                 <constraint firstItem="LYK-vc-ZRC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oFx-aZ-HH7"/>
-                <constraint firstItem="MTg-Vj-t3C" firstAttribute="top" secondItem="qNv-HR-RTf" secondAttribute="bottom" id="tTx-lH-z2F"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </view>
