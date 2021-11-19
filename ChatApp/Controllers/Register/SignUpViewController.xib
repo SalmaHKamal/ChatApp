@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +31,7 @@
                 <visualEffectView opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VuO-Rq-Z7n">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="pjL-m7-m5f">
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pjL-m7-m5f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
@@ -75,7 +76,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yno-J9-5d8" customClass="LiveButton" customModule="ChatApp" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yno-J9-5d8" customClass="LiveButton" customModule="ChatApp" customModuleProvider="target">
                                                             <rect key="frame" x="116" y="13.5" width="150" height="150"/>
                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                                             <state key="normal" title="Upload">
@@ -132,7 +133,7 @@
                                                         </view>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWk-mc-zuL" customClass="LiveButton" customModule="ChatApp" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWk-mc-zuL" customClass="LiveButton" customModule="ChatApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="409" width="382" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="KSC-MO-MFe"/>
@@ -178,7 +179,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bH-zK-6Zd" customClass="LiveButton" customModule="ChatApp" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bH-zK-6Zd" customClass="LiveButton" customModule="ChatApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="47" width="382" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="pHM-pv-fPt"/>
@@ -217,6 +218,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="uBX-cC-eVA" firstAttribute="top" secondItem="TP8-Uu-Mae" secondAttribute="top" constant="100" id="4mY-7e-tDZ"/>
+                                <constraint firstItem="2OB-gL-WFl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ltD-g9-A9b" secondAttribute="bottom" constant="40" id="DiX-OZ-0rm"/>
                                 <constraint firstItem="ltD-g9-A9b" firstAttribute="top" secondItem="uBX-cC-eVA" secondAttribute="bottom" constant="40" id="Ear-XB-37u"/>
                                 <constraint firstAttribute="trailing" secondItem="uBX-cC-eVA" secondAttribute="trailing" constant="16" id="Egr-Jd-yos"/>
                                 <constraint firstAttribute="trailing" secondItem="ltD-g9-A9b" secondAttribute="trailing" constant="16" id="Lvg-nz-nZe"/>
@@ -230,7 +232,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="TP8-Uu-Mae" firstAttribute="bottom" secondItem="sdI-nC-Gsr" secondAttribute="bottom" id="9nY-vV-a3S"/>
+                        <constraint firstItem="TP8-Uu-Mae" firstAttribute="bottom" secondItem="oTj-UK-AhP" secondAttribute="bottom" id="9nY-vV-a3S"/>
                         <constraint firstAttribute="bottom" secondItem="TP8-Uu-Mae" secondAttribute="bottom" id="ZKQ-Xj-kVY"/>
                         <constraint firstItem="TP8-Uu-Mae" firstAttribute="width" secondItem="oTj-UK-AhP" secondAttribute="width" id="b3b-GE-50f"/>
                         <constraint firstItem="TP8-Uu-Mae" firstAttribute="top" secondItem="oTj-UK-AhP" secondAttribute="top" id="bRb-eC-jV2"/>
@@ -238,10 +240,9 @@
                         <constraint firstItem="TP8-Uu-Mae" firstAttribute="height" secondItem="oTj-UK-AhP" secondAttribute="height" priority="750" id="ryp-mg-GFk"/>
                         <constraint firstAttribute="trailing" secondItem="TP8-Uu-Mae" secondAttribute="trailing" id="x6L-7G-Oti"/>
                     </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="ebn-SG-ytV"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="sdI-nC-Gsr"/>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="6ob-fp-33q"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oTj-UK-AhP" secondAttribute="trailing" id="0Yw-AV-7rt"/>
@@ -249,10 +250,20 @@
                 <constraint firstItem="oTj-UK-AhP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lBT-kZ-spI"/>
                 <constraint firstAttribute="bottom" secondItem="oTj-UK-AhP" secondAttribute="bottom" id="paZ-BQ-I0e"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="6ob-fp-33q"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
+    <designables>
+        <designable name="8bH-zK-6Zd">
+            <size key="intrinsicContentSize" width="79" height="32"/>
+        </designable>
+        <designable name="FWk-mc-zuL">
+            <size key="intrinsicContentSize" width="57" height="30"/>
+        </designable>
+        <designable name="Yno-J9-5d8">
+            <size key="intrinsicContentSize" width="57" height="33"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Whatsapp-Wallpaper-120" width="1440" height="2560"/>
     </resources>

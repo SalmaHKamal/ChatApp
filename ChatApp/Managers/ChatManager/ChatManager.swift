@@ -13,8 +13,8 @@ struct ChatManager {
 	
 	let firebaseManager = FirebaseManager()
 	
-	func loadChat(with receiverID: String, completion: @escaping ChatCompletion) {
-		firebaseManager.loadChat(for: receiverID) { messages, docRef in
+	func loadChat(with receiver: UserModel, completion: @escaping ChatCompletion) {
+		firebaseManager.loadChat(for: receiver) { messages, docRef in
 			completion(messages, docRef)
 		}
 	}

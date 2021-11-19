@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController, RegisterationProtocol {
+class LoginViewController: BaseViewController {
 	// MARK: - Outlets
 	@IBOutlet weak var usernameTextFieldView: UIView! {
 		didSet {
@@ -35,7 +35,7 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	@IBOutlet weak var wholeScrollView: UIScrollView!
 	
 	// MARK: - Variables
-	var scrollView: UIScrollView!
+//	var scrollView: UIScrollView!
 	private var viewModel: LoginViewModelProtocol?
 	
 	// MARK: - Inits
@@ -49,11 +49,11 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
         super.viewDidLoad()
 
 		scrollView = wholeScrollView
-		addNotificationObservers(self)
+		addNotificationObservers()
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
-		removeNotificationObservers(for: self)
+		removeNotificationObservers()
 	}
 	
 	// MARK: - Actions
@@ -75,8 +75,6 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	
 	@IBAction func registerBtnPressed(_ sender: Any) {
 		coordinator?.signup()
-//		let vc = SignUpViewController()
-//		self.navigationController?.pushViewController(vc, animated: true)
 	}
 	
 	@IBAction func forgetPasswordPressed(_ sender: Any) {
@@ -91,17 +89,4 @@ class LoginViewController: BaseViewController, RegisterationProtocol {
 	
 	@IBAction func loginTwitterPressed(_ sender: Any) {
 	}
-	
-	// MARK: - Helper Methods
-//	private func pushToHomeViewController() {
-//		coordinator?.home()
-////		let vc = HomeViewController()
-////		if let navigationController = navigationController {
-////			navigationController.pushViewController(vc, animated: true)
-////		} else {
-////			let navigationController = UINavigationController(rootViewController: vc)
-////			navigationController.pushViewController(vc, animated: true)
-////		}
-////
-//	}
 }

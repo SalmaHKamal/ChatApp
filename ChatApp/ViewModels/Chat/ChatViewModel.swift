@@ -11,7 +11,7 @@ import Firebase
 
 protocol ChatViewModelProtocol {
 	var viewController: ChatViewControllerProtocol? { get set }
-	var receiverModel: ChatRecieverData? { get }
+	var receiverModel: UserModel? { get }
 	var messages: [MessageModel]? { get }
 	var chatMessageCellModels: [ChatMessageCellModel] { get }
 	
@@ -37,7 +37,7 @@ class ChatViewModel: ChatViewModelProtocol {
 	
 	// MARK: - Variables
 	weak var viewController: ChatViewControllerProtocol?
-	var receiverModel: ChatRecieverData?
+	var receiverModel: UserModel?
 	var messages: [MessageModel]? {
 		didSet {
 			guard let messages = messages else {
@@ -60,17 +60,17 @@ class ChatViewModel: ChatViewModelProtocol {
 	private let actionSheet = ActionSheet()
 	
 	// MARK: - Inits
-	init(receiverModel: ChatRecieverData) {
+	init(receiverModel: UserModel) {
 		self.receiverModel = receiverModel
 	}
 	
 	// MARK: - Methods
 	func loadChat() {
 		viewController?.showLoading()
-		guard let model: ChatRecieverData = receiverModel else {
+		guard let model = receiverModel else {
 			return
 		}
-		chatManager.loadChat(with: model.id) { [weak self] messages, docRef in
+		chatManager.loadChat(with: model) { [weak self] messages, docRef in
 			self?.viewController?.hideLoading()
 			self?.messages = messages
 			self?.docRef = docRef

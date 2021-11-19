@@ -29,6 +29,20 @@ struct ChatHistoryModel: Codable {
 	
 	init() {}
 	
+	init(from message: MessageModel) {
+		chatRoomId = message.chatRoomID
+		date = message.created
+		senderAvatar = nil
+		senderName = message.senderName
+		lastMessage = message.contentType == .text ? message.content :  message.photoUrl
+		unSeenMessageCount = 0
+		type = ChatType.privateChat.rawValue
+		senderID = message.senderID
+		members = nil
+		chatHistoryId = nil
+		membersNames = nil
+	}
+	
 	init?(dictionary: [String: Any]?) {
 		guard let dictionary = dictionary else {
 			return

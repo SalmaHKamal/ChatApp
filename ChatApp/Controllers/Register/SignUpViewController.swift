@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import JGProgressHUD
 
-class SignUpViewController: BaseViewController, RegisterationProtocol {
+class SignUpViewController: BaseViewController {
 
 	// MARK: - Outlets
 	@IBOutlet weak var username: UIView! {
@@ -59,7 +59,6 @@ class SignUpViewController: BaseViewController, RegisterationProtocol {
 	
 	// MARK: - Variables
 	var imagePicker: ImagePicker!
-	var scrollView: UIScrollView!
 	
 	// MARK: - LifeCycle
     override func viewDidLoad() {
@@ -67,22 +66,18 @@ class SignUpViewController: BaseViewController, RegisterationProtocol {
 
         imagePicker = ImagePicker(presentationController: self, delegate: self)
 		scrollView = wholeScrollView
-		addNotificationObservers(self)
-		// setup keyboard event
-		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+		addNotificationObservers()
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
-		removeNotificationObservers(for: self)
+		removeNotificationObservers()
 	}
 	
 	// MARK: - Actions
 	@IBAction func loginButtonPressed(_ sender: UIButton) {
 		coordinator?.login()
-//		let vc = LoginViewController(with: LoginViewModel())
-//		self.navigationController?.pushViewController(vc, animated: true)
 	}
+	
 	@IBAction func selectImageBtnPressed(_ sender: UIButton) {
 		imagePicker.present(from: sender)
 	}
@@ -103,12 +98,6 @@ class SignUpViewController: BaseViewController, RegisterationProtocol {
 			}
 		}
 	}
-	
-//	// MARK: - Helper Methods
-//	private func pushLoginViewController() {
-//		let vc = LoginViewController(with: LoginViewModel())
-//		self.navigationController?.pushViewController(vc, animated: true)
-//	}
 }
 
 extension SignUpViewController: ImagePickerDelegate {

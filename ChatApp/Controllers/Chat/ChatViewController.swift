@@ -34,7 +34,7 @@ class ChatViewController: BaseViewController {
 	@IBOutlet weak var messageTextView: UITextView!
 	@IBOutlet weak var receiverName: UILabel! {
 		didSet {
-			receiverName.text = viewModel?.receiverModel?.name
+			receiverName.text = viewModel?.receiverModel?.displayName
 		}
 	}
 	@IBOutlet weak var chatTableView: UITableView! {
@@ -62,7 +62,7 @@ class ChatViewController: BaseViewController {
     }
 
 	private func setupNavigationBar() {
-		title = viewModel?.receiverModel?.name
+		title = viewModel?.receiverModel?.displayName
 		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
 																   NSAttributedString.Key.font: UIFont.TrebuchetMS(fontSize: 16)]
 		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.09047514945, green: 0.6231926084, blue: 0.5705589652, alpha: 1)
@@ -106,7 +106,11 @@ extension ChatViewController: ChatViewControllerProtocol {
 	
 	func scrollToBottom(){
 		DispatchQueue.main.async {
-			let indexPath = IndexPath(row: (self.viewModel?.chatMessageCellModels.count ?? 0) - 1, section: 0)
+			guard let models = self.viewModel?.chatMessageCellModels,
+				  models.count > 0 else {
+				return
+			}
+			let indexPath = IndexPath(row: models.count - 1, section: 0)
 			self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
 		}
 	}

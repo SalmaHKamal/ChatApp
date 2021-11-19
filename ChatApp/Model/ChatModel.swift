@@ -9,5 +9,5 @@
 import Foundation
 
 struct ChatModel {
-	var users: [String]
+	var users: [UserModel]
 }

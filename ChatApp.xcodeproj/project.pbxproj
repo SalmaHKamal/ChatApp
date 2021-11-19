@@ -29,7 +29,6 @@
 		802E9BED25BBF2C400237712 /* LiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BEC25BBF2C400237712 /* LiveImageView.swift */; };
 		802E9BF025BBF4F200237712 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BEF25BBF4F200237712 /* ImagePicker.swift */; };
 		802E9BF325BC81E300237712 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BF225BC81E300237712 /* BaseViewController.swift */; };
-		802E9BF625BC8A1200237712 /* RegisterationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BF525BC8A1200237712 /* RegisterationProtocol.swift */; };
 		802E9BF825BC8E8600237712 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BF725BC8E8600237712 /* UIApplication+Extensions.swift */; };
 		802E9BFB25BCA12D00237712 /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BFA25BCA12D00237712 /* LiveView.swift */; };
 		802E9BFF25BD92FF00237712 /* ChatHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E9BFD25BD92FF00237712 /* ChatHistoryTableViewCell.swift */; };
@@ -125,7 +124,6 @@
 		802E9BEC25BBF2C400237712 /* LiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveImageView.swift; sourceTree = "<group>"; };
 		802E9BEF25BBF4F200237712 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		802E9BF225BC81E300237712 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		802E9BF525BC8A1200237712 /* RegisterationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationProtocol.swift; sourceTree = "<group>"; };
 		802E9BF725BC8E8600237712 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		802E9BFA25BCA12D00237712 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		802E9BFD25BD92FF00237712 /* ChatHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 		802E9BF425BC89F900237712 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				802E9BF525BC8A1200237712 /* RegisterationProtocol.swift */,
 				80AD20D12600D2CA00E6936F /* ReuesableProtocol.swift */,
 				808456912673549300E61C37 /* CoordinatorProtocol.swift */,
 				802AD46226AC919400BA221A /* SearchableDelegate.swift */,
@@ -922,7 +919,6 @@
 				802E9BE525BB30FB00237712 /* LoginErrors.swift in Sources */,
 				8084568A2673531600E61C37 /* Coordinator.swift in Sources */,
 				80C73FDE259F475E00EE8631 /* AppDelegate.swift in Sources */,
-				802E9BF625BC8A1200237712 /* RegisterationProtocol.swift in Sources */,
 				802E9BDB25BB290800237712 /* UIViewController+Extensions.swift in Sources */,
 				802E9BD925BB275800237712 /* Screens.swift in Sources */,
 				807C6A5D26503EB8000EF6FB /* UserDefaultsManager.swift in Sources */,
