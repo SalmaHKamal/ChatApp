@@ -91,6 +91,15 @@ class ChatViewController: BaseViewController {
 	@IBAction private func attachmentButtonDidPressed(_ sender: UIButton) {
 		viewModel?.presentActionSheet()
 	}
+	
+	// MARK: - Actions
+	@IBAction func phoneButtonDidPressed(_ sender: Any) {
+		viewModel?.startVoiceCall()
+	}
+	
+	@IBAction func videoButtonDidPressed(_ sender: Any) {
+	}
+	
 }
 
 extension ChatViewController: ChatViewControllerProtocol {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0BE6CCBF4FD8C528BC48EE68 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F7D90DAA21D61C29C62FED /* Pods_ChatApp.framework */; };
 		7895FFB10BE6913D9947BB79 /* Pods_ChatApp_ChatAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C979DF8AFA572FE644E202B3 /* Pods_ChatApp_ChatAppUITests.framework */; };
+		8014ACB226ECA3F3009D5719 /* CallKitDelegateImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014ACB126ECA3F3009D5719 /* CallKitDelegateImplementer.swift */; };
 		802AD3EB26AB320200BA221A /* FirebaseManager+ChatHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */; };
 		802AD3F026AB329A00BA221A /* ChatHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */; };
 		802AD3F826ABFB2600BA221A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AD3F726ABFB2600BA221A /* DateExtensions.swift */; };
@@ -105,6 +106,7 @@
 		12B719306D546777FAACC582 /* Pods-ChatAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppTests.release.xcconfig"; path = "Target Support Files/Pods-ChatAppTests/Pods-ChatAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		1B439A7AB0D2C3DA7F89D340 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		2ACDD863D567040465B68C2A /* Pods-ChatAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatAppTests/Pods-ChatAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8014ACB126ECA3F3009D5719 /* CallKitDelegateImplementer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitDelegateImplementer.swift; sourceTree = "<group>"; };
 		802AD3EA26AB320200BA221A /* FirebaseManager+ChatHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+ChatHistory.swift"; sourceTree = "<group>"; };
 		802AD3EF26AB329A00BA221A /* ChatHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryModel.swift; sourceTree = "<group>"; };
 		802AD3F726ABFB2600BA221A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -228,6 +230,14 @@
 				12B719306D546777FAACC582 /* Pods-ChatAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8014ACAF26ECA3C8009D5719 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				8014ACB126ECA3F3009D5719 /* CallKitDelegateImplementer.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		802E9BD225BB201100237712 /* Login */ = {
@@ -414,6 +424,7 @@
 		80A24A6D25D7D695005691BE /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				8014ACAF26ECA3C8009D5719 /* Delegates */,
 				80A24A6E25D7D6A0005691BE /* ChatViewModel.swift */,
 			);
 			path = Chat;
@@ -930,6 +941,7 @@
 				802AD46326AC919400BA221A /* SearchableDelegate.swift in Sources */,
 				807C6A5626503C3F000EF6FB /* SettingsViewController.swift in Sources */,
 				80C7402025A1180A00EE8631 /* LiveButton.swift in Sources */,
+				8014ACB226ECA3F3009D5719 /* CallKitDelegateImplementer.swift in Sources */,
 				80A24A6325D6807E005691BE /* ContactsViewModel.swift in Sources */,
 				802AD3F026AB329A00BA221A /* ChatHistoryModel.swift in Sources */,
 				80A24A6B25D7D054005691BE /* ChatViewController.swift in Sources */,

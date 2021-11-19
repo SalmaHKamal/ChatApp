@@ -20,6 +20,8 @@ protocol ChatViewModelProtocol {
 	func createCellModels(from messages: [MessageModel])
 	func playSound()
 	func presentActionSheet()
+	func startVoiceCall()
+	func startVideoCall()
 	
 }
 
@@ -58,6 +60,9 @@ class ChatViewModel: ChatViewModelProtocol {
 	}
 	private let soundPlayer = SoundPlayer()
 	private let actionSheet = ActionSheet()
+	
+	let callKitImplementer = CallKitDelegateImplementer()
+	
 	
 	// MARK: - Inits
 	init(receiverModel: ChatRecieverData) {
@@ -155,4 +160,11 @@ class ChatViewModel: ChatViewModelProtocol {
 	}
 	
 	
+	func startVoiceCall() {
+		callKitImplementer.startVoiceCall()
+	}
+	
+	func startVideoCall() {
+		
+	}
 }
